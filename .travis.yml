@@ -1,2 +1,2 @@
 language: java
-script: buildScript.sh
+script: bash buildScript.sh
