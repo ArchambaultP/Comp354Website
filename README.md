@@ -27,7 +27,7 @@ run maven spring-boot:run, this will start the server and deploy the code.
 ./mvnw spring-boot:run
 ```
 
-At this point, try accessing https://localhost:8080, you should the the index page.
+At this point, try accessing http://localhost:8080, you should the the index page.
 
 ## Running the tests
 
