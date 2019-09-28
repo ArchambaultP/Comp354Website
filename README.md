@@ -4,33 +4,23 @@ This is our fun and exciting project, full of wonders and nights of debugging !
 
 ## Getting Started
 
-First copy this repo
+Copy this repo
 
 ```
 git clone git@github.com:ArchambaultP/Comp354Website.git
 ```
 
-Go inside directory Comp354Project
+The application works with two servers, one front-end, and one back-end. For now, you need to start both on two different terminals.
+Make sure you have node.js and JavaJDK8 installed on your machine.
 
+To run the back-end server, run the buildBE.sh script inside Git-Bash
 ```
-cd Comp354Project
-```
-run maven clean install, this will install and deploy all the needed code on 
-the inbuilt tomcat server
-
-```
-./mvnw clean install
+sh buildBE.sh
 ```
 
-run maven spring-boot:run, this will start the server and deploy the code. 
+To run the front-end server, run the buildFE.sh script inside Git-Bash
 ```
-./mvnw spring-boot:run
-```
-
-you also need to run the angular app, to make sure you have a front end (do this on another terminal) 
-this needs to be done from the Project-UI directory, make sure you have node.js installed
-```
-npm start
+sh buildFE.sh
 ```
 
 At this point, try accessing http://localhost:4200, you should the the index page.
