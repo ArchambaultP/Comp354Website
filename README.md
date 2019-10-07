@@ -3,8 +3,7 @@
 This is our fun and exciting project, full of wonders and nights of debugging !
 
 ## Getting Started
-#DISCLAIMER
-##Don't open/clone this project through IntelliJ, open IntelliJ and click 'Open', and select the cloned Comp354Website folder
+
 Copy this repo
 
 ```
