@@ -3,6 +3,8 @@
 This is our fun and exciting project, full of wonders and nights of debugging !
 
 ## Getting Started
+##DISCLAIMER
+###Don't open/clone this project through IntelliJ, open IntelliJ and click 'Open', and select the cloned Comp354Website folder
 
 Copy this repo
 
@@ -24,6 +26,10 @@ sh buildFE.sh
 ```
 
 At this point, try accessing http://localhost:4200, you should the the index page.
+
+## Closing the servers
+
+To close the servers opened in the terminals, just focus on the terminal window, and press ctrl+c (most likely command+c for Mac users)
 
 ## Running the tests
 
