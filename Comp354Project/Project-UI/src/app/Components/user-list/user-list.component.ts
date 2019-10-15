@@ -6,7 +6,7 @@ import { UserService } from '../../service/user.service';
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
-})
+}) //working
 export class UserListComponent implements OnInit {
 
   users: User[];
