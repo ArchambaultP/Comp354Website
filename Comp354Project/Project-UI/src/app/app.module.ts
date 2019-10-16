@@ -17,13 +17,17 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { HttpInterceptorService } from './service/httpInterceptor.service';
 
+import { ProductPageComponent } from './Components/product-page/product-page.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ProductPageComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
