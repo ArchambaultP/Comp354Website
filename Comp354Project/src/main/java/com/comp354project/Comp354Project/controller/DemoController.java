@@ -1,7 +1,7 @@
 package com.comp354project.Comp354Project.controller;
 
 
-import com.comp354project.Comp354Project.Entities.Demo;
+import com.comp354project.Comp354Project.Entities.*;
 import com.comp354project.Comp354Project.repository.DemoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +25,8 @@ public class DemoController {
         n.setName(name);
         n.setEmail(email);
         demoRepository.save(n);
+
+        Category c = new Category();
         return "Saved";
     }
 
