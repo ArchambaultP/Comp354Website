@@ -10,15 +10,13 @@ import { UserListComponent } from './Components/user-list/user-list.component';
 import { UserService } from './service/user.service';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import { RelatedItemsComponent } from './components/related-items/related-items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     ProductPageComponent,
-    ProductDetailsComponent,
-    RelatedItemsComponent
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
