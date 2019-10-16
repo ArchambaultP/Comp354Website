@@ -8,11 +8,15 @@ import { UserListComponent } from './Components/user-list/user-list.component';
 
 
 import { UserService } from './service/user.service';
+import { ProductPageComponent } from './Components/product-page/product-page.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    ProductPageComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
