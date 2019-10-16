@@ -8,12 +8,14 @@ import { SearchService} from "../../service/search.service";
 import {Category} from "../../model/category";
 import { ProductCategoriesComponent } from '../product-categories/product-categories.component';
 // import{ CookieService } from 'ngx-cookie-service';
+import { products} from "../../products";
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css']
 })
+
 export class ProductPageComponent implements OnInit, OnDestroy {
   public searchText = "";
   navigationSubscription;
@@ -116,4 +118,5 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       });
     }
   }
+
 }

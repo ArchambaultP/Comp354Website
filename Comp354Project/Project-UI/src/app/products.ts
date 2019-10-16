@@ -18,6 +18,11 @@ export const products = [
         productId: 2
     },
     {
+        name: 'Phone Mini',
+        price: 699,
+        description: 'A great phone with one of the best cameras'
+    },
+    {
         name: 'Golf Umbrella',
         price: 29.99,
         description: 'With a 68-inch oversize canopy and heavy duty design is an ideal companion for golfers, the business professional or for daily life. ',

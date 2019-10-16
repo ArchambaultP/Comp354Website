@@ -1,12 +1,11 @@
-
 <div class="container">
     <header></header>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card bg-dark my-5">
-        <div class="card-body">
-          <!--
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card bg-dark my-5">
+                <div class="card-body">
+                    <!--
           <h2 class="card-title text-center text-white py-3" >{{ title }}</h2>
           <ul class="text-center list-inline py-3">
             <li class="list-inline-item"><a routerLink="/users" class="btn btn-info"> List Users</a></li>
@@ -22,13 +21,16 @@
           </ul>
           -->
 
-        <main></main>
+                    <main></main>
+
+                    <ul class="text-center list-inline py-3">
+                        <li class="list-inline-item"><a routerLink="/products" class="btn btn-info"> Product List</a></li>
+                    </ul>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
 
         </div>
-      </div>
-      <router-outlet></router-outlet>
-
     </div>
-  </div>
     <footer></footer>
 </div>

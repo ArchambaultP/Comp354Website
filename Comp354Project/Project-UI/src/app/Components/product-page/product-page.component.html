@@ -1,5 +1,5 @@
 <div id="wrapper">
-    Categories: <select class="form-control"  [(ngModel)] = "selectedCategoryButtonValue" (change)="catChange()">
+    Categories: <select class="form-control" [(ngModel)]="selectedCategoryButtonValue" (change)="catChange()">
     <option value="">All</option>
     <option *ngFor= "let name of categoryNames"
             [value]="name">{{name}}
@@ -8,7 +8,7 @@
 </div>
 <br>
 <div id="wrapper">
-  <select class="form-control"  [(ngModel)] = "selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
+    <select class="form-control" [(ngModel)]="selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
         <option value="">Sort</option>
         <option value="1">Sort By Name (A to Z)</option>
         <option value="2">Sort By Name (Z to A)</option>
@@ -20,21 +20,34 @@
 
 <div class="grid-container">
 
-<div *ngFor="let product of products | filter : searchText : inCategory; let i=index">
-    <div *ngIf="i<6">
-        <mat-card class="product-card">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
+    <div *ngFor="let product of products | filter : searchText : inCategory; let i=index">
+        <div *ngIf="i<6">
+            <mat-card class="product-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
 
-                <mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+                    <mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
                     {{product.name}}</a>
-                </mat-card-title>
+                    </mat-card-title>
 
-                <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="{{product.imageURL}}" >
-        </mat-card>
-      <p *ngIf="!product">No products to display</p>
+                    <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{product.imageURL}}">
+            </mat-card>
+            <p *ngIf="!product">No products to display</p>
+        </div>
     </div>
-</div>
-</div>
+    <h2>Products</h2>
+
+    <div *ngFor="let product of products; index as productId">
+
+        <h3>
+            <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+            {{product.name}}
+        </a>
+        </h3>
+
+        <p *ngIf="product.description">
+            Description: {{product.description}}
+        </p>
+    </div>
