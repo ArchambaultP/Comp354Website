@@ -18,9 +18,12 @@ export const products = [
         productId: 2
     },
     {
-        name: 'Phone Mini',
-        price: 699,
-        description: 'A great phone with one of the best cameras'
+        name: 'Huawei Honor 8X',
+        price: 241.28,
+        description: '4GB RAM, 64GB ROM, 6.5" Display Size, Unlocked Smartphone, Gorilla Glass',
+        type: "phone",
+        brand: "honor",
+        image: "https://lh3.googleusercontent.com/IjblILumG5gBa3cuENLW_6HvXtqlnZ69Vf6NXmyObayyudv2WimY1LcDa2pWy71YTjOtVGI=s85"
     },
     {
         name: 'Golf Umbrella',
