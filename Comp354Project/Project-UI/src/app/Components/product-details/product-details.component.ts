@@ -8,6 +8,7 @@ import { ActivatedRoute} from '@angular/router';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
+  products = products;
 product;
   constructor(private route: ActivatedRoute,) { }
 
