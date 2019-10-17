@@ -5,14 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './Components/user-list/user-list.component';
-
-
+import { TopBarComponent } from './Components/top-bar/top-bar.component';
 import { UserService } from './service/user.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,

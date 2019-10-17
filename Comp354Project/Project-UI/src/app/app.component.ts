@@ -11,6 +11,6 @@ export class AppComponent {
   title: string;
 
   constructor() {
-    this.title = '354TheStars';
+    this.title = 'Super basic website';
   }
 }

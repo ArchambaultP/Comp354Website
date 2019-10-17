@@ -9,6 +9,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent
+        TopBarComponent
       ],
     }).compileComponents();
   }));

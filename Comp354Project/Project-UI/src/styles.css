@@ -1,1 +1,47 @@
+* {
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #616161;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+router-outlet + *  {
+  padding: 0 120px;
+}
+
+/* Text */
+
+h1 {
+  font-size: 30px;
+}
+
+/* Top Bar */
+
+app-top-bar {
+  width: 100%;
+  height: 68px;
+  background-color: #1976d2;
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+app-top-bar h1 {
+  color: White;
+  margin: 0;
+}
+
+
 /* You can add global styles to this file, and also import other style files */
