@@ -1,5 +1,7 @@
 package com.comp354project.Comp354Project.Entities;
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -7,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//@Table(name="Accounts")
+
 @Entity(name="Account")
 public class Account {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer idAccount;
 
     @NotNull
