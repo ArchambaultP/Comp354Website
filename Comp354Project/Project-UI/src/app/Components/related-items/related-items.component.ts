@@ -8,7 +8,7 @@ import {Input} from "@angular/core";
   styleUrls: ['./related-items.component.css']
 })
 export class RelatedItemsComponent implements OnInit {
-products = products;
+relatedProducts = products;
 
   @Input() product;
   constructor() { }
