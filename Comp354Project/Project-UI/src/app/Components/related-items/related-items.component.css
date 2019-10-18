@@ -1,0 +1,17 @@
+#wrapper {
+  display: inline!important;
+  height: 275px;
+  max-width: 540px;
+}
+.box {
+  margin: 5px;
+  display: inline-block;
+  width: 170px;
+  height: 275px!important;
+  background-color: #F5FBEF;
+  text-align: center;
+  float: left;
+}
+.ng-repeat {
+  display: inline-block;
+}
