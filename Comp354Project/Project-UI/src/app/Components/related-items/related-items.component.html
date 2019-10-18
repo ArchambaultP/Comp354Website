@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="wrapper">
   <div class="box">
     <div *ngFor="let prod of relatedProducts">
@@ -7,5 +8,16 @@
         </table>
     </div>
   </div>
-</div>
+=======
 
+<div id="wrapper">
+  <div class="box">
+<div *ngFor="let prod of products;index as productId">
+    <table *ngIf="prod.type == product.type && prod.name != product.name">
+        <tr>{{prod.name}}</tr>
+        <tr><a [routerLink]="['/products', productId]"> <img src="{{prod.image}}"></a></tr>
+    </table>
+>>>>>>> products organized in a row and display filter working
+</div>
+</div>
+</div>
