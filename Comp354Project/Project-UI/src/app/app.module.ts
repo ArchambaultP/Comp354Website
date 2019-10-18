@@ -11,7 +11,10 @@ import { UserService } from './service/user.service';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { RelatedItemsComponent } from './components/related-items/related-items.component';
+<<<<<<< HEAD
 
+=======
+>>>>>>> Fixed product page bug when sorted
 
 @NgModule({
   declarations: [

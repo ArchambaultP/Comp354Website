@@ -8,6 +8,7 @@
 </div>
 <br />
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div *ngFor="let product of products">
   <div id="wrapper">
     <div class="box">
@@ -20,6 +21,13 @@
       <h3>
         <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
 >>>>>>> products organized in a row and display filter working
+=======
+<div *ngFor="let product of products">
+  <div id="wrapper">
+    <div class="box">
+      <h3>
+        <a [title]="product.name + ' details'" [routerLink]="['/products', product.productId]">
+>>>>>>> Fixed product page bug when sorted
           <br />
           <img src="{{product.image}}">
           <br />
@@ -30,12 +38,19 @@
         ${{product.price}}
       </h3>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <p *ngIf="product.description">
         Description: {{product.description}}
       </p>
 >>>>>>> products organized in a row and display filter working
+=======
+>>>>>>> Fixed product page bug when sorted
       <p *ngIf="!product">No products to display</p>
     </div>
   </div>
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Fixed product page bug when sorted
