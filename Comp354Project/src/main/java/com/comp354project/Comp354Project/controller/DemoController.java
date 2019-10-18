@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.comp354project.Comp354Project.utilities.PasswordHelper;
+
 @CrossOrigin(origins="http://localhost:4200")
 @RestController    // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
@@ -26,6 +28,8 @@ public class DemoController {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    private final PasswordHelper pwdHelper = new PasswordHelper();
 
     @GetMapping(path="/add") // Map ONLY Get Requests
     public @ResponseBody String addNewUser (@RequestParam String name
@@ -73,14 +77,15 @@ public class DemoController {
         rights.add(admin);
         rights.add(superAdmin);
 
-        List<Account> adminAcc = accountRepository.findByEmail("admin@admin.com");
-        if(adminAcc.isEmpty()) {
+        Account adminAcc = accountRepository.findByEmail("admin@admin.com");
+        if((adminAcc == null) || adminAcc.getEmail().isEmpty()){
             Account acc = new Account();
             acc.setId(1);
             acc.setName("superadmin");
             acc.setEmail("admin@admin.com");
-            acc.setPassword("pwdHash"); //need to change
-            acc.setSalt("pwdSalt"); //need to change
+            String salt = pwdHelper.getSalt();
+            acc.setPassword(pwdHelper.hash("pwdHash", salt));
+            acc.setSalt(salt);
             acc.setAddress1(" ");
             acc.setCity(" ");
             acc.setPhone(" ");
