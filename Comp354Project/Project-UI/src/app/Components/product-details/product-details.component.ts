@@ -8,27 +8,14 @@ import { ActivatedRoute} from '@angular/router';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-<<<<<<< HEAD
-  products = products;
-product;
-  constructor(private route: ActivatedRoute,) { }
-=======
-
   products = products;
   product;
   constructor(private route: ActivatedRoute,) {
     }
-    
->>>>>>> cd92b585eff36159a38695844bcc3f6d238fdc62
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.product = products[+params.get('productId')];
+      this.product = products[+params.get('productId') - 1];
     });
   }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> cd92b585eff36159a38695844bcc3f6d238fdc62
 }

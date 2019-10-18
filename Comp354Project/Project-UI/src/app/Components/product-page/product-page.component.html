@@ -1,20 +1,5 @@
 <h2>Products</h2>
 
-<<<<<<< HEAD
-<div *ngFor="let product of products; index as productId">
-
-    <h3>
-        <a [title]= "product.name + ' details'" [routerLink]="['/products', productId]">
-            {{product.name}}
-        </a>
-    </h3>
-
-    <p *ngIf="product.description">
-        Description: {{product.description}}
-    </p>
-</div>
-
-=======
 <div id="wrapper">
   <div class="box">
     <p>Name</p><input type="radio" name="name" value=1 [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()" />
@@ -22,11 +7,11 @@
   </div>
 </div>
 <br />
-<div *ngFor="let product of products; index as productId">
+<div *ngFor="let product of products">
   <div id="wrapper">
     <div class="box">
       <h3>
-        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+        <a [title]="product.name + ' details'" [routerLink]="['/products', product.productId]">
           <br />
           <img src="{{product.image}}">
           <br />
@@ -36,11 +21,8 @@
         <br />
         ${{product.price}}
       </h3>
-      <p *ngIf="product.description">
-        Description: {{product.description}}
-      </p>
       <p *ngIf="!product">No products to display</p>
     </div>
   </div>
 </div>
->>>>>>> cd92b585eff36159a38695844bcc3f6d238fdc62
+
