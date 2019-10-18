@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './Components/user-list/user-list.component';
 import { TopBarComponent } from './Components/top-bar/top-bar.component';
 import { UserService } from './service/user.service';
+import { HeaderAreaComponent } from './components/header-area/header-area.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    TopBarComponent
+    TopBarComponent,
+    HeaderAreaComponent
+
   ],
   imports: [
     BrowserModule,
