@@ -56,4 +56,8 @@ export const products = [
         image: "https://lh3.googleusercontent.com/YoWmKL1JHJJ0Sdu-tNdxU5B0FGlUDGE_X6AqYqlUZahsB1rljYEfF2EbMRkEs0Eb3D0s=s85"
     },
 
+<<<<<<< HEAD
 ];
+=======
+];
+>>>>>>> cd92b585eff36159a38695844bcc3f6d238fdc62

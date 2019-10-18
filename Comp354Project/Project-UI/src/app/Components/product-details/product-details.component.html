@@ -1,6 +1,7 @@
 <h2>Product Details</h2>
 
 <div *ngIf="product">
+<<<<<<< HEAD
     <h3>{{ product.name }}</h3>
     <img src="{{product.image}}">
     <h4>{{ product.price | currency }}</h4>
@@ -14,3 +15,23 @@
 <app-related-items
         [product] = "product">
 </app-related-items>
+=======
+  <div id="wrapper">
+    <div class="box">
+      <h3>{{ product.name }}</h3>
+      <img src="{{product.image}}">
+      <h4>{{ product.price | currency }}</h4>
+      <p>{{ product.description }}</p>
+      <p>Brand: {{product.brand}}</p>
+    </div>
+  </div>
+</div>
+
+<br/>
+<div id="wrapper">
+  <div class="box">
+    <h2>Related Items</h2>
+    <app-related-items [product]="product"></app-related-items>
+  </div>
+</div>
+>>>>>>> cd92b585eff36159a38695844bcc3f6d238fdc62

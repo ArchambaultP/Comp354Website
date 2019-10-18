@@ -1,7 +1,18 @@
+<<<<<<< HEAD
+=======
+
+<div id="wrapper">
+  <div class="box">
+>>>>>>> cd92b585eff36159a38695844bcc3f6d238fdc62
 <div *ngFor="let prod of products;index as productId">
     <table *ngIf="prod.type == product.type && prod.name != product.name">
         <tr>{{prod.name}}</tr>
         <tr><a [routerLink]="['/products', productId]"> <img src="{{prod.image}}"></a></tr>
     </table>
 </div>
+<<<<<<< HEAD
 
+=======
+</div>
+</div>
+>>>>>>> cd92b585eff36159a38695844bcc3f6d238fdc62
