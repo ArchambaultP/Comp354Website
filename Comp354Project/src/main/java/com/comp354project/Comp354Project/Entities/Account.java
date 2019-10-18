@@ -8,6 +8,7 @@ import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Lob;
 
 
 @Entity(name="Account")
@@ -24,7 +25,8 @@ public class Account {
     private String name;
 
     @NotNull
-    private String password;
+    @Lob
+    private byte[] password;
 
     @NotNull
     private String salt;
@@ -118,11 +120,11 @@ public class Account {
         this.name = name;
     }
 
-    public String getPassword() {
+    public byte[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(byte[] password) {
         this.password = password;
     }
 
