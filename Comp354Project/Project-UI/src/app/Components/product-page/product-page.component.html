@@ -51,3 +51,25 @@
             Description: {{product.description}}
         </p>
     </div>
+    <div *ngFor="let product of products">
+        <div id="wrapper">
+            <div class="box">
+                <h3>
+                    <a [title]="product.name + ' details'" [routerLink]="['/products', product.productId]">
+                        <div *ngFor="let product of products; index as productId">
+                            <div id="wrapper">
+                                <div class="box">
+                                    <h3>
+                                        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+                                            <br />
+                                            <img src="{{product.image}}">
+                                            <br /> {{product.name}}
+                                        </a>
+                                        <br />
+                                        <br /> ${{product.price}}
+                                    </h3>
+                                    <p *ngIf="!product">No products to display</p>
+                                </div>
+                            </div>
+                        </div>
+                        >>>>>>> products organized in a row and display filter working

@@ -71,4 +71,9 @@ export const products = [
         image: "https://lh3.googleusercontent.com/YoWmKL1JHJJ0Sdu-tNdxU5B0FGlUDGE_X6AqYqlUZahsB1rljYEfF2EbMRkEs0Eb3D0s=s85",
         productId: 7
     },
+<<<<<<< HEAD
 ]
+=======
+
+];
+>>>>>>> products organized in a row and display filter working

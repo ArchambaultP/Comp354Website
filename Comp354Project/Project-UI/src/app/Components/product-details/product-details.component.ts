@@ -11,10 +11,15 @@ import { Product } from '../../model/product';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
+
   products = products;
   product;
   constructor(private route: ActivatedRoute,) {
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> products organized in a row and display filter working
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -22,4 +27,9 @@ export class ProductDetailsComponent implements OnInit {
       this.product = products[+params.get('productId') - 1];
     });
   }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> products organized in a row and display filter working
 }

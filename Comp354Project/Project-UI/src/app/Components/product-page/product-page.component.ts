@@ -1,6 +1,7 @@
 
 import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
 import { ascend, filter, groupBy, pipe, sort } from "ramda";
+
 import {ProductService} from "../../service/product.service";
 import {Router, NavigationEnd} from "@angular/router";
 import { FilterPipe } from '../../pipes/filter.pipe';
