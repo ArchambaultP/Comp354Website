@@ -35,6 +35,7 @@ import { AccountFormComponent } from './Components/admin/account-form/account-fo
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
