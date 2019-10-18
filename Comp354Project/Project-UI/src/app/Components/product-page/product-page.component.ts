@@ -32,7 +32,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   // products = sort(ascend(products => products.price), products);
 
   @Output() refresh:EventEmitter<string> = new EventEmitter();
-
   // Sorts products.
   // ADD SORT FOR CUSTOMER RATING AND WTV ELSE IS NEEDED
   countDropDownButtonSelectionChanged: EventEmitter<string> = new EventEmitter<string>();
@@ -53,7 +52,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       this.products = sort(ascend(products => products.price), this.products).reverse()
     }
   }
-
   constructor( public productService: ProductService, public searchService: SearchService, private router: Router) {
     // subscribe to the router events. Store the subscription so we can unsubscribe later.
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -70,7 +68,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  //Gets the search text from the product service
   ngOnInit() {
     this.selectedCategoryButtonValue = this.productService.selectedCategoryButtonValue;
     console.log(this.productService.selectedCategoryButtonValue)

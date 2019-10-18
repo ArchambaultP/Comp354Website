@@ -23,7 +23,8 @@ export const products = [
         description: '4GB RAM, 64GB ROM, 6.5" Display Size, Unlocked Smartphone, Gorilla Glass',
         type: "phone",
         brand: "honor",
-        image: "https://lh3.googleusercontent.com/IjblILumG5gBa3cuENLW_6HvXtqlnZ69Vf6NXmyObayyudv2WimY1LcDa2pWy71YTjOtVGI=s85"
+        image: "https://lh3.googleusercontent.com/IjblILumG5gBa3cuENLW_6HvXtqlnZ69Vf6NXmyObayyudv2WimY1LcDa2pWy71YTjOtVGI=s85",
+        productId: 2
     },
     {
         name: 'Golf Umbrella',
