@@ -1,7 +1,6 @@
 
 import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
 import { ascend, filter, groupBy, pipe, sort } from "ramda";
-
 import {ProductService} from "../../service/product.service";
 import {Router, NavigationEnd} from "@angular/router";
 import { FilterPipe } from '../../pipes/filter.pipe';
@@ -11,7 +10,6 @@ import {Category} from "../../model/category";
 import { ProductCategoriesComponent } from '../product-categories/product-categories.component';
 // import{ CookieService } from 'ngx-cookie-service';
 import { products} from "../../products";
-
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -48,6 +46,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     }
     else if(this.selectedDropDownButtonValue == 3){
       this.products = sort(ascend(products => products.price), this.products)
+
     }
     else{
       this.products = sort(ascend(products => products.price), this.products).reverse()
@@ -97,20 +96,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     }
     else{
       this.productService.findByCategoryByName(this.selectedCategoryButtonValue).subscribe(data =>
-      {
-        this.category = data;
-        this.products = this.category[0].products;
-      });
-    }
-  }
-  catChange2(){
-    if(this.productService.selectedCategoryButtonValue == ""){
-      this.productService.findAllProducts().subscribe(data => {
-        this.products = data;
-      });
-    }
-    else{
-      this.productService.findByCategoryByName(this.productService.selectedCategoryButtonValue).subscribe(data =>
       {
         this.category = data;
         this.products = this.category[0].products;

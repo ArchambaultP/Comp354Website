@@ -11,15 +11,21 @@ import { Product } from '../../model/product';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
+<<<<<<< HEAD
 
+=======
+>>>>>>> Fixed product page bug when sorted
   products = products;
   product;
   constructor(private route: ActivatedRoute,) {
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     
 >>>>>>> products organized in a row and display filter working
+=======
+>>>>>>> Fixed product page bug when sorted
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -28,8 +34,11 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> products organized in a row and display filter working
+=======
+>>>>>>> Fixed product page bug when sorted
 }
