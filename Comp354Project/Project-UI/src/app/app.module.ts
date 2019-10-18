@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './Components/user-list/user-list.component';
-import { TopBarComponent } from './Components/top-bar/top-bar.component';
 import { UserService } from './service/user.service';
 import { HeaderAreaComponent } from './components/header-area/header-area.component';
 
@@ -14,9 +13,7 @@ import { HeaderAreaComponent } from './components/header-area/header-area.compon
   declarations: [
     AppComponent,
     UserListComponent,
-    TopBarComponent,
     HeaderAreaComponent
-
   ],
   imports: [
     BrowserModule,
