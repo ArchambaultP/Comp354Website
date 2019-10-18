@@ -63,8 +63,12 @@ export const products = [
         productId: 7
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 ]
 =======
 
 ];
 >>>>>>> products organized in a row and display filter working
+=======
+]
+>>>>>>> Fixed product page bug when sorted
