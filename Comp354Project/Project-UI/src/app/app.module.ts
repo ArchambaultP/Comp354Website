@@ -21,6 +21,7 @@ import { ProductPageComponent } from './Components/product-page/product-page.com
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { RelatedItemsComponent } from './components/related-items/related-items.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
