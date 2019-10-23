@@ -50,37 +50,44 @@ public class DemoController {
     @GetMapping(path="/instantiateRightsAndAccounts")
     public @ResponseBody String instantiateRights()
     {
-        Rights buying = new Rights();
-        buying.setId(1);
-        buying.setName("Buying");
-
-        Rights selling = new Rights();
-        selling.setId(2);
-        selling.setName("Selling");
-
-        Rights admin = new Rights();
-        admin.setId(3);
-        admin.setName("Admin");
-
-        Rights superAdmin = new Rights();
-        superAdmin.setId(4);
-        superAdmin.setName("SuperAdmin");
-
-        rightsRepository.save(buying);
-        rightsRepository.save(selling);
-        rightsRepository.save(admin);
-        rightsRepository.save(superAdmin);
 
         List<Rights> rights = new ArrayList<>();
-        rights.add(buying);
-        rights.add(selling);
-        rights.add(admin);
-        rights.add(superAdmin);
+        if(rightsRepository.findByName("Buying") == null) {
+            Rights buying = new Rights();
+            //buying.setId(1);
+            buying.setName("Buying");
+            rightsRepository.save(buying);
+            rights.add(buying);
+        }
+
+        if(rightsRepository.findByName("Selling") == null) {
+            Rights selling = new Rights();
+           // selling.setId(2);
+            selling.setName("Selling");
+            rightsRepository.save(selling);
+            rights.add(selling);
+        }
+
+        if(rightsRepository.findByName("Admin") == null) {
+            Rights admin = new Rights();
+           // admin.setId(3);
+            admin.setName("Admin");
+            rightsRepository.save(admin);
+            rights.add(admin);
+        }
+
+        if(rightsRepository.findByName("SuperAdmin") == null) {
+            Rights superAdmin = new Rights();
+            //superAdmin.setId(4);
+            superAdmin.setName("SuperAdmin");
+            rightsRepository.save(superAdmin);
+            rights.add(superAdmin);
+        }
 
         Account adminAcc = accountRepository.findByEmail("admin@admin.com");
         if((adminAcc == null) || adminAcc.getEmail().isEmpty()){
             Account acc = new Account();
-            acc.setId(1);
+            //acc.setId(1);
             acc.setName("superadmin");
             acc.setEmail("admin@admin.com");
             String salt = pwdHelper.getSalt();

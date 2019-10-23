@@ -1,9 +1,6 @@
 package com.comp354project.Comp354Project.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +13,7 @@ public class Rights {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "rights", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Account> accounts = new ArrayList<>();
 
     public Integer getId() {
