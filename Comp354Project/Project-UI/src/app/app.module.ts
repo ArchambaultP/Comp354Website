@@ -8,6 +8,7 @@ import { UserListComponent } from './Components/user-list/user-list.component';
 import { UserService } from './service/user.service';
 import { HeaderAreaComponent } from './components/header-area/header-area.component';
 import { FooterAreaComponent } from './Components/footer-area/footer-area.component';
+import { IndexAreaComponent } from './Components/index-area/index-area.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FooterAreaComponent } from './Components/footer-area/footer-area.compon
     AppComponent,
     UserListComponent,
     HeaderAreaComponent,
-    FooterAreaComponent
+    FooterAreaComponent,
+    IndexAreaComponent
   ],
   imports: [
     BrowserModule,
