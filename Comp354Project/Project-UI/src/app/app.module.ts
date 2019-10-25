@@ -8,11 +8,14 @@ import { UserListComponent } from './Components/user-list/user-list.component';
 
 
 import { UserService } from './service/user.service';
+import { AccountListComponent } from './Components/account-list/account-list.component';
+import { AccountService } from './service/account.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    AccountListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { UserService } from './service/user.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

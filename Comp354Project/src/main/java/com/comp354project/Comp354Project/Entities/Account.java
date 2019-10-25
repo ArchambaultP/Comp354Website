@@ -74,7 +74,7 @@ public class Account {
     )
     private List<Product> productList = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "rights_accounts",
             joinColumns = {@JoinColumn(name = "idAccount")},
