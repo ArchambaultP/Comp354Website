@@ -79,7 +79,12 @@ public class Account {
     )
     private List<Product> productList = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "rights_accounts",
+            joinColumns = {@JoinColumn(name = "idAccount")},
+            inverseJoinColumns = {@JoinColumn(name = "idRights")}
+    )
     private List<Rights> rights = new ArrayList<>();
 
 

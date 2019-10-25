@@ -27,6 +27,9 @@ public class Review {
     @Null
     private String description;
 
+    @Null
+    private String reply;
+
     public Integer getId() {
         return idReview;
     }
@@ -65,5 +68,21 @@ public class Review {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getIdReview() {
+        return idReview;
+    }
+
+    public void setIdReview(Integer idReview) {
+        this.idReview = idReview;
+    }
+
+    public String getReply() {
+        return reply;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply;
     }
 }
