@@ -5,14 +5,22 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './Components/user-list/user-list.component';
-
-
+import { LoginComponent } from './Components/login/login.component';
+import { AuthService } from './service/auth.service';
+import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
+import {
+  HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
+} from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { HttpInterceptorService } from './service/httpInterceptor.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +28,8 @@ import { UserService } from './service/user.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

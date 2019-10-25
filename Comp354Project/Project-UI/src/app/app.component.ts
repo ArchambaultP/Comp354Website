@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-
+import { AuthService } from './service/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import 'rxjs/add/operator/finally';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +12,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title: string;
+  isLoggedIn = this.auth.isUserLoggedIn();
+  currentUser = this.auth.currentUser();
 
-  constructor() {
-    this.title = 'Super basic website';
+  constructor(private auth: AuthService, private http: HttpClient, private router: Router) {
+
   }
+  logout(){
+    this.auth.logout();
+  }
+
 }
