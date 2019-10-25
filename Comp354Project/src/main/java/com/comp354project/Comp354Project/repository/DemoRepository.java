@@ -8,5 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 // CRUD refers Create, Read, Update, Delete
 
 public interface DemoRepository extends CrudRepository<Demo, Integer> {
-
+    public Demo findByEmail(String email);
+    public Demo getDemoById(int id);
 }
