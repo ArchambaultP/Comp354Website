@@ -9,6 +9,7 @@ import { UserService } from './service/user.service';
 import { HeaderAreaComponent } from './components/header-area/header-area.component';
 import { FooterAreaComponent } from './Components/footer-area/footer-area.component';
 import { IndexAreaComponent } from './Components/index-area/index-area.component';
+import { TestLoginPageComponent } from './Components/test-login-page/test-login-page.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { IndexAreaComponent } from './Components/index-area/index-area.component
     UserListComponent,
     HeaderAreaComponent,
     FooterAreaComponent,
-    IndexAreaComponent
+    IndexAreaComponent,
+    TestLoginPageComponent
   ],
   imports: [
     BrowserModule,
