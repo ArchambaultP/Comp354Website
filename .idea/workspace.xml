@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b3eacd00-d0c2-4911-8fec-f8060e42f981" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/header-area/header-area.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/header-area/header-area.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/header-area/header-area.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/header-area/header-area.component.ts" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +34,13 @@
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3eacd00-d0c2-4911-8fec-f8060e42f981" name="Default Changelist" comment="" />
+      <created>1572208652915</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572208652915</updated>
+    </task>
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -41,7 +48,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
