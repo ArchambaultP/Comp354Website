@@ -22,7 +22,7 @@ public class Product {
     private Account account;
 
     @NotNull
-    @Column(length = 45)
+    @Column(length = 100)
     private String name;
 
     @NotNull
@@ -35,11 +35,14 @@ public class Product {
     @NotNull
     private Integer quantity;
 
-    @Null
     private String brand;
 
     @NotNull
     private boolean permanentPosting;
+
+    @NotNull
+    @Column(length = 400)
+    private String imageURL;
 
     @OneToMany(
             mappedBy = "product"
@@ -117,4 +120,8 @@ public class Product {
     public void setPermanentPosting(boolean permanentPosting) {
         this.permanentPosting = permanentPosting;
     }
+
+    public String getImageURL() { return imageURL;}
+
+    public void setImageURL(String imageURL) {this.imageURL = imageURL;}
 }
