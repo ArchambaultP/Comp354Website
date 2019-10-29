@@ -72,16 +72,17 @@ public class Account {
     @NotNull
     private Date datejoined;
 
+    private boolean canSell;
+    private boolean canBuy;
+    private boolean isAdmin;
+    private boolean isSuperAdmin;
+
     @OneToMany(
             mappedBy = "account",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     private List<Product> productList = new ArrayList<>();
-
-    @ManyToMany
-    private List<Rights> rights = new ArrayList<>();
-
 
     @OneToMany(
             mappedBy = "account"
@@ -99,6 +100,10 @@ public class Account {
     {
         super();
         datejoined = new Date();
+        canSell = false;
+        canBuy = false;
+        isAdmin = false;
+        isSuperAdmin = false;
     }
 
     public Integer getId() {
@@ -257,14 +262,6 @@ public class Account {
         this.productList = productList;
     }
 
-    public List<Rights> getRights() {
-        return rights;
-    }
-
-    public void setRights(List<Rights> rights) {
-        this.rights = rights;
-    }
-
     public List<AccountOrder> getOrders() {
         return orders;
     }
@@ -272,4 +269,37 @@ public class Account {
     public void setOrders(List<AccountOrder> orders) {
         this.orders = orders;
     }
+
+    public boolean isCanSell() {
+        return canSell;
+    }
+
+    public void setCanSell(boolean canSell) {
+        this.canSell = canSell;
+    }
+
+    public boolean isCanBuy() {
+        return canBuy;
+    }
+
+    public void setCanBuy(boolean canBuy) {
+        this.canBuy = canBuy;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public boolean isSuperAdmin() {
+        return isSuperAdmin;
+    }
+
+    public void setSuperAdmin(boolean superAdmin) {
+        isSuperAdmin = superAdmin;
+    }
+
 }
