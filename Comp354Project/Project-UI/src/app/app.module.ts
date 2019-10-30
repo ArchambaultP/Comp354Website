@@ -20,10 +20,8 @@ import { HttpInterceptorService } from './service/httpInterceptor.service';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { RelatedItemsComponent } from './components/related-items/related-items.component';
-<<<<<<< HEAD
+import { ProductCategoriesComponent } from './Components/product-categories/product-categories.component';
 
-=======
->>>>>>> Fixed product page bug when sorted
 
 @NgModule({
   declarations: [
@@ -33,7 +31,8 @@ import { RelatedItemsComponent } from './components/related-items/related-items.
     RegistrationComponent,
     ProductPageComponent,
     ProductDetailsComponent,
-    RelatedItemsComponent
+    RelatedItemsComponent,
+    ProductCategoriesComponent
   ],
   imports: [
     BrowserModule,
