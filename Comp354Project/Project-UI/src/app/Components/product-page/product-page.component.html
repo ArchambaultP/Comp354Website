@@ -1,10 +1,12 @@
 <h2>Products</h2>
 
 <div id="wrapper">
-  <div class="box">
-    <p>Name</p><input type="radio" name="name" value=1 [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()" />
-    <p>Price</p><input type="radio" name="name" value=2 [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()" />
-  </div>
+  <select class="form-control"  [(ngModel)] = "selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
+        <option value="1">Sort By Name (A to Z)</option>
+        <option value="2">Sort By Name (Z to A)</option>
+        <option value="3">Sort By Price (Low to High)</option>
+        <option value="4">Sort By Price (High to Low)</option>
+    </select>
 </div>
 <br />
 <div *ngFor="let product of products">
@@ -25,4 +27,3 @@
     </div>
   </div>
 </div>
-
