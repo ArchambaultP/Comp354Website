@@ -16,6 +16,7 @@ import { products} from "../../products";
   styleUrls: ['./product-page.component.css']
 })
 
+
 export class ProductPageComponent implements OnInit, OnDestroy {
   public searchText = "";
   navigationSubscription;
@@ -82,6 +83,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       this.catChange();
     }
   }
+
   ngOnDestroy(){
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
@@ -104,3 +106,4 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   }
 
 }
+
