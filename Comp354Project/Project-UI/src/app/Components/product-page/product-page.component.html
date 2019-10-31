@@ -1,33 +1,19 @@
 <h2>Products</h2>
 
 <div id="wrapper">
-  <div class="box">
-    <p>Name</p><input type="radio" name="name" value=1 [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()" />
-    <p>Price</p><input type="radio" name="name" value=2 [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()" />
-  </div>
+  <select class="form-control"  [(ngModel)] = "selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
+        <option value="1">Sort By Name (A to Z)</option>
+        <option value="2">Sort By Name (Z to A)</option>
+        <option value="3">Sort By Price (Low to High)</option>
+        <option value="4">Sort By Price (High to Low)</option>
+    </select>
 </div>
 <br />
-<<<<<<< HEAD
-<<<<<<< HEAD
 <div *ngFor="let product of products">
   <div id="wrapper">
     <div class="box">
       <h3>
         <a [title]="product.name + ' details'" [routerLink]="['/products', product.productId]">
-=======
-<div *ngFor="let product of products; index as productId">
-  <div id="wrapper">
-    <div class="box">
-      <h3>
-        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
->>>>>>> products organized in a row and display filter working
-=======
-<div *ngFor="let product of products">
-  <div id="wrapper">
-    <div class="box">
-      <h3>
-        <a [title]="product.name + ' details'" [routerLink]="['/products', product.productId]">
->>>>>>> Fixed product page bug when sorted
           <br />
           <img src="{{product.image}}">
           <br />
@@ -37,20 +23,7 @@
         <br />
         ${{product.price}}
       </h3>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      <p *ngIf="product.description">
-        Description: {{product.description}}
-      </p>
->>>>>>> products organized in a row and display filter working
-=======
->>>>>>> Fixed product page bug when sorted
       <p *ngIf="!product">No products to display</p>
     </div>
   </div>
 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> Fixed product page bug when sorted
