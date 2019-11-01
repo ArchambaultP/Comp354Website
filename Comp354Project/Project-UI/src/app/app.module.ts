@@ -12,6 +12,7 @@ import { ProductPageComponent } from './Components/product-page/product-page.com
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { RelatedItemsComponent } from './components/related-items/related-items.component';
 import { ProductCategoriesComponent } from './Components/product-categories/product-categories.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductCategoriesComponent } from './Components/product-categories/prod
     ProductPageComponent,
     ProductDetailsComponent,
     RelatedItemsComponent,
-    ProductCategoriesComponent
+    ProductCategoriesComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

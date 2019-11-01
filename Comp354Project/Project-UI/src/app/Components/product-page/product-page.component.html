@@ -1,4 +1,7 @@
 <h2>Products</h2>
+<!--          Search bar-->
+<input [(ngModel)] = "searchText"  placeholder="Type to Search" type="search">
+<button class="search-button">Submit</button>
 
 <div id="wrapper">
   <select class="form-control"  [(ngModel)] = "selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
@@ -9,7 +12,8 @@
     </select>
 </div>
 <br />
-<div *ngFor="let product of products">
+<!--Passes each product in database to the filter pipe-->
+<div *ngFor="let product of products | filter : searchList">
   <div id="wrapper">
     <div class="box">
       <h3>
