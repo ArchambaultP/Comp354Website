@@ -9,11 +9,11 @@ import { ascend, filter, groupBy, pipe, sort } from "ramda";
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit {
+  searchText = "";
 
   @Output() refresh:EventEmitter<string> = new EventEmitter();
 
   products = sort(ascend(products => products.name), products);
-
 //this section sorts out products on the page
   selectedDropDownButtonValue: any = 1;
   @Output()
@@ -38,7 +38,9 @@ export class ProductPageComponent implements OnInit {
 
   }
 
-
+  update(value){
+      this.searchText = value;
+  }
   ngOnInit() {
   }
 
