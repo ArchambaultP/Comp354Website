@@ -23,5 +23,4 @@ export class FilterPipe implements PipeTransform {
     // }
     console.log(searchText);
     return this.filteredProducts;
-  }
 }

@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,) {
   }
 
+  //Looks for product in products array that has the productId that was passed to the component through the router
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.product = products.find(product => product.productId === parseInt(params.get('productId')));
