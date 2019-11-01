@@ -28,6 +28,29 @@ export class AuthService {
         }
     }
 
+    register(credentials): Observable<any>{
+        if(credentials != undefined){
+            const body = new HttpParams()
+                .set('email',credentials.email)
+                .set('password',credentials.password)
+                .set('name',credentials.name)
+                .set('address',credentials.address)
+                .set('city',credentials.city)
+                .set('province',credentials.province)
+                .set('country',credentials.country)
+                .set('postalCode',credentials.postalCode)
+                .set('phone',credentials.phone);
+
+            return this.http.post('http://localhost:8080/auth/register',
+                body.toString(),
+                    {
+                        headers: new HttpHeaders()
+                            .set('Content-Type','application/x-www-form-urlencoded')
+                    }
+                );
+        }
+    }
+
     registerSuccessfulLogin(email, password){
         sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, email);
     }

@@ -9,6 +9,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
+import { RegistrationComponent } from './Components/register/registration.component';
+RegistrationComponent
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
 } from '@angular/common/http';
@@ -20,7 +22,8 @@ import { HttpInterceptorService } from './service/httpInterceptor.service';
   declarations: [
     AppComponent,
     UserListComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
