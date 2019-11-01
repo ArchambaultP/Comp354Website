@@ -1,5 +1,7 @@
 package com.comp354project.Comp354Project.utilities;
 
+import org.springframework.context.annotation.Bean;
+
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -13,11 +15,11 @@ import javax.crypto.spec.PBEKeySpec;
  *
  * @author Hau Gilles Che
  */
+
 public class PasswordHelper {
     private static SecureRandom secureRand= new SecureRandom();
 
-    public PasswordHelper(){
-    }
+    public PasswordHelper(){}
 
     /**
      * Generates a random salt

@@ -24,9 +24,14 @@ public class Account {
     @NotNull
     private String name;
 
+
     @NotNull
-    @Lob
     private byte[] password;
+         /*
+    @NotNull
+    private String password;
+
+     */
 
     @NotNull
     private String salt;
@@ -125,6 +130,7 @@ public class Account {
         this.name = name;
     }
 
+
     public byte[] getPassword() {
         return password;
     }
@@ -132,6 +138,17 @@ public class Account {
     public void setPassword(byte[] password) {
         this.password = password;
     }
+
+    /*
+    public String getPassword(){
+        return password;
+    }
+
+    public void setPassword(String password){
+        this.password=password;
+    }
+
+     */
 
     public String getSalt() {
         return salt;
