@@ -30,7 +30,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   products: Product[];
   category: Category[];
   // products = sort(ascend(products => products.price), products);
-
   @Output() refresh:EventEmitter<string> = new EventEmitter();
   // Sorts products.
   // ADD SORT FOR CUSTOMER RATING AND WTV ELSE IS NEEDED
@@ -62,6 +61,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       }
     });
 
+
    this.productService.findAllCategories().subscribe(data=> {
       for(let item of data){
         this.categoryNames.push(item.name);
@@ -69,6 +69,10 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     });
   }
 
+
+  update(value){
+      this.searchText = value;
+  }
   ngOnInit() {
     this.selectedCategoryButtonValue = this.productService.selectedCategoryButtonValue;
     console.log(this.productService.selectedCategoryButtonValue)

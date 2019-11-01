@@ -11,8 +11,18 @@ export class FilterPipe implements PipeTransform {
       return {}
     }
     this.filteredProducts = products.filter( items => {
-        return items.name.toLowerCase().includes(searchText.toLowerCase())
+
+      return items.name.toLowerCase().includes(searchText.toLowerCase())
     })
+
+    if(this.filteredProducts.length === 0 && searchText != ""){
+        window.alert("That item isn't in the database");
+        (<HTMLInputElement>document.getElementById('searchBar')).value = "";
+        return products;
+    }
+    return this.filteredProducts;
+
+  }
 
     // Runs if no products are found
     // if(this.filteredProducts.length === 0 && searchText != ""){

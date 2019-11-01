@@ -17,7 +17,6 @@
     </select>
 </div>
 <br />
-
 <div class="grid-container">
 
     <div *ngFor="let product of products | filter : searchText : inCategory; let i=index">
@@ -44,6 +43,7 @@
         <h3>
             <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
             {{product.name}}
+
         </a>
         </h3>
 
