@@ -8,12 +8,12 @@ import {Input} from "@angular/core";
   styleUrls: ['./related-items.component.css']
 })
 export class RelatedItemsComponent implements OnInit {
-relatedProducts = products;
+  relatedProducts = products;
 
   @Input() product;
-  constructor() { }
 
+  constructor() {
+  }
   ngOnInit() {
   }
-
 }
