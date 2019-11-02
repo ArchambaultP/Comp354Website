@@ -46,12 +46,12 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     }
     else if(this.selectedDropDownButtonValue == 3){
       this.products = sort(ascend(products => products.price), this.products)
-
     }
     else{
       this.products = sort(ascend(products => products.price), this.products).reverse()
     }
   }
+
   constructor( public productService: ProductService, public searchService: SearchService, private router: Router) {
     // subscribe to the router events. Store the subscription so we can unsubscribe later.
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -69,9 +69,32 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Returns filtered array that only contains products of the selected category
+  // Might need to change depending on how retrieving categories from the database is implemented
+  countCategorySelectionChanged: EventEmitter<string> = new EventEmitter<string>();
+  sortCategories(): void{
+    console.log(this.selectedCategoryButtonValue);
+    this.countCategorySelectionChanged.emit(this.selectedCategoryButtonValue);
+    this.products = products.filter( product => {
+      return product.category.toLowerCase().includes(this.selectedCategoryButtonValue)
+    })
 
+    // =======================================================================================
+    // Change to sort based on rating
+    this.products = sort(ascend(products => products.price), this.products);
+
+    // Tells the search if it is searching in a category
+    if(this.selectedCategoryButtonValue == ""){
+      this.inCategory = false;
+    }
+    else{
+      this.inCategory = true;
+    }
+  }
+
+  // Stops the search from occurring every time a letter is changed
   update(value){
-      this.searchText = value;
+    this.searchText = value;
   }
   ngOnInit() {
     this.selectedCategoryButtonValue = this.productService.selectedCategoryButtonValue;
@@ -108,6 +131,4 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       });
     }
   }
-
 }
-

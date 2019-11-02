@@ -8,10 +8,14 @@ templateUrl: './related-items.component.html',
 styleUrls: ['./related-items.component.css']
 })
 export class RelatedItemsComponent implements OnInit {
+
 relatedProducts;
 
 @Input() product;
 constructor(public productService: ProductService) { }
+
+
+
 
   ngOnInit() {
     this.productService.findAllProducts().subscribe(data => {
@@ -19,5 +23,4 @@ constructor(public productService: ProductService) { }
      console.log(data);
     });
   }
-
 }
