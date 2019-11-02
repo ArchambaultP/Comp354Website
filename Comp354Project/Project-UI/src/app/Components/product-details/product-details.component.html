@@ -1,0 +1,24 @@
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <div id="wrapper">
+    <div class="box">
+     <img src="{{product.image}}">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.price | currency }}</p>
+
+
+      <p>{{ product.description }}</p>
+      <p>Brand: {{product.brand}}</p>
+    </div>
+  </div>
+</div>
+<button (click)="addToCart()">Add to cart</button>
+<br/>
+<div id="wrapper">
+  <div class="box">
+    <h2>Related Items</h2>
+    <app-related-items [product]="product"></app-related-items>
+  </div>
+</div>
+

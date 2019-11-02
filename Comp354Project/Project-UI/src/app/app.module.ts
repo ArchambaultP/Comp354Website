@@ -19,6 +19,11 @@ import { HttpInterceptorService } from './service/httpInterceptor.service';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { MainComponent } from './Components/main/main.component';
+import { ProductPageComponent } from './Components/product-page/product-page.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { RelatedItemsComponent } from './components/related-items/related-items.component';
+import { ProductCategoriesComponent } from './Components/product-categories/product-categories.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -30,6 +35,11 @@ import { MainComponent } from './Components/main/main.component';
     HeaderComponent,
     FooterComponent,
     MainComponent
+    ProductPageComponent,
+    ProductDetailsComponent,
+    RelatedItemsComponent,
+    ProductCategoriesComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
