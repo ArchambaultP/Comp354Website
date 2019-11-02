@@ -18,6 +18,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpInterceptorService } from './service/httpInterceptor.service';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { MainComponent } from './Components/main/main.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FooterComponent } from './Components/footer/footer.component';
     LoginComponent,
     RegistrationComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
