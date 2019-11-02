@@ -34,7 +34,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     RegistrationComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent
+    MainComponent,
     ProductPageComponent,
     ProductDetailsComponent,
     RelatedItemsComponent,
