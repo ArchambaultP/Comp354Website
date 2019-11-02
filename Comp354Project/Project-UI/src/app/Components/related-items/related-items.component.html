@@ -1,7 +1,7 @@
 <div id="wrapper">
   <div class="box">
     <div *ngFor="let prod of relatedProducts">
-        <table *ngIf="prod.type == product.type && prod.name != product.name">
+        <table *ngIf="prod.category == product.category && prod.name != product.name">
             <tr>{{prod.name}}</tr>
             <tr><a [routerLink]="['/products', prod.productId]"> <img src="{{prod.image}}"></a></tr>
         </table>
