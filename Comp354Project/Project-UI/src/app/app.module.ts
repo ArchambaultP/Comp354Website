@@ -16,6 +16,8 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpInterceptorService } from './service/httpInterceptor.service';
+import { HeaderComponent } from './Components/header/header.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { HttpInterceptorService } from './service/httpInterceptor.service';
     AppComponent,
     UserListComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
