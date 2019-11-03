@@ -1,8 +1,10 @@
 export class Account {
-    id: string;
+    idAccount: string;
     email: string;
     name: string;
     /*
+    password: string;
+    salt: string;
     address1: string;
     address2: string;
     city: string;
@@ -14,5 +16,10 @@ export class Account {
     shippingCity: string;
     shippingPostalCode: string;
     shippingCountry: string;
-     */
+    dateJoined: string;
+    canSell: boolean;
+    canBuy: boolean;
+    isAdmin: boolean;
+    isSuperAdmin: boolean;
+    */
 }

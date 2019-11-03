@@ -10,7 +10,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let account of accounts">
-                <td>{{ account.id }}</td>
+                <td>{{ account.idAccount }}</td>
                 <td>{{ account.name }}</td>
                 <td><a href="mailto:{{ account.email }}">{{ account.email }}</a></td>
                 <td><a routerLink="" class="btn btn-info">Edit</a></td>

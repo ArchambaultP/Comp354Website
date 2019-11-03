@@ -22,24 +22,19 @@ public class AdminController {
     AdminServImpl adminService;
 
     @GetMapping(path="/accounts")
-    public @NotNull Iterable<Demo> getAccounts() {
+    public @NotNull Iterable<Account> getAccounts() {
         return adminService.getAllAccounts();
-    }
-
-    @GetMapping(path="/initDummyData")
-    public @ResponseBody String instantiateRights() {
-        return adminService.initDummyData();
     }
 
     @PostMapping("/editAccount")
     public @ResponseBody String updateAccount(@RequestParam int id, @RequestParam String email,
                                               @RequestParam String name){
-        Demo newDemo = new Demo();
-        newDemo.setId(id);
-        newDemo.setName(name);
-        newDemo.setEmail(email);
-        Demo addedDemo = adminService.updateAccount(newDemo);
+        Account newAccount = new Account();
+        newAccount.setId(id);
+        newAccount.setName(name);
+        newAccount.setEmail(email);
+        Account addedAccount = adminService.updateAccount(newAccount);
 
-        return addedDemo.getName() + " updated.";
+        return addedAccount.getName() + " updated.";
     }
 }

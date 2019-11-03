@@ -6,6 +6,13 @@
           <h2 class="card-title text-center text-white py-3" >{{ title }}</h2>
           <ul class="text-center list-inline py-3">
             <li class="list-inline-item"><a routerLink="/users" class="btn btn-info"> List Users</a></li>
+            <div *ngIf="!isLoggedIn">
+              <li class="list-inline-item"><a routerLink="/login">Login</a></li>
+            </div>
+            <div *ngIf="isLoggedIn">
+              <li class="list-inline-item"><a routerLink="/login">{{ this.currentUser }}</a></li>
+              <li class="list-inline-item"><a class="nav-link" href="/logout" (click)=logout()>Logout</a></li>
+            </div>
           </ul>
         </div>
       </div>
