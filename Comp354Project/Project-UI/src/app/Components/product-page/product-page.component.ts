@@ -1,19 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
 import { products } from "../../products";
 import { ascend, filter, groupBy, pipe, sort } from "ramda";
+import {ProductService} from "../../service/product.service";
+import {Router, NavigationEnd} from "@angular/router";
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css']
 })
-export class ProductPageComponent implements OnInit {
+export class ProductPageComponent implements OnInit, OnDestroy {
+  public searchText = "";
+  navigationSubscription;
   inCategory = false;
   selectedDropDownButtonValue: any = 1;
   selectedCategoryButtonValue: string = "";
-  searchText = "";
-
-  constructor() {}
 
   //IMPORTANT
   // By default sort products based on rating
@@ -65,11 +66,28 @@ export class ProductPageComponent implements OnInit {
     }
   }
 
-  // Stops the search from occurring every time a letter is changed
-  update(value){
-      this.searchText = value;
-  }
-  ngOnInit() {
+  constructor(public productService: ProductService, private router: Router) {
+    // subscribe to the router events. Store the subscription so we can unsubscribe later.
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      // If it is a NavigationEnd event re-initalise the component
+      if (e instanceof NavigationEnd) {
+        this.ngOnInit();
+      }
+    });
   }
 
+  //Gets the search text from the product service
+  ngOnInit() {
+    this.searchText = this.productService.searchText;
+  }
+  ngOnDestroy(){
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
+  }
+
+  refreshSearch() {
+    this.searchText = this.productService.searchText;
+    console.log("Search text in product page: " + this.searchText);
+  }
 }

@@ -30,10 +30,11 @@
     <br/>
     <!-- Search Bar-->
     <div>
-        <div style="width:10px;height:auto;display:inline-block;"></div>
-        <input type="text" placeholder="Search 354TheStars.." style="height:45px;width:900px;"/>
-        <div style="width:10px;height:auto;display:inline-block;"></div>
-        <button type="button" style="width:150px;height:45px;"> Search </button>
+        <div style="display: inline-block">
+            <input id = "searchBar" type="search" placeholder="Search 354TheStars.." [(ngModel)] = "searchText" >
+            <button *ngIf="searchText != ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="'/products'"> Search </button>
+            <button *ngIf="searchText == ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="''"> Search </button>
+        </div>
     </div>
 
 </div>
