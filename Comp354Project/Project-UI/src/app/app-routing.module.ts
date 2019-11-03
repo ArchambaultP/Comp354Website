@@ -5,17 +5,19 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegistrationComponent } from './Components/register/registration.component';
 import {ProductPageComponent} from "./Components/product-page/product-page.component";
 import {ProductDetailsComponent} from "./Components/product-details/product-details.component";
+import {MainComponent} from "./Components/main/main.component";
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent},
-  { path: 'products', component: ProductPageComponent},
+  { path: 'products', component: ProductPageComponent, runGuardsAndResolvers: 'always',},
   { path: 'products/:productId', component: ProductDetailsComponent},
+  { path: '', component: MainComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
