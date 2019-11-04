@@ -24,8 +24,9 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { RelatedItemsComponent } from './components/related-items/related-items.component';
 import { ProductCategoriesComponent } from './Components/product-categories/product-categories.component';
 import { FilterPipe } from './pipes/filter.pipe';
-
-
+import { MatcardComponent } from './Components/matcard/matcard.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,12 +41,16 @@ import { FilterPipe } from './pipes/filter.pipe';
     RelatedItemsComponent,
     ProductCategoriesComponent,
     FilterPipe,
+    MatcardComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [UserService, AuthService],
   bootstrap: [AppComponent]
