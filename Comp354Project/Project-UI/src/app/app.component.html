@@ -8,6 +8,13 @@
             <li class="list-inline-item"><a routerLink="/users" class="btn btn-info"> List Users</a></li>
             <li class="list-inline-item"><a routerLink="/products" class="btn btn-info"> List Products</a></li>
             <li class="list-inline-item"><a routerLink="/departments" class="btn btn-info"> List Departments</a></li>
+            <div *ngIf="!isLoggedIn">
+              <li class="list-inline-item"><a routerLink="/login">Login</a></li>
+            </div>
+            <div *ngIf="isLoggedIn">
+              <li class="list-inline-item"><a routerLink="/login">{{ this.currentUser }}</a></li>
+              <li class="list-inline-item"><a class="nav-link" href="/logout" (click)=logout()>Logout</a></li>
+            </div>
           </ul>
         </div>
       </div>

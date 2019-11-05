@@ -7,9 +7,18 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './Components/user-list/user-list.component';
 import { ProductListComponent } from './Components/product-list/product-list.component';
 import { DepartmentListComponent } from './Components/department-list/department-list.component';
-
-import { UserService } from './service/user.service';
 import { ProductService } from './service/product.service';
+import { LoginComponent } from './Components/login/login.component';
+import { AuthService } from './service/auth.service';
+import { Injectable } from '@angular/core';
+import { UserService } from './service/user.service';
+import { RegistrationComponent } from './Components/register/registration.component';
+RegistrationComponent
+import {
+  HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
+} from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { HttpInterceptorService } from './service/httpInterceptor.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +26,8 @@ import { ProductService } from './service/product.service';
     UserListComponent,
     ProductListComponent,
     DepartmentListComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +36,8 @@ import { ProductService } from './service/product.service';
     FormsModule
   ],
   providers: [UserService, ProductService],
+  providers: [UserService, AuthService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
