@@ -96,6 +96,13 @@ public class Account {
     )
     private List<AccountOrder> orders = new ArrayList();
 
+    @OneToMany(
+            mappedBy ="account",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Address> addresses = new ArrayList<>();
+
     public Account()
     {
         super();
@@ -157,6 +164,7 @@ public class Account {
     public void setSalt(String salt) {
         this.salt = salt;
     }
+
 
     public String getAddress1() {
         return address1;
@@ -268,6 +276,14 @@ public class Account {
 
     public void setOrders(List<AccountOrder> orders) {
         this.orders = orders;
+    }
+
+    public List<Address> getAddresses(){
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses){
+        this.addresses = addresses;
     }
 
     public boolean isCanSell() {
