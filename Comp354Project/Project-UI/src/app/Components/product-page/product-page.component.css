@@ -1,0 +1,9 @@
+.product-card {
+  width: 300px;
+  border-style:solid;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
