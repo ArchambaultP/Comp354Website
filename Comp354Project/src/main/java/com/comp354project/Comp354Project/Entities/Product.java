@@ -1,5 +1,8 @@
 package com.comp354project.Comp354Project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -13,11 +16,13 @@ public class Product {
 
     @NotNull
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "idCategory")
     private Category category;
 
     @NotNull
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "idAccount")
     private Account account;
 
