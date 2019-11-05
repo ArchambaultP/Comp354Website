@@ -1,5 +1,7 @@
 package com.comp354project.Comp354Project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -20,8 +22,11 @@ public class Department {
     @OneToMany(
             mappedBy = "department",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
+    @JsonManagedReference
+
     private List<Category> categories = new ArrayList<>();
 
     public Integer getId() {
