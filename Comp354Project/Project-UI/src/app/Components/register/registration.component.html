@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+    <form  (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <div class="alert alert-warning" *ngIf='invalidRegistration'>{{errorMsg}}</div>
+            <div class="alert alert-success" *ngIf='loginSuccess'>{{successMsg}}</div>
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="credentials.email"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
+        </div>
+        <div class="form-group">
+            <label for="conPassword">Confirm Password:</label>
+            <input type="password" class="form-control" id="conPassword" name="conPassword" [(ngModel)]="credentials.conPassword"/>
+            <div class="alert alert-warning" *ngIf='invalidPwd'>{{errorPwdMsg}}</div>
+        </div>
+        <div class="form-group">
+            <label for="address">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="credentials.name"/>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" class="form-control" id="address" name="address" [(ngModel)]="credentials.address"/>
+        </div>
+        <div class="form-group">
+            <label for="address">City:</label>
+            <input type="text" class="form-control" id="city" name="city" [(ngModel)]="credentials.city"/>
+        </div>
+        <div class="form-group">
+            <label for="province">Province:</label>
+                <select class="form-control" id="province" name="province" [(ngModel)]="credentials.province">
+                    <option value="Ontario">Ontario</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Nova Scotia">Nova Scotia</option>
+                    <option value="New Brunswick">New Brunswick</option>
+                    <option value="Manitoba">Manitoba</option>
+                    <option value="British Columbia">British Columbia</option>
+                    <option value="Prince Edward Island">Prince Edward Island</option>
+                    <option value="Saskwatchewan">Saskwatchewan</option>
+                    <option value="Alberta">Alberta</option>
+                    <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" class="form-control" id="country" name="country" [(ngModel)]="credentials.country"/>
+        </div>
+        <div class="form-group">
+            <label for="postalCode">Postal Code:</label>
+            <input type="text" class="form-control" id="postalCode" name="postalCode" [(ngModel)]="credentials.postalCode"/>
+        </div>
+        <div class="form-group">
+            <label for="postalCode">Phone:</label>
+            <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="credentials.phone"/>
+        </div>
+        <button class="btn btn-success">Register</button>
+    </form>
+</body>
+</html>
