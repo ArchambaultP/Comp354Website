@@ -1,5 +1,6 @@
 package com.comp354project.Comp354Project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -75,8 +76,10 @@ public class Account {
     @OneToMany(
             mappedBy = "account",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
+    @JsonManagedReference
     private List<Product> productList = new ArrayList<>();
 
     @OneToMany(
