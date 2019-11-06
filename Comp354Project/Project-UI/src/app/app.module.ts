@@ -21,7 +21,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { MainComponent } from './Components/main/main.component';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import { RelatedItemsComponent } from './components/related-items/related-items.component';
+import { RelatedItemsComponent } from './Components/related-items/related-items.component';
 import { ProductCategoriesComponent } from './Components/product-categories/product-categories.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import {MatCardModule} from '@angular/material/card';
@@ -40,6 +40,7 @@ import {MatCardModule} from '@angular/material/card';
     RelatedItemsComponent,
     ProductCategoriesComponent,
     FilterPipe,
+
 
   ],
   imports: [

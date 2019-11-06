@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b3eacd00-d0c2-4911-8fec-f8060e42f981" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/header/header.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/main/main.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/main/main.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/matcard/matcard.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/matcard/matcard.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/matcard/matcard.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/matcard/matcard.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-details/product-details.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-details/product-details.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-details/product-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-details/product-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-page/product-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-page/product-page.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-page/product-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-page/product-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/related-items/related-items.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/related-items/related-items.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/related-items/related-items.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/related-items/related-items.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +25,14 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -74,5 +71,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
