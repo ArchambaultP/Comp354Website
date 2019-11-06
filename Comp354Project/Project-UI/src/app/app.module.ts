@@ -24,6 +24,7 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { RelatedItemsComponent } from './components/related-items/related-items.component';
 import { ProductCategoriesComponent } from './Components/product-categories/product-categories.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { CategoryPipe } from './pipes/category.pipe';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     RelatedItemsComponent,
     ProductCategoriesComponent,
     FilterPipe,
+    CategoryPipe,
   ],
   imports: [
     BrowserModule,

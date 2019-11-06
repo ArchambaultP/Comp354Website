@@ -43,29 +43,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Returns filtered array that only contains products of the selected category
-  // Might need to change depending on how retrieving categories from the database is implemented
-  countCategorySelectionChanged: EventEmitter<string> = new EventEmitter<string>();
-  sortCategories(): void{
-    console.log(this.selectedCategoryButtonValue);
-    this.countCategorySelectionChanged.emit(this.selectedCategoryButtonValue);
-    this.products = products.filter( product => {
-        return product.category.toLowerCase().includes(this.selectedCategoryButtonValue)
-    })
-
-     // =======================================================================================
-     // Change to sort based on rating
-    this.products = sort(ascend(products => products.price), this.products);
-
-    // Tells the search if it is searching in a category
-    if(this.selectedCategoryButtonValue == ""){
-        this.inCategory = false;
-    }
-    else{
-        this.inCategory = true;
-    }
-  }
-
   constructor(public productService: ProductService, private router: Router) {
     // subscribe to the router events. Store the subscription so we can unsubscribe later.
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -84,10 +61,5 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
-  }
-
-  refreshSearch() {
-    this.searchText = this.productService.searchText;
-    console.log("Search text in product page: " + this.searchText);
   }
 }
