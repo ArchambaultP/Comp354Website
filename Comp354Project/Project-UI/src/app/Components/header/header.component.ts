@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit{
   }
 
   setSearchText(){
-    this.productService.searchText = this.searchText;
+    //this.productService.searchText = this.searchText;
     console.log("Search text in header: " + this.searchText);
   }
 }

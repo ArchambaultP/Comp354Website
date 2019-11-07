@@ -4,14 +4,12 @@
         <mat-card-title>{{ product.name }}</mat-card-title>
         <mat-card-subtitle>{{ product.price | currency }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="{{product.image}}" >
+    <img mat-card-image src="{{product.imageURL}}" >
     <mat-card-content>
         <p>{{ product.description }}</p>
         <p>Brand: {{product.brand}}</p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
         <button (click)="addToCart()">Add to cart</button>
     </mat-card-actions>
 </mat-card>
@@ -22,4 +20,3 @@
     <app-related-items [product]="product"></app-related-items>
   </div>
 </div>
-

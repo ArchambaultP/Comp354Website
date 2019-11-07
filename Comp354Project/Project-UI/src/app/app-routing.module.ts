@@ -13,9 +13,10 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent},
-  { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', component: ProductListComponent },
-  { path: 'departments', component: DepartmentListComponent }
+  { path: 'products', component: ProductPageComponent },
+  { path: 'products/:id', component: ProductDetailsComponent },
+  { path: 'departments', component: DepartmentListComponent },
+  { path: '', component: MainComponent},
 ];
 
 @NgModule({

@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { products} from "../../products";
 import { ActivatedRoute} from '@angular/router';
+import {ProductService} from "../../service/product.service";
+import { Product } from '../../model/product';
 
 @Component({
   selector: 'app-product-details',
@@ -8,16 +10,18 @@ import { ActivatedRoute} from '@angular/router';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  products = products;
-  product;
-
-  constructor(private route: ActivatedRoute,) {
+  // products = products;
+  // product;
+product: Product;
+  constructor(public productService: ProductService, private route: ActivatedRoute,) {
   }
 
   //Looks for product in products array that has the productId that was passed to the component through the router
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.product = products.find(product => product.productId === parseInt(params.get('productId')));
+      this.productService.findProductById(params.get('id')).subscribe(p =>{
+        this.product = p;
+      })
     });
   }
 

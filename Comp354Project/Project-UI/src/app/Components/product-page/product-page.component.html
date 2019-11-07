@@ -17,22 +17,28 @@
 </div>
 <br />
 
+
+
+
+
 <div class="grid-container">
 
-<div *ngFor="let product of products | filter : searchText : inCategory | category : selectedCategoryButtonValue">
+<div *ngFor="let product of products">
+<!-- | filter : searchText : inCategory | category : selectedCategoryButtonValue -->
 
         <mat-card class="product-card">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
 
-                <mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.productId]">
+                <mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
                     {{product.name}}</a>
                 </mat-card-title>
 
                 <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{product.image}}" >
+            <img mat-card-image src="{{product.imageURL}}" >
         </mat-card>
+        console.log(product);
       <p *ngIf="!product">No products to display</p>
 </div>
 </div>

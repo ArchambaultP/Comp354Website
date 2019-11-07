@@ -4,6 +4,9 @@ import { ascend, filter, groupBy, pipe, sort } from "ramda";
 import {ProductService} from "../../service/product.service";
 import {Router, NavigationEnd} from "@angular/router";
 import { FilterPipe } from '../../pipes/filter.pipe';
+import { ProductListComponent } from '../product-list/product-list.component';
+import { Product } from '../../model/product';
+
 
 
 @Component({
@@ -20,7 +23,8 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
   //IMPORTANT
   // By default sort products based on rating
-  products = sort(ascend(products => products.price), products);
+  products: Product[];
+  // products = sort(ascend(products => products.price), products);
 
   @Output() refresh:EventEmitter<string> = new EventEmitter();
 
@@ -57,19 +61,20 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
   //Gets the search text from the product service
   ngOnInit() {
-    this.products = this.productService.findAllProducts;
+    // this.products = this.productService.findAllProducts();
+    this.productService.findAllProducts().subscribe(data => {
+     this.products = data;
+     console.log(data);
+    });
   }
   ngOnDestroy(){
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
   }
-<<<<<<< HEAD
 
-  refreshSearch() {
+  // refreshSearch() {
     //this.searchText = this.productService.searchText;
-    console.log("Search text in product page: " + this.searchText);
-  }
-=======
->>>>>>> 27d5726ac0223a05afea2ce741d68d6a98f8ed66
+    // console.log("Search text in product page: " + this.searchText);
+  // }
 }
