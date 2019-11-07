@@ -27,6 +27,7 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { RelatedItemsComponent } from './Components/related-items/related-items.component';
 import { ProductCategoriesComponent } from './Components/product-categories/product-categories.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { CategoryPipe } from './pipes/category.pipe';
 import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
@@ -45,8 +46,7 @@ import {MatCardModule} from '@angular/material/card';
     RelatedItemsComponent,
     ProductCategoriesComponent,
     FilterPipe,
-
-
+    CategoryPipe,
   ],
   imports: [
     BrowserModule,
