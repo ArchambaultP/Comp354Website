@@ -1,5 +1,8 @@
 package com.comp354project.Comp354Project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -11,9 +14,9 @@ public class Category {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer idCategory;
 
-
     @NotNull
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "idDepartment")
     private Department department;
 
@@ -26,8 +29,10 @@ public class Category {
     @OneToMany(
             mappedBy = "category",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
+    @JsonManagedReference
     private List<Product> products = new ArrayList<>();
 
     public Integer getId() {

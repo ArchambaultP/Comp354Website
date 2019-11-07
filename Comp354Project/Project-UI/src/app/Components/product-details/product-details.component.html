@@ -1,19 +1,20 @@
 <h2>Product Details</h2>
-
-<div *ngIf="product">
-  <div id="wrapper">
-    <div class="box">
-     <img src="{{product.image}}">
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.price | currency }}</p>
-
-
-      <p>{{ product.description }}</p>
-      <p>Brand: {{product.brand}}</p>
-    </div>
-  </div>
-</div>
-<button (click)="addToCart()">Add to cart</button>
+<mat-card class="product-card">
+    <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.price | currency }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{product.image}}" >
+    <mat-card-content>
+        <p>{{ product.description }}</p>
+        <p>Brand: {{product.brand}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+        <button (click)="addToCart()">Add to cart</button>
+    </mat-card-actions>
+</mat-card>
 <br/>
 <div id="wrapper">
   <div class="box">

@@ -21,11 +21,11 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { MainComponent } from './Components/main/main.component';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import { RelatedItemsComponent } from './components/related-items/related-items.component';
+import { RelatedItemsComponent } from './Components/related-items/related-items.component';
 import { ProductCategoriesComponent } from './Components/product-categories/product-categories.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { CategoryPipe } from './pipes/category.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
   ],
   providers: [UserService, AuthService],
   bootstrap: [AppComponent]
