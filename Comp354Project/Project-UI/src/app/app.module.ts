@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './Components/user-list/user-list.component';
+import { ProductListComponent } from './Components/product-list/product-list.component';
+import { DepartmentListComponent } from './Components/department-list/department-list.component';
+import { ProductService } from './service/product.service';
 import { LoginComponent } from './Components/login/login.component';
 import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
@@ -30,6 +33,8 @@ import {MatCardModule} from '@angular/material/card';
   declarations: [
     AppComponent,
     UserListComponent,
+    ProductListComponent,
+    DepartmentListComponent,
     LoginComponent,
     RegistrationComponent,
     HeaderComponent,
@@ -50,8 +55,8 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     MatCardModule,
   ],
-  providers: [UserService, AuthService],
+
+  providers: [UserService, AuthService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

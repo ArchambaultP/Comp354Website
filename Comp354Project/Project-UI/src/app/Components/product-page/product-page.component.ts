@@ -3,6 +3,8 @@ import { products } from "../../products";
 import { ascend, filter, groupBy, pipe, sort } from "ramda";
 import {ProductService} from "../../service/product.service";
 import {Router, NavigationEnd} from "@angular/router";
+import { FilterPipe } from '../../pipes/filter.pipe';
+
 
 @Component({
   selector: 'app-product-page',
@@ -78,7 +80,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
   //Gets the search text from the product service
   ngOnInit() {
-    this.searchText = this.productService.searchText;
+    this.products = this.productService.findAllProducts;
   }
   ngOnDestroy(){
     if (this.navigationSubscription) {
@@ -87,7 +89,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   }
 
   refreshSearch() {
-    this.searchText = this.productService.searchText;
+    //this.searchText = this.productService.searchText;
     console.log("Search text in product page: " + this.searchText);
   }
 }
