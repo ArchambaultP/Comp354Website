@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
+import { Product } from '../../model/product';
+import { ProductListComponent } from '../product-list/product-list.component';
+import {Router, NavigationEnd} from "@angular/router";
 
 @Component({
     selector: 'app-checkout',

@@ -49,6 +49,7 @@
 <!--          Search bar-->
 <input id = "searchBar" placeholder="Type to Search" type="search" [ngModel] = "searchText" #change (search)="update(change.value)" value="" >
 
+
 <br>
 <br>
 <div id="wrapper">
@@ -112,5 +113,18 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+<mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+                    {{product.name}}</a>
+</mat-card-title>
+
+<mat-card-subtitle>${{product.price}}</mat-card-subtitle>
+</mat-card-header>
+<img mat-card-image src="{{product.imageURL}}">
+</mat-card>
+console.log(product);
+<p *ngIf="!product">No products to display</p>
+
 </div>
 </div>

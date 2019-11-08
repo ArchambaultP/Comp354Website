@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Input} from "@angular/core";
 import {ProductService} from "../../service/product.service";
 import {products} from "../../products";
+import { ProductPageComponent } from '../product-page/product-page.component';
 
 @Component({
 selector: 'app-related-items',
@@ -17,12 +18,11 @@ relatedProducts;
 constructor(public productService: ProductService) { }
 
 
-
-
-  ngOnInit() {
+ngOnInit() {
     this.productService.findAllProducts().subscribe(data => {
      this.relatedProducts = data;
      console.log(data);
     });
   }
+
 }

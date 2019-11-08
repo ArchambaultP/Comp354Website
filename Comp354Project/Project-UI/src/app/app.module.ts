@@ -15,6 +15,7 @@ import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
 import { RegistrationComponent } from './Components/register/registration.component';
+import { CartComponent } from './Components/checkout/checkout';
 RegistrationComponent
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
@@ -58,6 +59,7 @@ import { ShippingComponent } from './Components/shipping/shipping.component';]
     AccountUpdateComponent,
     AccountDetailsComponent,
     ShippingComponent,
+    CartComponent,
   ],
     imports: [
         BrowserModule,
