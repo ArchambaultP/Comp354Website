@@ -34,6 +34,7 @@ import {MatCardModule} from '@angular/material/card';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
+import { ShippingComponent } from './Components/shipping/shipping.component';]
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AccountDetailsComponent } from './Components/admin/account-details/acco
     AccountListComponent,
     AccountFormComponent,
     AccountUpdateComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    ShippingComponent,
   ],
     imports: [
         BrowserModule,

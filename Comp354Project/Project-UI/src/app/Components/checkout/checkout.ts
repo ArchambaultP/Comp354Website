@@ -49,7 +49,7 @@ export class CartComponent implements OnInit {
         if(this.cartProducts.length){
             localStorage.removeItem('cart');
             this.initiateData();
-            alert("Your bill is: " + this.bill);
+            alert("Total amount: " + this.bill);
         } else {
             alert("No items in cart");
         }
