@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3eacd00-d0c2-4911-8fec-f8060e42f981" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/related-items/related-items.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/related-items/related-items.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/related-items/related-items.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/related-items/related-items.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/header/header.component.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +22,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectId" id="1TL7vTSTUwFkMvl9HhKao624R6v" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
