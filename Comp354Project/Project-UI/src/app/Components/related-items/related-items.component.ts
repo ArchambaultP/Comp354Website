@@ -1,6 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import {Input} from "@angular/core";
 import {ProductService} from "../../service/product.service";
+import {products} from "../../products";
 
 @Component({
 selector: 'app-related-items',
