@@ -1,9 +1,9 @@
 <div id="wrapper">
-    Categories: <select class="form-control"  [(ngModel)] = "selectedCategoryButtonValue">
+    Categories: <select class="form-control"  [(ngModel)] = "selectedCategoryButtonValue" (change)="catChange()">
     <option value="">All</option>
-    <option value="phone">Phone</option>
-    <option value="umbrella">Umbrellas</option>
-    <option value="jacket">Jacket</option>
+    <option *ngFor= "let name of categoryNames"
+            [value]="name">{{name}}
+    </option>
 </select>
 </div>
 <br>
@@ -17,15 +17,9 @@
 </div>
 <br />
 
-
-
-
-
 <div class="grid-container">
 
-<div *ngFor="let product of products">
-<!-- | filter : searchText : inCategory | category : selectedCategoryButtonValue -->
-
+<div *ngFor="let product of products | filter : searchText : inCategory">
         <mat-card class="product-card">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
@@ -38,7 +32,6 @@
             </mat-card-header>
             <img mat-card-image src="{{product.imageURL}}" >
         </mat-card>
-        console.log(product);
       <p *ngIf="!product">No products to display</p>
 </div>
 </div>

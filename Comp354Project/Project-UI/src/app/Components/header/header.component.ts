@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import {ProductService} from "../../service/product.service";
+import { SearchService} from "../../service/search.service";
 
 @Component({
   selector: 'header',
@@ -10,13 +10,13 @@ import {ProductService} from "../../service/product.service";
 export class HeaderComponent implements OnInit{
   public searchText = "";
 
-  constructor(private router: Router, public productService: ProductService) {}
+  constructor(private router: Router, public searchService: SearchService) {}
 
   ngOnInit() {
   }
 
   setSearchText(){
-    //this.productService.searchText = this.searchText;
+    this.searchService.searchText = this.searchText;
     console.log("Search text in header: " + this.searchText);
   }
 }
