@@ -10,6 +10,7 @@ import {AccountService} from "../../service/account.service";
 export class AccountListComponent implements OnInit {
 
   accounts: Account[];
+  searchAccountKey: string;
 
   constructor(private accountService: AccountService) {
 
@@ -22,4 +23,11 @@ export class AccountListComponent implements OnInit {
     });
   }
 
+  onSearchClear(){
+    this.searchAccountKey = "";
+    this.filterAccount();
+  }
+
+  filterAccount(){
+  }
 }

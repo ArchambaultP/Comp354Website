@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<div class="card my-5">
+
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="inputAccount">Search Account</label>
+            <input type="text" class="form-control" id="inputAccount" placeholder="ID, username, or email" ngModel="searchAccountKey" autocomplete="off" (keyup)="filterAccount()">
+            <button type="button" class="close" aria-label="Clear" *ngIf="searchAccountKey" (click)="onSearchClear()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </form>
+
+    <button type="submit" class="btn btn-success">Create</button>
+
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let account of accounts">
+                <td>{{ account.id }}</td>
+                <td>{{ account.name }}</td>
+                <td><a href="mailto:{{ account.email }}">{{ account.email }}</a></td>
+                <td>
+                    <a routerLink="" class="btn btn-info">Update</a>
+                    <a routerLink="" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
