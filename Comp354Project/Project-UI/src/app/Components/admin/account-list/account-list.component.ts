@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from "rxjs";
 import {AccountService} from "../../../service/account.service";
 import {Account} from "../../../model/account";
 import {Router} from "@angular/router";
@@ -10,34 +11,39 @@ import {Router} from "@angular/router";
 })
 export class AccountListComponent implements OnInit {
 
-  accounts: Account[];
-  searchAccountKey: string;
+  accounts: Observable<Account[]>;
 
   constructor(private accountService: AccountService, private router:Router) {
+    // TODO: Check if admin or superAdmin
   }
 
   ngOnInit() {
-    this.accountService.getAccounts().subscribe(data => {
-      this.accounts = data;
-    });
+    this.reloadData();
   }
 
-  deleteAccount(account){
-    this.accountService.deleteAccount(account.id).subscribe((data)=>{
-      this.accounts.splice(this.accounts.indexOf(account), 1);
-      }, (error => {
-        console.log(error);
-      }));
+  reloadData() {
+    this.accounts = this.accountService.getAccounts();
+  }
+
+  deleteAccount(id:number){
+    this.accountService.deleteAccount(id)
+        .subscribe(
+            data => {
+              console.log(data);
+              this.reloadData();
+            },
+            error => console.log(error));
+  }
+
+  employeeDetails(id: number){
+    this.router.navigate(['admin/accounts/details', id]);
+  }
+
+  updateAccount(id: number){
+    this.router.navigate(['admin/accounts/update', id]);
   }
 
   createAccount(){
-    let account = new Account(); // Create new user account
-    this.accountService.setter(account);
-    this.router.navigate(['/admin/accounts/update']).then(r => console.log("Create account"));
-  }
-
-  updateAccount(account){
-    this.accountService.setter(account);
-    this.router.navigate(['/admin/accounts/update']).then(r => console.log("Update account"));
+    this.router.navigate(['admin/accounts/add']);
   }
 }

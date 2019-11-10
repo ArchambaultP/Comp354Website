@@ -71,43 +71,25 @@
         </form>
     </div>
 </div>-->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<div style="text-align: center">
-    <h1>{{message}}</h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<h3>Create Account</h3>
+<div [hidden]="submitted" style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="account.name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" required [(ngModel)]="account.email" name="email">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <form>
-                <fieldset>
-                    <legend class="text-center">Valid information is required to register. <span class="req"><small>
-                                required *</small></span></legend>
-
-                            <div class="form-group">
-                                <label for="name"><span class="req">* </span> Name: <small>This will be your login user
-                                    name</small> </label>
-                                <input required type="text" [(ngModel)]="account.name" name="name" id="name"
-                                       class="form-control phone" maxlength="28" placeholder="Enter your name..." />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email"><span class="req">* </span> Email: </label>
-                                <input class="form-control" type="text" [(ngModel)]="account.email" name="email" id="email" required
-                                       placeholder="Enter valid email address" />
-                                <div id="errFirst"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="onSubmit()">
-                            </div>
-                        </fieldset>
-                    </form><!-- ends register form -->
-            <!-- second for to fiter user-->
-        </div><!-- ends col-6 -->
-
-    </div>
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
 </div>

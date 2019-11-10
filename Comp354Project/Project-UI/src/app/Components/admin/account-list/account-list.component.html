@@ -1,27 +1,25 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-<h1>Admin Page - Accounts</h1>
-<div class="card my-5">
-    <div class="card-body">
-        <button class="btn btn-light" (click)="createAccount()">New Account</button>
-        <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Employee List</h2>
+    </div>
+    <div class="panel-body">
+        <button (click)="createAccount()" class="btn btn-light">New Account</button>
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Can Buy</th>
-                <th scope="col">Operations</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let account of accounts">
-                <td>{{ account.id }}</td>
-                <td>{{ account.name }}</td>
-                <td><a href="mailto:{{ account.email }}">{{ account.email }}</a></td>
-                <td>{{account.canBuy}}</td>
-                <td>
-                    <button class="btn btn-primary" (click)="updateAccount(account)">Edit</button>
-                    <button class="btn btn-danger" (click)="deleteAccount(account)">Delete</button>
+            <tr *ngFor="let account of accounts | async">
+                <td>{{account.name}}</td>
+                <td>{{account.email}}</td>
+                <td><button (click)="deleteAccount(account.id)" class="btn btn-danger">Delete</button>
+                    <button (click)="updateAccount(account.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+                    <button (click)="employeeDetails(account.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
                 </td>
             </tr>
             </tbody>

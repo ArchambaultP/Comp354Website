@@ -9,33 +9,34 @@ import {Router} from "@angular/router";
   styleUrls: ['./account-form.component.css']
 })
 export class AccountFormComponent implements OnInit {
-  private account: Account;
+  account: Account = new Account();
+  submitted = false;
 
   constructor(private accountService:AccountService, private router:Router) {
-
+    // TODO: Check if admin or superAdmin
   }
 
   ngOnInit() {
-    this.account = this.accountService.getter();
   }
 
-  onSubmit(){
-    if(this.account.id==undefined){
-      this.accountService.createAccount(this.account).subscribe((account)=>{
-        console.log(account);
-        this.router.navigate(['/admin/accounts']);
-        },(error => {
-            console.log(error);
-        }));
-    }
-    else{
-      this.accountService.updateAccount(this.account).subscribe((account)=>{
-        console.log(account);
-        this.router.navigate(['/admin/accounts']); // Go back to accounts table
-        },(error => {
-            console.log(error);
-        }));
-    }
+  newAccount(): void {
+    this.submitted = false;
+    this.account = new Account();
   }
 
+  save() {
+    this.accountService.createAccount(this.account)
+        .subscribe(data => console.log(data), error => console.log(error));
+    this.account = new Account();
+    this.gotoList();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.save();
+  }
+
+  gotoList() {
+    this.router.navigate(['/admin/accounts']);
+  }
 }

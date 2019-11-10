@@ -10,39 +10,35 @@ import {throwError} from "rxjs";
 })
 export class AccountService {
 
-  private accountsUrl: string;
+  private accountsUrl = 'http://localhost:8080/admin/accounts';
   private account:Account;
 
   constructor(private http: HttpClient) {
-    this.accountsUrl = 'http://localhost:8080/admin';
   }
 
-  public getAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>(this.accountsUrl+'/accounts');
+  public getAccounts(): Observable<any> {
+    return this.http.get(`${this.accountsUrl}`);
   }
 
-  public getAccount(id:number): Observable<Account> {
-    return this.http.get<Account>(this.accountsUrl+'/account/'+id);
+  public getAccount(id:number): Observable<any> {
+    return this.http.get(`${this.accountsUrl}/${id}`);
   }
 
-  public deleteAccount(id:number): Observable<Account> {
-    return this.http.delete<Account>(this.accountsUrl+'/account/'+id);
+  public deleteAccount(id:number): Observable<Object> {
+    return this.http.delete(`${this.accountsUrl}/${id}`);
   }
 
-  public createAccount(account: Account): Observable<any> {
-    //return this.http.post(this.accountsUrl+'/account', account).pipe(map((response: Response) => response.json()));
-    //return this.http.post<Account>(this.accountsUrl+'/account', account, httpOptions);
-    return this.http.post(this.accountsUrl+'/account', account);
+  public createAccount(account:Account): Observable<Object> {
+    //'Access-Control-Allow-Origin', 'http://localhost:4200'
+    return this.http.post(`${this.accountsUrl}`, account);
   }
 
-  public updateAccount(account: Account): Observable<any>{
-    //return this.http.put(this.accountsUrl+'/account', account).pipe(map((response: Response) => response.json()));
-    //return this.http.put<Account>(this.accountsUrl+'/account', account, httpOptions);
-    return this.http.put(this.accountsUrl+'/account', account);
+  public updateAccount(id:number, value:any): Observable<Object>{
+    return this.http.put(`${this.accountsUrl}/${id}`, value);
   }
 
   setter(account:Account){
-    this.account=account;
+    this.account = account;
   }
 
   getter(){

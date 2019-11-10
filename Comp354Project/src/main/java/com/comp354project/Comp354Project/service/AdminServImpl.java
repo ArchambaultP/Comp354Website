@@ -46,6 +46,15 @@ public class AdminServImpl {
                 .orElseThrow(() -> new IllegalArgumentException("Account with ID: " + id + "not found."));
     }
 
+    /**
+     * Get Account with the email provided.
+     * @param email - account's email
+     * @return - The account with the email provided.
+     */
+    public Account getAccount(String email) {
+        return accountRepository.findByEmail(email);
+    }
+
     public boolean deleteAccount(int id) {
         accountRepository.deleteById(id);
         return true;

@@ -19,6 +19,8 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { HttpInterceptorService } from './service/httpInterceptor.service';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
+import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
+import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { AccountFormComponent } from './Components/admin/account-form/account-fo
     LoginComponent,
     RegistrationComponent,
     AccountListComponent,
-    AccountFormComponent
+    AccountFormComponent,
+    AccountUpdateComponent,
+    AccountDetailsComponent
   ],
   imports: [
     BrowserModule,
