@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from "../../service/account.service";
+import {AccountService} from "../../../service/account.service";
+import {Account} from "../../../model/account";
+import {Router} from "@angular/router";
 
-// TODO: Add component for account-form (create accounts manually)
 @Component({
   selector: 'app-account-list',
   templateUrl: './account-list.component.html',
@@ -12,22 +13,31 @@ export class AccountListComponent implements OnInit {
   accounts: Account[];
   searchAccountKey: string;
 
-  constructor(private accountService: AccountService) {
-
+  constructor(private accountService: AccountService, private router:Router) {
   }
 
   ngOnInit() {
-    this.accountService.findAll().subscribe(data => {
-      // @ts-ignore TODO: Check error related to ts
+    this.accountService.getAccounts().subscribe(data => {
       this.accounts = data;
     });
   }
 
-  onSearchClear(){
-    this.searchAccountKey = "";
-    this.filterAccount();
+  deleteAccount(account){
+    this.accountService.deleteAccount(account.id).subscribe((data)=>{
+      this.accounts.splice(this.accounts.indexOf(account), 1);
+      }, (error => {
+        console.log(error);
+      }));
   }
 
-  filterAccount(){
+  createAccount(){
+    let account = new Account(); // Create new user account
+    this.accountService.setter(account);
+    this.router.navigate(['/admin/accounts/update']).then(r => console.log("Create account"));
+  }
+
+  updateAccount(account){
+    this.accountService.setter(account);
+    this.router.navigate(['/admin/accounts/update']).then(r => console.log("Update account"));
   }
 }

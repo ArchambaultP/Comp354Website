@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { AccountListComponent } from './Components/account-list/account-list.component';
+import { AccountListComponent } from './Components/admin/account-list/account-list.component';
 import { AccountService } from './service/account.service';
 import { UserListComponent } from './Components/user-list/user-list.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -18,6 +18,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpInterceptorService } from './service/httpInterceptor.service';
+import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HttpInterceptorService } from './service/httpInterceptor.service';
     UserListComponent,
     LoginComponent,
     RegistrationComponent,
-    AccountListComponent
+    AccountListComponent,
+    AccountFormComponent
   ],
   imports: [
     BrowserModule,

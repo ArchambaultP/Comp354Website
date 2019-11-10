@@ -1,8 +1,7 @@
 export class Account {
-    idAccount: string;
+    id: string;
     email: string;
     name: string;
-    /*
     password: string;
     salt: string;
     address1: string;
@@ -10,7 +9,7 @@ export class Account {
     city: string;
     province: string;
     postalCode: string;
-    Country: string;
+    country: string;
     phone: string;
     shippingAddress: string;
     shippingCity: string;
@@ -21,5 +20,4 @@ export class Account {
     canBuy: boolean;
     isAdmin: boolean;
     isSuperAdmin: boolean;
-    */
 }

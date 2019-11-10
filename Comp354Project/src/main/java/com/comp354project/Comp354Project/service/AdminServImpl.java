@@ -46,6 +46,11 @@ public class AdminServImpl {
                 .orElseThrow(() -> new IllegalArgumentException("Account with ID: " + id + "not found."));
     }
 
+    public boolean deleteAccount(int id) {
+        accountRepository.deleteById(id);
+        return true;
+    }
+
     /**
      * Insert given Account into database.
      * @param account - The Account to be inserted in the database.
@@ -53,35 +58,5 @@ public class AdminServImpl {
      */
     public Account save(Account account) {
         return accountRepository.save(account);
-    }
-
-    /**
-     * Update an account in the db with its new values.
-     * TODO: might not need this method if save() updates an Account that already exists (and not duplicate it)
-     * @param account - the new account with an id
-     * @return updated account
-     */
-    public Account updateAccount(Account account){
-        Account addedAccount = accountRepository.getAccountByIdAccount(account.getId());
-        addedAccount.setEmail(account.getEmail());
-        addedAccount.setName(account.getName());
-        addedAccount.setAddress1(account.getAddress1());
-        addedAccount.setAddress2(account.getAddress2());
-        addedAccount.setCity(account.getCity());
-        addedAccount.setProvince(account.getProvince());
-        addedAccount.setPostalCode(account.getPostalCode());
-        addedAccount.setCountry(account.getCountry());
-        addedAccount.setPhone(account.getPhone());
-        addedAccount.setShippingAddress(account.getShippingAddress());
-        addedAccount.setShippingCity(account.getShippingCity());
-        addedAccount.setShippingPostalCode(account.getShippingPostalCode());
-        addedAccount.setShippingCountry(account.getShippingCountry());
-        addedAccount.setCanSell(account.isCanSell());
-        addedAccount.setCanBuy(account.isCanBuy());
-        // TODO: check if current user is SuperAdmin to setAdmin()
-
-        accountRepository.save(addedAccount);
-
-        return addedAccount;
     }
 }
