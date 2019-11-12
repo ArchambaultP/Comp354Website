@@ -1,1 +1,9 @@
-<p>product-categories works!</p>
+<div class="sidebar">
+<ul colspan=2 *ngFor="let department of departments">
+  <li><strong>{{ department.name }}</strong>
+    <ul *ngFor="let category of department.categories">
+      <li>{{ category.name }}</li>
+    </ul>
+  </li>
+</ul>
+</div>

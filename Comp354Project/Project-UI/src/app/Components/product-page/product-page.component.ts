@@ -6,6 +6,7 @@ import { FilterPipe } from '../../pipes/filter.pipe';
 import { Product } from '../../model/product';
 import { SearchService} from "../../service/search.service";
 import {Category} from "../../model/category";
+import { ProductCategoriesComponent } from '../product-categories/product-categories.component';
 
 @Component({
   selector: 'app-product-page',
@@ -72,7 +73,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     this.searchText = this.searchService.searchText;
     this.productService.findAllProducts().subscribe(data => {
      this.products = data;
-     console.log(data);
+     // console.log(data);
     });
   }
   ngOnDestroy(){
