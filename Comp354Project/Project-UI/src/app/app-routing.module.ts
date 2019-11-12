@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserListComponent } from './Components/user-list/user-list.component';
+import { ProductListComponent } from './Components/product-list/product-list.component';
+import { DepartmentListComponent } from './Components/department-list/department-list.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegistrationComponent } from './Components/register/registration.component';
 import { AccountListComponent } from './Components/admin/account-list/account-list.component';
@@ -16,6 +18,9 @@ const routes: Routes = [
   { path: 'admin/accounts/add', component: AccountFormComponent},
   { path: 'admin/accounts/update/:id', component: AccountUpdateComponent},
   { path: 'admin/accounts/details/:id', component: AccountDetailsComponent}
+  { path: 'products', component: ProductListComponent },
+  { path: 'products/:id', component: ProductListComponent },
+  { path: 'departments', component: DepartmentListComponent }
 ];
 
 @NgModule({

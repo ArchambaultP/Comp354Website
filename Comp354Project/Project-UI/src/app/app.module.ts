@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { AccountListComponent } from './Components/admin/account-list/account-list.component';
 import { AccountService } from './service/account.service';
 import { UserListComponent } from './Components/user-list/user-list.component';
+import { ProductListComponent } from './Components/product-list/product-list.component';
+import { DepartmentListComponent } from './Components/department-list/department-list.component';
+import { ProductService } from './service/product.service';
 import { LoginComponent } from './Components/login/login.component';
 import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
@@ -22,11 +25,12 @@ import { AccountFormComponent } from './Components/admin/account-form/account-fo
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
+    ProductListComponent,
+    DepartmentListComponent
     LoginComponent,
     RegistrationComponent,
     AccountListComponent,
@@ -40,7 +44,8 @@ import { AccountDetailsComponent } from './Components/admin/account-details/acco
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService, AuthService, AccountService],
+  providers: [UserService, ProductService],
+  providers: [UserService, AuthService, AccountService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
