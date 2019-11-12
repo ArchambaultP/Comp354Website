@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { AuthenticatedUser } from '../model/authenticatedUser';
 @Injectable({
     providedIn: 'root'
 })
@@ -9,8 +10,23 @@ export class AuthService {
     USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
     public email: String;
     public password: String;
+    public emailValidationUrl = 'http://localhost:8080/account/email/';
+    private authUser: AuthenticatedUser;
+    private subject = new Subject<any>();
 
     constructor(private http: HttpClient){}
+
+    sendMessage(message: string){
+        this.subject.next({text: message});
+    }
+
+    clearMessages(){
+        this.subject.next();
+    }
+
+    getMessage(): Observable<any> {
+        return this.subject.asObservable();
+    }
 
     login(credentials): Observable<any>{
         if(credentials != undefined){
@@ -51,14 +67,27 @@ export class AuthService {
         }
     }
 
-    registerSuccessfulLogin(email, password){
-        sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, email);
+    isEmailUnique(email:string): Observable<any> {
+        return this.http.get(this.emailValidationUrl+email);
+    }
+
+    registerSuccessfulLogin(authUser: AuthenticatedUser){
+       sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, authUser.email);
+       sessionStorage.setItem("user",JSON.stringify(authUser));
+
+       //Notifies components that need to be updated when authentication occurs.
+       console.log('authenticated');
+       this.sendMessage('authenticated');
     }
 
     logout(){
         sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+        sessionStorage.removeItem("user");
         this.email = null;
         this.password = null;
+
+        //Notifies components that need to be updated when logout occurs.
+        this.sendMessage('logout');
     }
 
     currentUser(){
