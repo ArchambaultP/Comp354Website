@@ -1,8 +1,15 @@
 .sidebar{
   padding-right: 2%;
   border-style:solid;
-  border-color:black;
+
   background-color:#163172;
   color: white;
   float: left;
+  margin-bottom: 50%;
+
+}
+
+a{
+  color: white;
+  text-decoration: none;
 }

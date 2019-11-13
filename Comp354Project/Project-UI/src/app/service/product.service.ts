@@ -12,6 +12,10 @@ export class ProductService {
   private productsUrl: string;
   private categoriesUrl: string;
   private departmentsUrl: string;
+  selectedCategoryButtonValue = "";
+
+
+
 
   constructor(private http: HttpClient) {
     this.productsUrl = 'http://localhost:8080/products';

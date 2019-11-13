@@ -7,6 +7,7 @@ import { Product } from '../../model/product';
 import { SearchService} from "../../service/search.service";
 import {Category} from "../../model/category";
 import { ProductCategoriesComponent } from '../product-categories/product-categories.component';
+// import{ CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-product-page',
@@ -17,7 +18,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   public searchText = "";
   navigationSubscription;
   inCategory = false;
-  selectedDropDownButtonValue: any = 1;
+  selectedDropDownButtonValue: any = "";
   selectedCategoryButtonValue: string = "";
   categoryNames = [];
 
@@ -50,7 +51,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor(public productService: ProductService, public searchService: SearchService, private router: Router) {
+  constructor( public productService: ProductService, public searchService: SearchService, private router: Router) {
     // subscribe to the router events. Store the subscription so we can unsubscribe later.
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
@@ -64,17 +65,22 @@ export class ProductPageComponent implements OnInit, OnDestroy {
         this.categoryNames.push(item.name);
       }
     });
-
-   console.log(this.categoryNames);
   }
 
   //Gets the search text from the product service
   ngOnInit() {
+    this.selectedCategoryButtonValue = this.productService.selectedCategoryButtonValue;
+    console.log(this.productService.selectedCategoryButtonValue)
+    console.log("this is the selected category" + this.selectedCategoryButtonValue )
     this.searchText = this.searchService.searchText;
+    if (this.selectedCategoryButtonValue == ""){
     this.productService.findAllProducts().subscribe(data => {
      this.products = data;
-     // console.log(data);
     });
+    }
+    else{
+      this.catChange();
+    }
   }
   ngOnDestroy(){
     if (this.navigationSubscription) {
@@ -90,6 +96,20 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     }
     else{
       this.productService.findByCategoryByName(this.selectedCategoryButtonValue).subscribe(data =>
+      {
+        this.category = data;
+        this.products = this.category[0].products;
+      });
+    }
+  }
+  catChange2(){
+    if(this.productService.selectedCategoryButtonValue == ""){
+      this.productService.findAllProducts().subscribe(data => {
+        this.products = data;
+      });
+    }
+    else{
+      this.productService.findByCategoryByName(this.productService.selectedCategoryButtonValue).subscribe(data =>
       {
         this.category = data;
         this.products = this.category[0].products;

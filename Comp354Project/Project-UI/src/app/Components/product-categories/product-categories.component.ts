@@ -9,6 +9,8 @@ import {Category} from "../../model/category";
 import { ProductPageComponent } from '../product-page/product-page.component';
 import { Department } from '../../model/department';
 import { ActivatedRoute } from '@angular/router';
+// import{ CookieService } from 'ngx-cookie-service';
+
 
 
 @Component({
@@ -17,11 +19,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-categories.component.css']
 })
 export class ProductCategoriesComponent implements OnInit {
-  selectedCategoryButtonValue;
+  selectedCategoryButtonValue = "";
   departments: Department[];
   constructor(private productService: ProductService,
               private route: ActivatedRoute) {}
-
+  categorychange(selectedCategoryButtonValue){
+    console.log(selectedCategoryButtonValue)
+    this.productService.selectedCategoryButtonValue = selectedCategoryButtonValue;
+      console.log(this.productService.selectedCategoryButtonValue)
+  }
    ngOnInit() {
      this.productService.findAllDepartments().subscribe(data => {
       this.departments = data;
