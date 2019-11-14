@@ -8,7 +8,7 @@ import {throwError} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class AdminService {
 
   private accountsUrl = 'http://localhost:8080/admin/accounts';
   private account:Account;

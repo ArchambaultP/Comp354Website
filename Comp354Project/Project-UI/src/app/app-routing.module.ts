@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'admin/accounts', component: AccountListComponent},
   { path: 'admin/accounts/add', component: AccountFormComponent},
   { path: 'admin/accounts/update/:id', component: AccountUpdateComponent},
-  { path: 'admin/accounts/details/:id', component: AccountDetailsComponent}
+  { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
   { path: 'products', component: ProductListComponent },
   { path: 'products/:id', component: ProductListComponent },
   { path: 'departments', component: DepartmentListComponent }

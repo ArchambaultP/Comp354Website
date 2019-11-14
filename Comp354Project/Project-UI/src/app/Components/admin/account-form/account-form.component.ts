@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from "../../../service/account.service";
+import {AdminService} from "../../../service/admin.service";
 import {Account} from "../../../model/account";
 import {Router} from "@angular/router";
 
@@ -12,7 +12,7 @@ export class AccountFormComponent implements OnInit {
   account: Account = new Account();
   submitted = false;
 
-  constructor(private accountService:AccountService, private router:Router) {
+  constructor(private accountService:AdminService, private router:Router) {
     // TODO: Check if admin or superAdmin
   }
 

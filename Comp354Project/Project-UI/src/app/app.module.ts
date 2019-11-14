@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AccountListComponent } from './Components/admin/account-list/account-list.component';
-import { AccountService } from './service/account.service';
+import { AdminService } from './service/admin.service';
 import { UserListComponent } from './Components/user-list/user-list.component';
 import { ProductListComponent } from './Components/product-list/product-list.component';
 import { DepartmentListComponent } from './Components/department-list/department-list.component';
@@ -30,7 +30,7 @@ import { AccountDetailsComponent } from './Components/admin/account-details/acco
     AppComponent,
     UserListComponent,
     ProductListComponent,
-    DepartmentListComponent
+    DepartmentListComponent,
     LoginComponent,
     RegistrationComponent,
     AccountListComponent,
@@ -44,8 +44,7 @@ import { AccountDetailsComponent } from './Components/admin/account-details/acco
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService, ProductService],
-  providers: [UserService, AuthService, AccountService, ProductService],
+  providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
