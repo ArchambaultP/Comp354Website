@@ -4,6 +4,6 @@ export class AuthenticatedUser{
     email: string;
     canBuy: string;
     canSell: string;
-    isAdmin: string;
-    isSuperAdmin: string;
+    isAdmin: boolean;
+    isSuperAdmin: boolean;
 }

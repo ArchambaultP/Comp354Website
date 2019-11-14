@@ -74,9 +74,8 @@ export class AuthService {
     registerSuccessfulLogin(authUser: AuthenticatedUser){
        sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, authUser.email);
        sessionStorage.setItem("user",JSON.stringify(authUser));
-
+       this.authUser = authUser;
        //Notifies components that need to be updated when authentication occurs.
-       console.log('authenticated');
        this.sendMessage('authenticated');
     }
 
@@ -100,5 +99,14 @@ export class AuthService {
     isUserLoggedIn(){
         let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
         return user;
+    }
+
+    isAdmin(){
+        this.authUser = JSON.parse(sessionStorage.getItem('user'));
+        if(this.authUser.isAdmin || this.authUser.isSuperAdmin){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

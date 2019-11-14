@@ -31,7 +31,9 @@ export class RegistrationComponent implements OnInit{
 
     constructor(private auth: AuthService, private http: HttpClient, private router: Router, private formBuilder: FormBuilder, private iv: InputValidator){
         if(this.auth.isUserLoggedIn()){
-            this.router.navigate(['/']);
+            if(!this.auth.isAdmin() || (this.router.url != 'admin/accounts')){
+                this.router.navigate(['/']);
+            }
         }
 
     }
