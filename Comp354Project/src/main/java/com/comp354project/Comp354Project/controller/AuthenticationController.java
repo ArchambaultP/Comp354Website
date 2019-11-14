@@ -32,7 +32,15 @@ public class AuthenticationController {
             byte[] recordPwd = accRecord.getPassword();
             byte[] inputPwd = pwdHelper.hash(pwd,accRecord.getSalt());
             if(Arrays.equals(recordPwd,inputPwd)){
-                response.replace("login",true);
+                //response.replace("login",true);
+                response.remove("login");
+                response.put("id",accRecord.getId());
+                response.put("name",accRecord.getName());
+                response.put("email",accRecord.getEmail());
+                response.put("canBuy",accRecord.isCanBuy());
+                response.put("canSell",accRecord.isCanSell());
+                response.put("isAdmin",accRecord.isAdmin());
+                response.put("isSuperAdmin",accRecord.isSuperAdmin());
                 response.remove("error");
             }
         }
@@ -52,9 +60,8 @@ public class AuthenticationController {
         Account accRecord = accountRepository.findByEmail(email);
 
         if(accRecord != null){
-            //errors.
-            response.put("emailError","An account with this email already exist.");
-        }else{
+            response.put("error","An account with this email already exist.");
+        }else if(!email.isEmpty()&& !pwd.isEmpty() && !name.isEmpty()){
             Account acc = new Account();
             String salt = pwdHelper.getSalt();
             acc.setPassword(pwdHelper.hash(pwd,salt));
@@ -71,8 +78,20 @@ public class AuthenticationController {
             acc.setCanBuy(true);
             acc.setCanSell(true);
 
-            accountRepository.save(acc);
-            response.replace("registrationSuccess",true);
+            try{
+                accountRepository.save(acc);
+                response.remove("registrationSuccess");
+                response.put("id",acc.getId());
+                response.put("name",acc.getName());
+                response.put("email",acc.getEmail());
+                response.put("canBuy",true);
+                response.put("canSell",true);
+                response.put("isAdmin",accRecord.isAdmin());
+                response.put("isSuperAdmin",accRecord.isSuperAdmin());
+            }catch(Exception e){
+                response.put("error","Unexpected error occurred when creating the account.");
+            }
+
         }
         return response.toJSONString();
     }
