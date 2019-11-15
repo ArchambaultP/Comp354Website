@@ -20,7 +20,8 @@
 
 <div class="grid-container">
 
-<div *ngFor="let product of products | filter : searchText : inCategory">
+<div *ngFor="let product of products | filter : searchText : inCategory; let i=index">
+    <div *ngIf="i<6">
         <mat-card class="product-card">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
@@ -34,5 +35,6 @@
             <img mat-card-image src="{{product.imageURL}}" >
         </mat-card>
       <p *ngIf="!product">No products to display</p>
+    </div>
 </div>
 </div>
