@@ -3,39 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <!-- bootstrap css -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form  (ngSubmit)="onSubmit()">
+    <form [formGroup]="regForm"  (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input formControlName="name" type="text" class="form-control" id="name" name="name" [ngClass]="{'is-invalid': submitted && form.name.errors}"/>
+            <div *ngIf="submitted && form.name.errors" class="invalid-feedback">
+                <div *ngIf="form.name.errors.required">Name is required</div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="alert alert-warning" *ngIf='invalidRegistration'>{{errorMsg}}</div>
             <div class="alert alert-success" *ngIf='loginSuccess'>{{successMsg}}</div>
-            <label for="email">Email:</label>
-            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="credentials.email"/>
+            <label for="email">Email</label>
+            <input formControlName="email" type="text" class="form-control" id="email" name="email" [ngClass]="{'is-invalid': submitted && form.email.errors}"/>
+            <div *ngIf="submitted && form.email.errors" class="invalid-feedback">
+                <div *ngIf="form.email.errors.required">Email is required</div>
+                <div *ngIf="form.email.errors.email">Email must be a in format 'x@x.x'</div>
+                <div *ngIf="form.email.errors.notUnique">An account with this email already exists.</div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col">
+                <label>Password</label>
+                <input formControlName="password" type="password" class="form-control" id="password" name="password" [ngClass]="{'is-invalid': submitted && form.password.errors}"/>
+                <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                    <div *ngIf="form.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div class="form-group col">
+                <label>Confirm Password</label>
+                <input formControlName="conPassword" type="password" class="form-control" id="conPassword" name="conPassword" [ngClass]="{'is-invalid': submitted && form.conPassword.errors}"/>
+                <div *ngIf="form.conPassword.errors" class="invalid-feedback">
+                    <div *ngIf="form.conPassword.errors.required">Confirm Password is required</div>
+                    <div *ngIf="form.conPassword.errors.mustMatch">Passwords must match</div>
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
+            <label for="address">Address</label>
+            <input formControlName="address" type="text" class="form-control" id="address" name="address"/>
         </div>
         <div class="form-group">
-            <label for="conPassword">Confirm Password:</label>
-            <input type="password" class="form-control" id="conPassword" name="conPassword" [(ngModel)]="credentials.conPassword"/>
-            <div class="alert alert-warning" *ngIf='invalidPwd'>{{errorPwdMsg}}</div>
+            <label for="city">City</label>
+            <input formControlName="city" type="text" class="form-control" id="city" name="city"/>
         </div>
         <div class="form-group">
-            <label for="address">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="credentials.name"/>
-        </div>
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" class="form-control" id="address" name="address" [(ngModel)]="credentials.address"/>
-        </div>
-        <div class="form-group">
-            <label for="address">City:</label>
-            <input type="text" class="form-control" id="city" name="city" [(ngModel)]="credentials.city"/>
-        </div>
-        <div class="form-group">
-            <label for="province">Province:</label>
-                <select class="form-control" id="province" name="province" [(ngModel)]="credentials.province">
+            <label for="province">Province</label>
+                <select formControlName="province" class="form-control" id="province" name="province">
                     <option value="Ontario">Ontario</option>
                     <option value="Quebec">Quebec</option>
                     <option value="Nova Scotia">Nova Scotia</option>
@@ -49,18 +67,18 @@
                 </select>
         </div>
         <div class="form-group">
-            <label for="country">Country:</label>
-            <input type="text" class="form-control" id="country" name="country" [(ngModel)]="credentials.country"/>
+            <label for="country">Country</label>
+            <input formControlName="country" type="text" class="form-control" id="country" name="country"/>
         </div>
         <div class="form-group">
-            <label for="postalCode">Postal Code:</label>
-            <input type="text" class="form-control" id="postalCode" name="postalCode" [(ngModel)]="credentials.postalCode"/>
+            <label for="postalCode">Postal Code</label>
+            <input formControlName="postalCode" type="text" class="form-control" id="postalCode" name="postalCode"/>
         </div>
         <div class="form-group">
-            <label for="postalCode">Phone:</label>
-            <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="credentials.phone"/>
+            <label for="postalCode">Phone</label>
+            <input formControlName="postalCode" type="text" class="form-control" id="phone" name="phone"/>
         </div>
-        <button class="btn btn-success">Register</button>
+        <button class="btn btn-primary mr-1">Register</button>
     </form>
 </body>
 </html>
