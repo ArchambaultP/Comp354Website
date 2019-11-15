@@ -45,5 +45,10 @@ export class AccountListComponent implements OnInit {
 
   createAccount(){
     this.router.navigate(['admin/accounts/add']);
+    //this.router.navigate(['registration']);
+  }
+
+  accountDetails(id: number){
+    this.router.navigate(['admin/accounts/details', id]);
   }
 }

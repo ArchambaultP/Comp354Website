@@ -17,24 +17,23 @@ export class AdminService {
   }
 
   public getAccounts(): Observable<any> {
-    return this.http.get(`${this.accountsUrl}`);
+    return this.http.get(this.accountsUrl);
   }
 
   public getAccount(id:number): Observable<any> {
-    return this.http.get(`${this.accountsUrl}/${id}`);
+    return this.http.get(this.accountsUrl+"/"+id);
   }
 
   public deleteAccount(id:number): Observable<Object> {
-    return this.http.delete(`${this.accountsUrl}/${id}`);
+    return this.http.delete(this.accountsUrl+"/"+id);
   }
 
   public createAccount(account:Account): Observable<Object> {
-    //'Access-Control-Allow-Origin', 'http://localhost:4200'
-    return this.http.post(`${this.accountsUrl}`, account);
+    return this.http.post(this.accountsUrl, account);
   }
 
   public updateAccount(id:number, value:any): Observable<Object>{
-    return this.http.put(`${this.accountsUrl}/${id}`, value);
+    return this.http.put(this.accountsUrl+"/"+id, value);
   }
 
   setter(account:Account){
