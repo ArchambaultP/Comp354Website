@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticatedUser } from '../../../model/authenticatedUser';
 
 @Component({
   selector: 'app-account-update',

@@ -1,9 +1,12 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h2>Employee List</h2>
+        <h2>Account List</h2>
     </div>
     <div class="panel-body">
+        <input id="searchAccount" type="text" placeholder="Search.."><br/>
         <button (click)="createAccount()" class="btn btn-light">New Account</button>
         <table class="table table-striped">
             <thead>
@@ -13,7 +16,7 @@
                 <th>Actions</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="accountTable">
             <tr *ngFor="let account of accounts | async">
                 <td>{{account.name}}</td>
                 <td>{{account.email}}</td>

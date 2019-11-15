@@ -7,6 +7,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { InputValidator } from '../../utilities/inputValidator';
 import { AuthenticatedUser } from '../../model/authenticatedUser';
 @Component({
+  selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
@@ -30,12 +31,9 @@ export class RegistrationComponent implements OnInit{
     invalidPwd = false;
 
     constructor(private auth: AuthService, private http: HttpClient, private router: Router, private formBuilder: FormBuilder, private iv: InputValidator){
-        if(this.auth.isUserLoggedIn()){
-            if(!this.auth.isAdmin() || (this.router.url != 'admin/accounts')){
-                this.router.navigate(['/']);
-            }
+        if(this.auth.isUserLoggedIn() && !this.auth.isAdmin()){
+            this.router.navigate(['/']);
         }
-
     }
 
     ngOnInit(){

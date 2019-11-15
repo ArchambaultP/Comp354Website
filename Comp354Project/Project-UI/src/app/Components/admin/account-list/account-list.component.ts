@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import {AdminService} from "../../../service/admin.service";
 import {Account} from "../../../model/account";
 import {Router} from "@angular/router";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-account-list',
@@ -13,8 +14,11 @@ export class AccountListComponent implements OnInit {
 
   accounts: Observable<Account[]>;
 
-  constructor(private accountService: AdminService, private router:Router) {
+  constructor(private adminService: AdminService, private router:Router, private auth: AuthService) {
     // TODO: Check if admin or superAdmin
+    if(!this.auth.isAdmin()){
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
@@ -22,11 +26,11 @@ export class AccountListComponent implements OnInit {
   }
 
   reloadData() {
-    this.accounts = this.accountService.getAccounts();
+    this.accounts = this.adminService.getAccounts();
   }
 
   deleteAccount(id:number){
-    this.accountService.deleteAccount(id)
+    this.adminService.deleteAccount(id)
         .subscribe(
             data => {
               console.log(data);
@@ -44,8 +48,8 @@ export class AccountListComponent implements OnInit {
   }
 
   createAccount(){
-    this.router.navigate(['admin/accounts/add']);
-    //this.router.navigate(['registration']);
+    //this.router.navigate(['admin/accounts/add']);
+    this.router.navigate(['registration']);
   }
 
   accountDetails(id: number){

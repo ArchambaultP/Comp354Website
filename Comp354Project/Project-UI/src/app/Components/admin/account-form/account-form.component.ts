@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminService} from "../../../service/admin.service";
 import {Account} from "../../../model/account";
 import {Router} from "@angular/router";
+import { AuthenticatedUser } from '../../../model/authenticatedUser';
 
 @Component({
   selector: 'app-account-form',
