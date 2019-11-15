@@ -1,0 +1,43 @@
+<div style="height:150px;border-style:solid;border-color:black;background-color:#163172;">
+
+
+    <div>
+        <div style="height:60px;width:190px;border-style:none;border-color:none;float:left;">
+    <a href="/">
+            <p style="font-family: Impact, Charcoal, sans-serif;font-size:28px;font-style:italic;font-variant:small-caps;color:white;letter-spacing:2px;">
+                354TheStars
+            </p>
+            </a>
+
+        </div>
+
+
+        <!-- login button-->
+        <div style="height:150px;width:300px;border-style:none;border-color:none;float:right;background-color:#163172;">
+
+            <div style="width:50px;height:auto;display:inline-block;"></div>
+            <p style="color:white;">Register or Login to shop & sell!</p>
+
+            <div style="width:50px;height:auto;display:inline-block;"></div>
+            <button type="button" style="height:35px;width:100px;"><a href="registration" >Register</a></button>
+            <div style="width:10px;height:auto;display:inline-block;"></div>
+            <button type="button" style="height:35px;width:100px;"><a href="login">Login</a></button>
+
+        </div>
+
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <!-- Search Bar-->
+    <div>
+        <div style="display: inline-block">
+            <input id = "searchBar" type="search" placeholder="Search 354TheStars.." [(ngModel)] = "searchText" >
+            <button *ngIf="searchText != ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="'/products'"> Search </button>
+            <button *ngIf="searchText == ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="''"> Search </button>
+        </div>
+    </div>
+
+</div>

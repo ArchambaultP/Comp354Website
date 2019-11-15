@@ -1,0 +1,22 @@
+<h2>Product Details</h2>
+<mat-card class="product-card">
+    <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.price | currency }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{product.imageURL}}" >
+    <mat-card-content>
+        <p>{{ product.description }}</p>
+        <p>Brand: {{product.brand}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="addToCart()">Add to cart</button>
+    </mat-card-actions>
+</mat-card>
+<br/>
+<div id="wrapper">
+  <div class="box">
+    <h2>Related Items</h2>
+    <app-related-items [product]="product"></app-related-items>
+  </div>
+</div>
