@@ -14,9 +14,6 @@ export class ProductService {
   private departmentsUrl: string;
   selectedCategoryButtonValue = "";
 
-
-
-
   constructor(private http: HttpClient) {
     this.productsUrl = 'http://localhost:8080/products';
     this.departmentsUrl = 'http://localhost:8080/departments';

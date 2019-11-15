@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { AccountListComponent } from './Components/admin/account-list/account-list.component';
+import { AdminService } from './service/admin.service';
 import { UserListComponent } from './Components/user-list/user-list.component';
 import { ProductListComponent } from './Components/product-list/product-list.component';
 import { DepartmentListComponent } from './Components/department-list/department-list.component';
@@ -29,6 +31,9 @@ import { ProductCategoriesComponent } from './Components/product-categories/prod
 import { FilterPipe } from './pipes/filter.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
 import {MatCardModule} from '@angular/material/card';
+import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
+import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
+import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 
 @NgModule({
   declarations: [
@@ -47,16 +52,20 @@ import {MatCardModule} from '@angular/material/card';
     ProductCategoriesComponent,
     FilterPipe,
     CategoryPipe,
+    AccountListComponent,
+    AccountFormComponent,
+    AccountUpdateComponent,
+    AccountDetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    MatCardModule,
-  ],
-
-  providers: [UserService, AuthService, ProductService],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatCardModule
+    ],
+  providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,6 +8,10 @@ import { RegistrationComponent } from './Components/register/registration.compon
 import {ProductPageComponent} from "./Components/product-page/product-page.component";
 import {ProductDetailsComponent} from "./Components/product-details/product-details.component";
 import {MainComponent} from "./Components/main/main.component";
+import { AccountListComponent } from './Components/admin/account-list/account-list.component';
+import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
+import {AccountUpdateComponent} from "./Components/admin/account-update/account-update.component";
+import {AccountDetailsComponent} from "./Components/admin/account-details/account-details.component";
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -17,6 +21,10 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'departments', component: DepartmentListComponent },
   { path: '', component: MainComponent},
+  { path: 'admin/accounts', component: AccountListComponent},
+  { path: 'admin/accounts/add', component: AccountFormComponent},
+  { path: 'admin/accounts/update/:id', component: AccountUpdateComponent},
+  { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
 ];
 
 @NgModule({

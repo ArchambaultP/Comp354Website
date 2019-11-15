@@ -1,0 +1,95 @@
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<h1>Admin Page - Account form</h1>
+<div class="card my-5">
+    <div class="card-body">
+        <form  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <!--<div class="alert alert-warning" *ngIf='invalidRegistration'>{{errorMsg}}</div>
+                <div class="alert alert-success" *ngIf='loginSuccess'>{{successMsg}}</div>
+                <input type="text" class="form-control" id="id" name="id" [(ngModel)]="account.id"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="account.email"/>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="account.name"/>
+            </div>
+            <!-- TODO: Add password input, or temporary password
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="account.password"/>
+            </div>
+            <!--<div class="form-group">
+                <label for="conPassword">Confirm Password:</label>
+                <input type="password" class="form-control" id="conPassword" name="conPassword" [(ngModel)]="account.password"/>
+                <div class="alert alert-warning" *ngIf='invalidPwd'>{{errorPwdMsg}}</div>
+            </div>
+            <div class="form-group">
+                <label for="salt">Salt:</label>
+                <input type="password" class="form-control" id="salt" name="salt" [(ngModel)]="account.salt"/>
+            </div>
+            <div class="form-group">
+                <label for="address1">Address1:</label>
+                <input type="text" class="form-control" id="address1" name="address1" [(ngModel)]="account.address1"/>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" name="city" [(ngModel)]="account.city"/>
+            </div>
+            <div class="form-group">
+                <label for="province">Province:</label>
+                <select class="form-control" id="province" name="province" [(ngModel)]="account.province">
+                    <option value="Ontario">Ontario</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Nova Scotia">Nova Scotia</option>
+                    <option value="New Brunswick">New Brunswick</option>
+                    <option value="Manitoba">Manitoba</option>
+                    <option value="British Columbia">British Columbia</option>
+                    <option value="Prince Edward Island">Prince Edward Island</option>
+                    <option value="Saskwatchewan">Saskwatchewan</option>
+                    <option value="Alberta">Alberta</option>
+                    <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" class="form-control" id="country" name="country" [(ngModel)]="account.country"/>
+            </div>
+            <div class="form-group">
+                <label for="postalCode">Postal Code:</label>
+                <input type="text" class="form-control" id="postalCode" name="postalCode" [(ngModel)]="account.postalCode"/>
+            </div>
+            <div class="form-group">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" [checked]="account.canBuy" [(ngModel)]="account.canBuy">
+                <label class="form-check-label" for="defaultCheck1">
+                    Can Buy
+                </label>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-success">
+        </form>
+    </div>
+</div>-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<h2>Create Account</h2>
+<div [hidden]="submitted" style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="account.name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" required [(ngModel)]="account.email" name="email">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

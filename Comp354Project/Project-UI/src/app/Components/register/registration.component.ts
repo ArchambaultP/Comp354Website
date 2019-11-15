@@ -3,17 +3,22 @@ import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { InputValidator } from '../../utilities/inputValidator';
+import { AuthenticatedUser } from '../../model/authenticatedUser';
 @Component({
+  selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit{
+    private authUser: AuthenticatedUser;
+    regForm: FormGroup;
+    submitted = false;
     credentials =
     {
         email: '',
         password: '',
-        conPassword: '',
         name: '',
         address: '',
         city: '',
@@ -25,39 +30,65 @@ export class RegistrationComponent implements OnInit{
     errorPwdMsg = 'Passwords do not match';
     invalidPwd = false;
 
-    constructor(private auth: AuthService, private http: HttpClient, private router: Router){
-        if(this.auth.isUserLoggedIn()){
+    constructor(private auth: AuthService, private http: HttpClient, private router: Router, private formBuilder: FormBuilder, private iv: InputValidator){
+        if(this.auth.isUserLoggedIn() && !this.auth.isAdmin()){
             this.router.navigate(['/']);
         }
     }
 
-    ngOnInit(){}
+    ngOnInit(){
+        this.regForm =
+            this.formBuilder.group({
+                name:['', Validators.required],
+                email:['', [Validators.required,Validators.email]],
+                password:['', Validators.required],
+                conPassword:['',Validators.required],
+                address:[''],
+                city:[''],
+                province:[''],
+                country:[''],
+                postalCode:[''],
+                phone:['']
+            },
+            {
+                validator: [this.iv.confirmInput('password','conPassword'),this.iv.isEmailUnique('email')]
+            });
+    }
+
+    get form(){ return this.regForm.controls; }
 
     onSubmit(){
-        if(!this.confirmPwd()){
+        this.submitted = true;
+        if(this.regForm.invalid){
             return;
         }
+        this.credentials =
+        {
+            email: this.regForm.controls.email.value,
+            password: this.regForm.controls.password.value,
+            name: this.regForm.controls.name.value,
+            address: this.regForm.controls.address.value,
+            city: this.regForm.controls.city.value,
+            province: this.regForm.controls.province.value,
+            country: this.regForm.controls.country.value,
+            postalCode: this.regForm.controls.postalCode.value,
+            phone: this.regForm.controls.phone.value
+        };
+
         this.auth.register(this.credentials)
             .subscribe
             (
                 data =>
                 {
-                    if(data['registrationSuccess'] == true){
-                        this.auth.registerSuccessfulLogin(this.credentials.email,this.credentials.password);
+                    if(data['registrationSuccess'] != true){
+                        this.authUser = data;
+                        this.auth.registerSuccessfulLogin(this.authUser);
                         this.router.navigate(['/']);
                     }
                 }
             );
 
 
-    }
-
-    confirmPwd(){
-        if(this.credentials.password != this.credentials.conPassword){
-            this.invalidPwd = true;
-            return false;
-        }
-        return true;
     }
 
 }
