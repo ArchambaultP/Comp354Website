@@ -20,7 +20,6 @@ const routes: Routes = [
   { path: 'products', component: ProductPageComponent, runGuardsAndResolvers: 'always' },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'departments', component: DepartmentListComponent },
-  { path: '', component: MainComponent},
   { path: 'admin/accounts', component: AccountListComponent},
   { path: 'admin/accounts/add', component: AccountFormComponent},
   { path: 'admin/accounts/update/:id', component: AccountUpdateComponent},
