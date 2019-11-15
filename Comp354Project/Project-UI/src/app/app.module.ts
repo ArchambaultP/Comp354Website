@@ -19,6 +19,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpInterceptorService } from './service/httpInterceptor.service';
+import { ProductFormComponent } from './Components/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpInterceptorService } from './service/httpInterceptor.service';
     ProductListComponent,
     DepartmentListComponent
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
