@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Account Detail</h2>
+    </div>
+    <div class="panel-body">
+        <div *ngIf="account">
+            <div>
+                <label><b>Id: </b></label> {{account.id}}
+            </div>
+            <div>
+                <label><b>Name: </b></label> {{account.name}}
+            </div>
+            <div>
+                <label><b>Email: </b></label> {{account.email}}
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
+    </div>
+</div>

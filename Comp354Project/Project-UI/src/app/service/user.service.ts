@@ -15,8 +15,4 @@ export class UserService {
   public findAll(): Observable<any> {
     return this.http.get<any>(this.usersUrl);
   }
-
-  // public save(user: User) {
-  //   return this.http.post<User>(this.usersUrl, user);
-  // }
 }

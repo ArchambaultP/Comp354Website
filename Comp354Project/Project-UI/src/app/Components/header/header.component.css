@@ -1,0 +1,11 @@
+#searchBar{
+    width:500px;
+    height: 45px;
+}
+#searchButton{
+    width:100px;
+    height:45px;
+}
+a{
+  text-decoration: none;
+}

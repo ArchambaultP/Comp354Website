@@ -1,0 +1,9 @@
+<div class="sidebar">
+<ul *ngFor="let department of departments" style="list-style: none;">
+  <li><strong>{{ department.name }}</strong>
+    <ul *ngFor="let category of department.categories" style="list-style: none;">
+      <li  ><a [routerLink]="'/products'" (click) = "categorychange(category.name)">{{ category.name }}</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
