@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit{
 
     constructor(private auth: AuthService, private http: HttpClient, private router: Router){
         if(this.auth.isUserLoggedIn()){
-            console.log('user: '+this.auth.isUserLoggedIn());
             this.router.navigate(['/']);
         }
     }
