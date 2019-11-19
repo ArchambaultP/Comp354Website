@@ -38,7 +38,7 @@
         <div class="col-4">
             <div class="form-group">
                 <label>Price</label>
-                <input type="text"  #priceRef="ngModel" class="form-control" name="price" required ngModel>
+                <input type="text"  #priceRef="ngModel" class="form-control" name="price" required ngModel type="number" min="0">
                 <div [hidden]="priceRef.valid || priceRef.pristine" class="alert alert-danger">
                     Please enter the price of the product
                 </div>
@@ -46,7 +46,7 @@
 
             <div class="form-group">
                 <label>Quantity</label>
-                <input type="text"  #quantityRef="ngModel" class="form-control" name="price" required ngModel>
+                <input type="text"  #quantityRef="ngModel" class="form-control" name="quantity" required ngModel type="number" min="1">
                 <div [hidden]="quantityRef.valid || quantityRef.pristine" class="alert alert-danger">
                     Please enter the quantity
                 </div>
