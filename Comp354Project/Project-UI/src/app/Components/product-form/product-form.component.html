@@ -1,0 +1,67 @@
+<h1>Product creation form</h1>
+
+<br><br>
+
+<form #basicForm="ngForm" (ngSubmit)="onSubmit(basicForm.value)" class="text-center">
+
+    <div class="row">
+        <div class="col-4">
+
+            <div>
+                <br>
+                <label>Please upload a picture of your product</label>
+                <br>
+                <span style="color:red;" *ngIf="message">{{message}}</span>
+                <img [src]="imgURL"  *ngIf="imgURL" class="oversize">
+                <br>
+                <input #file type="file" accept='image/*' (change)="onFileSelected(file.files)">
+
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <label>Product name</label>
+                <input type="text" maxlength="100" #nameRef="ngModel" class="form-control" name="name" required ngModel>
+                <div [hidden]="nameRef.valid || nameRef.pristine" class="alert alert-danger">
+                    Please enter a product name
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea rows="3" maxlength="400" class="form-control" name="description"  ngModel></textarea>
+            </div>
+
+
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text"  #priceRef="ngModel" class="form-control" name="price" required ngModel>
+                <div [hidden]="priceRef.valid || priceRef.pristine" class="alert alert-danger">
+                    Please enter the price of the product
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="text"  #quantityRef="ngModel" class="form-control" name="price" required ngModel>
+                <div [hidden]="quantityRef.valid || quantityRef.pristine" class="alert alert-danger">
+                    Please enter the quantity
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select class="form-control" required>
+                    <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+                </select>
+            </div>
+            <br><br><br>
+            <div>
+                <button type="submit"  class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
