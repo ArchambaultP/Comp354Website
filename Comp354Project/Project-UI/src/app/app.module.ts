@@ -34,7 +34,7 @@ import {MatCardModule} from '@angular/material/card';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +63,8 @@ import { AccountDetailsComponent } from './Components/admin/account-details/acco
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        MatCardModule
+        MatCardModule,
+        NgbModule
     ],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
