@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { SearchService} from "../../service/search.service";
 import { AuthService } from '../../service/auth.service';
 import { Subscription } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from '../login/login.component';
+import { RegistrationComponent } from '../register/registration.component';
 
 @Component({
   selector: 'header',
@@ -17,7 +20,7 @@ export class HeaderComponent implements OnInit{
     subscription: Subscription;
 
 
-  constructor(private router: Router, public searchService: SearchService,private auth: AuthService) {
+  constructor(private router: Router, public searchService: SearchService,private auth: AuthService, private modalService: NgbModal) {
   this.subscription = this.auth.getMessage().subscribe( message => {
                 if(message){
                     if(message['text'] == 'authenticated'){
@@ -43,7 +46,17 @@ export class HeaderComponent implements OnInit{
     console.log("Search text in header: " + this.searchText);
   }
 
-    logout(){
-      this.auth.logout();
-    }
+  logout(){
+    this.auth.logout();
+  }
+
+  login(){
+    this.modalService.open(LoginComponent);
+  }
+
+  register(){
+    const registrationModal = this.modalService.open(RegistrationComponent);
+    registrationModal.componentInstance.modalTitle = 'Sign Up';
+    registrationModal.componentInstance.submitBtn = 'Register';
+  }
 }
