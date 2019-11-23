@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { InputValidator } from '../../utilities/inputValidator';
 import { AuthenticatedUser } from '../../model/authenticatedUser';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -27,12 +29,19 @@ export class RegistrationComponent implements OnInit{
         postalCode: '',
         phone: ''
     };
+    errorMsg: string;
+    successMsg: string;
+    error;
     errorPwdMsg = 'Passwords do not match';
     invalidPwd = false;
 
-    constructor(private auth: AuthService, private http: HttpClient, private router: Router, private formBuilder: FormBuilder, private iv: InputValidator){
+    //Variables for modal reuse. Changes displayed text of some elements.
+    @Input() modalTitle;
+    @Input() submitBtn;
+
+    constructor(private auth: AuthService, private http: HttpClient, private router: Router
+        , private formBuilder: FormBuilder, private iv: InputValidator, public activeModal: NgbActiveModal){
         if(this.auth.isUserLoggedIn() && !this.auth.isAdmin()){
-            this.router.navigate(['/']);
         }
     }
 
@@ -80,10 +89,15 @@ export class RegistrationComponent implements OnInit{
             (
                 data =>
                 {
-                    if(data['registrationSuccess'] != true){
+                    //if(data['registrationSuccess'] != true){
+                    if(!data['error']){
                         this.authUser = data;
                         this.auth.registerSuccessfulLogin(this.authUser);
-                        this.router.navigate(['/']);
+                        this.successMsg = data['message'];
+                        this.error = false;
+                    }else{
+                        this.errorMsg = data['message'];
+                        this.error = true;
                     }
                 }
             );

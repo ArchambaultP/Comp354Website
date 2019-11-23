@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <div style="height:150px;border-style:solid;border-color:black;background-color:#163172;">
 
 
@@ -10,30 +11,23 @@
             </a>
 
         </div>
-    <!--
-            <div style="height:150px;width:300px;border-style:none;border-color:none;float:right;background-color:#163172;">
-                <h2 class="card-title text-center text-white py-3" >{{ title }}</h2>
-                    <div *ngIf="!isLoggedIn">
-                        <a routerLink="/login">Login</a>
-                    </div>
-                    <div *ngIf="isLoggedIn">
-                       <a routerLink="/users">{{ this.currentUser }}</a>
-                        <a class="nav-link" (click)=logout()>Logout</a>
-                    </div>
-            </div>
--->
 
         <!-- login button-->
         <div style="height:150px;width:300px;border-style:none;border-color:none;float:right;background-color:#163172;">
 
             <div style="width:50px;height:auto;display:inline-block;"></div>
             <p style="color:white;">Register or Login to shop & sell!</p>
-
+<!--
             <div style="width:50px;height:auto;display:inline-block;"></div>
-            <!--<button type="button" style="height:35px;width:100px;"><a href="registration" >Register</a></button> -->
+            <button type="button" style="height:35px;width:100px;"><a href="registration" >Register</a></button>
             <div style="width:10px;height:auto;display:inline-block;"></div>
+            -->
             <div *ngIf="!isLoggedIn">
-                <button type="button" style="height:35px;width:100px;"><a href="/login">Login</a></button>
+                <!--<button type="button" style="height:35px;width:100px;"><a href="/login">Login</a></button>
+                <button type="button" style="height:35px;width:100px;" (click)="login()">Sign In</button>-->
+                <button type="button" class="btn btn-primary border border-dark" (click)="login()">Sign In</button>
+                <button type="button" class="btn btn-secondary border border-dark" (click)="register()">Sign Up</button>
+                <!-- <button type="button" style="height:35px;width:100px;"><a href="registration" >Register</a></button> -->
             </div>
             <div *ngIf="isLoggedIn">
                 <button type="button" style="height:35px">{{ this.currentUser }}</button>
@@ -41,19 +35,29 @@
             </div>
         </div>
 
+
+
     </div>
 
     <br/>
     <br/>
     <br/>
     <br/>
+    <!-- Search form -->
+
+    <form class="form-inline waves-light" mdbWavesEffect>
+        <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="'/products'"> Search </button>
+        </div>
+    </form>
     <!-- Search Bar-->
     <div>
-        <div style="display: inline-block">
+       <!-- <div style="display: inline-block">
             <input id = "searchBar" type="search" placeholder="Search 354TheStars.." [(ngModel)] = "searchText" >
             <button *ngIf="searchText != ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="'/products'"> Search </button>
             <button *ngIf="searchText == ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="''"> Search </button>
-        </div>
+        </div> -->
     </div>
 
 </div>
