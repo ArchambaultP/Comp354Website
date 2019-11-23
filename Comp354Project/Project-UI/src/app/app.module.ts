@@ -35,6 +35,15 @@ import { AccountFormComponent } from './Components/admin/account-form/account-fo
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule, MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule
+} from "@angular/material/";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +73,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         FormsModule,
         ReactiveFormsModule,
         MatCardModule,
-        NgbModule
+        NgbModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatSortModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]

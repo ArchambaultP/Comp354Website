@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Observable } from "rxjs";
 import {AdminService} from "../../../service/admin.service";
 import {Account} from "../../../model/account";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../service/auth.service";
+import {MatTableDataSource, MatSort} from '@angular/material';
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-account-list',
@@ -12,7 +14,13 @@ import {AuthService} from "../../../service/auth.service";
 })
 export class AccountListComponent implements OnInit {
 
-  accounts: Observable<Account[]>;
+  accounts: Observable<Account[]>; // TODO: Remove, because it got replaced with Datasource = listData
+  listData: MatTableDataSource<any>;
+  displayedColumns: string[] = ['id', 'name', 'email', 'actions'];
+  searchKey: string;
+
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
   constructor(private adminService: AdminService, private router:Router, private auth: AuthService) {
     // TODO: Check if admin or superAdmin
@@ -26,7 +34,14 @@ export class AccountListComponent implements OnInit {
   }
 
   reloadData() {
-    this.accounts = this.adminService.getAccounts();
+    //this.accounts = this.adminService.getAccounts();
+    // Convert Observable<Account[]> to a list for MatTableDataSource
+    this.adminService.getAccounts().subscribe(
+        list => {
+            this.listData = new MatTableDataSource(list as Account[]);
+            this.listData.sort = this.sort;
+            this.listData.paginator = this.paginator;
+        });
   }
 
   deleteAccount(id:number){
@@ -54,5 +69,9 @@ export class AccountListComponent implements OnInit {
 
   accountDetails(id: number){
     this.router.navigate(['admin/accounts/details', id]);
+  }
+
+  onSearchClear(){
+    this.searchKey = "";
   }
 }
