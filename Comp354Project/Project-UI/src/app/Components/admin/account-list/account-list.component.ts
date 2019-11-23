@@ -4,8 +4,10 @@ import {AdminService} from "../../../service/admin.service";
 import {Account} from "../../../model/account";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../service/auth.service";
-import {MatTableDataSource, MatSort} from '@angular/material';
+import {MatTableDataSource, MatSort, MatDialog, MatDialogConfig} from '@angular/material';
 import {MatPaginator} from "@angular/material/paginator";
+import {RegistrationComponent} from "../../register/registration.component";
+import {AccountDetailsComponent} from "../account-details/account-details.component";
 
 @Component({
   selector: 'app-account-list',
@@ -22,7 +24,7 @@ export class AccountListComponent implements OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
-  constructor(private adminService: AdminService, private router:Router, private auth: AuthService) {
+  constructor(private adminService: AdminService, private router:Router, private auth: AuthService, private dialog: MatDialog) {
     // TODO: Check if admin or superAdmin
     if(!this.auth.isAdmin()){
       this.router.navigate(['/']);
@@ -54,24 +56,37 @@ export class AccountListComponent implements OnInit {
             error => console.log(error));
   }
 
-  employeeDetails(id: number){
-    this.router.navigate(['admin/accounts/details', id]);
-  }
-
   updateAccount(id: number){
     this.router.navigate(['admin/accounts/update', id]);
   }
 
   createAccount(){
-    //this.router.navigate(['admin/accounts/add']);
-    this.router.navigate(['registration']);
+    const dialogConfig = new MatDialogConfig();
+    //dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "95%";
+    this.dialog.open(RegistrationComponent, dialogConfig);
   }
 
-  accountDetails(id: number){
-    this.router.navigate(['admin/accounts/details', id]);
+  accountDetails(accountId: number){
+    const dialogConfig = new MatDialogConfig();
+    //dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "95%";
+    dialogConfig.data = {
+      id: accountId
+    };
+    this.dialog.open(AccountDetailsComponent, dialogConfig);
   }
 
   onSearchClear(){
     this.searchKey = "";
+    this.applyFilter();
+  }
+
+  applyFilter(){
+    this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 }

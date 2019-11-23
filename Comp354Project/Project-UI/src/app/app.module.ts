@@ -36,7 +36,7 @@ import { AccountUpdateComponent } from './Components/admin/account-update/accoun
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
-    MatButtonModule,
+    MatButtonModule, MatDialogModule,
     MatFormFieldModule,
     MatIconModule, MatInputModule,
     MatPaginatorModule,
@@ -81,9 +81,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         MatSortModule,
         BrowserAnimationsModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatDialogModule
     ],
   providers: [UserService, AuthService, AdminService, ProductService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RegistrationComponent]
 })
 export class AppModule { }
