@@ -77,6 +77,7 @@ public class Account {
     private boolean canBuy;
     private boolean isAdmin;
     private boolean isSuperAdmin;
+    private boolean active;
 
     @OneToMany(
             mappedBy = "account",
@@ -321,4 +322,11 @@ public class Account {
         isSuperAdmin = superAdmin;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
