@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {AdminService} from "../../../service/admin.service";
 import {Account} from "../../../model/account";
 import { AuthenticatedUser } from '../../../model/authenticatedUser';
-import {MAT_DIALOG_DATA} from '@angular/material';
-import { Inject } from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-account-details',

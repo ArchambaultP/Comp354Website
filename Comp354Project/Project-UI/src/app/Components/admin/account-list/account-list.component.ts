@@ -56,8 +56,16 @@ export class AccountListComponent implements OnInit {
             error => console.log(error));
   }
 
-  updateAccount(id: number){
-    this.router.navigate(['admin/accounts/update', id]);
+  updateAccount(accountToUpdate){
+    const dialogConfig = new MatDialogConfig();
+    //dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "95%";
+    dialogConfig.data = {
+      account: accountToUpdate
+    };
+    this.dialog.open(RegistrationComponent, dialogConfig);
   }
 
   createAccount(){
