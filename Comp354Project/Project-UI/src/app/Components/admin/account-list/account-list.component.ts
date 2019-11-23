@@ -8,6 +8,7 @@ import {MatTableDataSource, MatSort, MatDialog, MatDialogConfig} from '@angular/
 import {MatPaginator} from "@angular/material/paginator";
 import {RegistrationComponent} from "../../register/registration.component";
 import {AccountDetailsComponent} from "../account-details/account-details.component";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-account-list',
@@ -24,7 +25,8 @@ export class AccountListComponent implements OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
-  constructor(private adminService: AdminService, private router:Router, private auth: AuthService, private dialog: MatDialog) {
+  constructor(private adminService: AdminService, private router:Router, private auth: AuthService, private dialog: MatDialog,
+              private modalService: NgbModal) {
     // TODO: Check if admin or superAdmin
     if(!this.auth.isAdmin()){
       this.router.navigate(['/']);
@@ -69,12 +71,18 @@ export class AccountListComponent implements OnInit {
   }
 
   createAccount(){
+    const registrationModal = this.modalService.open(RegistrationComponent);
+    registrationModal.componentInstance.modalTitle = 'Create Account';
+    registrationModal.componentInstance.submitBtn = 'Create';
+
+    /*
     const dialogConfig = new MatDialogConfig();
     //dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
-    dialogConfig.height = "95%";
+    //dialogConfig.width = "50%";
+    //dialogConfig.height = "95%";
     this.dialog.open(RegistrationComponent, dialogConfig);
+    */
   }
 
   accountDetails(accountId: number){
@@ -82,7 +90,7 @@ export class AccountListComponent implements OnInit {
     //dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
-    dialogConfig.height = "95%";
+    //dialogConfig.height = "95%";
     dialogConfig.data = {
       id: accountId
     };
