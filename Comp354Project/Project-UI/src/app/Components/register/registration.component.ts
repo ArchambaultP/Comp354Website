@@ -35,6 +35,7 @@ export class RegistrationComponent implements OnInit{
     errorPwdMsg = 'Passwords do not match';
     invalidPwd = false;
     loading = false;
+    updateRequest = false;
 
     //Variables for modal reuse. Changes displayed text of some elements.
     @Input() modalTitle;
@@ -48,14 +49,15 @@ export class RegistrationComponent implements OnInit{
     }
 
     ngOnInit(){
+        this.updateRequest = false;
         // Check if there's an account to be updated.
         if(this.accountToUpdate != null){
             this.regForm =
                 this.formBuilder.group({
                         name:[this.accountToUpdate.name, Validators.required],
-                        email:[this.accountToUpdate.email, [Validators.required,Validators.email]],
-                        password:['', Validators.required],
-                        conPassword:['',Validators.required],
+                        email:[this.accountToUpdate.email, Validators.required],
+                        password:[''],
+                        conPassword:[''],
                         address:[this.accountToUpdate.address1],
                         city:[this.accountToUpdate.city],
                         province:[this.accountToUpdate.province],
@@ -64,8 +66,9 @@ export class RegistrationComponent implements OnInit{
                         phone:[this.accountToUpdate.phone]
                     },
                     {
-                        validator: [this.iv.confirmInput('password','conPassword'),this.iv.isEmailUnique('email')]
+                        validator: [this.iv.confirmInput('password','conPassword')]
                     });
+            this.updateRequest = true;
         }
         else{
             this.regForm =
@@ -108,23 +111,45 @@ export class RegistrationComponent implements OnInit{
             phone: this.regForm.controls.phone.value
         };
 
-        this.auth.register(this.credentials)
-            .subscribe
-            (
-                data =>
-                {
-                    //if(data['registrationSuccess'] != true){
-                    if(!data['error']){
-                        this.authUser = data;
-                        this.auth.registerSuccessfulLogin(this.authUser);
-                        this.successMsg = data['message'];
-                        this.error = false;
-                    }else{
-                        this.errorMsg = data['message'];
-                        this.error = true;
+        if(this.updateRequest){
+            this.auth.update(this.credentials, this.accountToUpdate.id)
+                .subscribe
+                (
+                    data =>
+                    {
+                        //if(data['registrationSuccess'] != true){
+                        if(!data['error']){
+                            this.authUser = data;
+                            this.auth.registerSuccessfulLogin(this.authUser);
+                            this.successMsg = data['message'];
+                            this.error = false;
+                        }else{
+                            this.errorMsg = data['message'];
+                            this.error = true;
+                        }
                     }
-                }
-            );
+                );
+        }
+        else{
+            this.auth.register(this.credentials)
+                .subscribe
+                (
+                    data =>
+                    {
+                        //if(data['registrationSuccess'] != true){
+                        if(!data['error']){
+                            this.authUser = data;
+                            this.auth.registerSuccessfulLogin(this.authUser);
+                            this.successMsg = data['message'];
+                            this.error = false;
+                        }else{
+                            this.errorMsg = data['message'];
+                            this.error = true;
+                        }
+                    }
+                );
+        }
+
 
 
     }
