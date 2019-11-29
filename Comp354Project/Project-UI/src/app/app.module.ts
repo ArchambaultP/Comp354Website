@@ -15,7 +15,6 @@ import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
 import { RegistrationComponent } from './Components/register/registration.component';
-RegistrationComponent
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
 } from '@angular/common/http';
@@ -34,6 +33,9 @@ import {MatCardModule} from '@angular/material/card';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
+import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
+import { EmailVerification } from './Components/account/email-verification/email-verification.component';
+import { PasswordUpdate } from './Components/account/password-update/password-update.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -55,7 +57,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AccountListComponent,
     AccountFormComponent,
     AccountUpdateComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    EmailRequestComponent,
+    EmailVerification,
+    PasswordUpdate
   ],
     imports: [
         BrowserModule,
