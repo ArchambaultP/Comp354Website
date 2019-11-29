@@ -36,6 +36,10 @@ import { AccountUpdateComponent } from './Components/admin/account-update/accoun
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+
+
+
 
 @NgModule({
   declarations: [
@@ -58,7 +62,8 @@ import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
     AccountFormComponent,
     AccountUpdateComponent,
     AccountDetailsComponent,
-    SocialMediaButtonsComponent
+    SocialMediaButtonsComponent,
+
   ],
     imports: [
         BrowserModule,
@@ -68,8 +73,10 @@ import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
         ReactiveFormsModule,
         MatCardModule,
         ButtonsModule,
-        InputsModule
-    ],
+        InputsModule,
+JwSocialButtonsModule
+
+],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
 })
