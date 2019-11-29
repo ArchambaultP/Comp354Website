@@ -30,6 +30,7 @@ const routes: Routes = [
   { path: 'account/email-request', component: EmailRequestComponent},
   { path: 'account/email-verification', component: EmailVerification},
   { path: 'account/password-update', component: PasswordUpdate}
+  {path: '', component: MainComponent}
 ];
 
 @NgModule({

@@ -37,6 +37,10 @@ import { EmailRequestComponent } from './Components/account/email-request/email-
 import { EmailVerification } from './Components/account/email-verification/email-verification.component';
 import { PasswordUpdate } from './Components/account/password-update/password-update.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
+import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +64,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AccountDetailsComponent,
     EmailRequestComponent,
     EmailVerification,
-    PasswordUpdate
+    PasswordUpdate,
+    SocialMediaButtonsComponent,
   ],
     imports: [
         BrowserModule,
@@ -69,9 +74,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         FormsModule,
         ReactiveFormsModule,
         MatCardModule,
-        NgbModule
-    ],
+        NgbModule,
+        ButtonsModule,
+        InputsModule,
+        JwSocialButtonsModule,
+      ],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
