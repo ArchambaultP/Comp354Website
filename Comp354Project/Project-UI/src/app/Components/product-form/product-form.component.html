@@ -8,13 +8,13 @@
         <div class="col-4">
 
             <div>
-                <br>
-                <label>Please upload a picture of your product</label>
+                <label>Please enter the url of your product</label>
                 <br>
                 <span style="color:red;" *ngIf="message">{{message}}</span>
                 <img [src]="imgURL"  *ngIf="imgURL" class="oversize">
-                <br>
-                <input #file type="file" accept='image/*' (change)="onFileSelected(file.files)" name="image" ngModel>
+                <input type="text" #urlRef="ngModel" class="form-control" name="image" [(ngModel)]="imgURL" required ngModel>
+
+
 
             </div>
         </div>
@@ -54,13 +54,13 @@
 
             <div class="form-group">
                 <label>Category</label>
-                <select class="form-control" required name="category" ngModel>
+                <select class="form-control" #categoryRef="ngModel" required name="category" ngModel>
                     <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
                 </select>
             </div>
             <br><br><br>
-            <div>
-                <button type="submit"  class="btn btn-success">Submit</button>
+            <div [hidden]="quantityRef.invalid || priceRef.invalid || nameRef.invalid || categoryRef.invalid || urlRef.invalid">
+                <input type="submit"  class="btn btn-success">
             </div>
         </div>
     </div>
