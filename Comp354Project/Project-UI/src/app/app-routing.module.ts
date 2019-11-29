@@ -13,6 +13,9 @@ import { AccountFormComponent } from './Components/admin/account-form/account-fo
 import {AccountUpdateComponent} from "./Components/admin/account-update/account-update.component";
 import {AccountDetailsComponent} from "./Components/admin/account-details/account-details.component";
 import { ProductFormComponent } from './Components/product-form/product-form.component';
+import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
+import { EmailVerification } from './Components/account/email-verification/email-verification.component';
+import { PasswordUpdate } from './Components/account/password-update/password-update.component';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -26,6 +29,10 @@ const routes: Routes = [
   { path: 'admin/accounts/update/:id', component: AccountUpdateComponent},
   { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
   { path: 'product-form', component: ProductFormComponent},
+  { path: 'account/email-request', component: EmailRequestComponent},
+  { path: 'account/email-verification', component: EmailVerification},
+  { path: 'account/password-update', component: PasswordUpdate},
+  {path: '', component: MainComponent}
 ];
 
 @NgModule({

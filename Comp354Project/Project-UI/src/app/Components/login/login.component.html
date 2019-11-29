@@ -1,19 +1,30 @@
 <!-- bootstrap css -->
-<link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <div class="alert alert-danger" [hidden]="!error">
     Error. Please try logging in again.
 </div>
-<form  (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMsg}}</div>
-        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMsg}}</div>
-        <label for="email">Email:</label>
-        <input type="text" class="form-control" id="email" name="email" [(ngModel)]="credentials.email"/>
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title">Sign In</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
+    <div class="modal-body">
+        <form  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMsg}}</div>
+                <div class="alert alert-success" *ngIf='loginSuccess'>{{successMsg}}</div>
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="credentials.email"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
+            </div>
+            <button class="btn btn-success">Login</button>
+        </form>
+        <p>Don't have an account? <button type="button" class="btn btn-link" (click)="onRegister()">Sign Up</button> </p>
+        <button type="button" class="btn btn-link" (click)="onForget()">Forgot your password?</button>
     </div>
-    <button class="btn btn-success">Login</button>
-</form>
-<a routerLink="/registration">Register</a>
+</div>

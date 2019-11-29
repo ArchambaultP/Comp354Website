@@ -67,6 +67,65 @@ export class AuthService {
         }
     }
 
+    /**
+    * Request to reset an account's password
+    */
+    resetPassword(email:string): Observable<any>{
+        if(email != undefined){
+            const body = new HttpParams()
+                .set('email',email);
+
+            return this.http.post('http://localhost:8080/auth/resetpassword',
+                body.toString(),
+                    {
+                        headers: new HttpHeaders()
+                            .set('Content-Type','application/x-www-form-urlencoded')
+                    });
+        }
+    }
+
+    sendEmailConfirmation(email:string,endPoint:string): Observable<any>{
+        if(email != undefined){
+                    const body = new HttpParams()
+                        .set('email',email);
+
+                    return this.http.post('http://localhost:8080/auth/'+endPoint,
+                        body.toString(),
+                            {
+                                headers: new HttpHeaders()
+                                    .set('Content-Type','application/x-www-form-urlencoded')
+                            });
+                }
+    }
+
+    confirmEmail(email:string, code:string): Observable<any>{
+        const body = new HttpParams()
+            .set('email',email)
+            .set('code',code);
+
+        return this.http.post('http://localhost:8080/auth/passwordrecovery',
+            body.toString(),
+                {
+                    headers: new HttpHeaders()
+                         .set('Content-Type','application/x-www-form-urlencoded')
+                });
+    }
+
+    changePassword(email:string, pwd:string): Observable<any>{
+        if((email != undefined) && (pwd != undefined)){
+            const body = new HttpParams()
+                .set('email',email)
+                .set('pwd',pwd);
+
+            return this.http.post('http://localhost:8080/account/changepassword',
+                body.toString(),
+                    {
+                        headers: new HttpHeaders()
+                            .set('Content-Type','application/x-www-form-urlencoded')
+                    });
+        }
+    }
+
     isEmailUnique(email:string): Observable<any> {
         return this.http.get(this.emailValidationUrl+email);
     }
@@ -108,5 +167,10 @@ export class AuthService {
         }else{
             return false;
         }
+    }
+
+    isSuperAdmin(){
+        this.authUser = JSON.parse(sessionStorage.getItem('user'));
+        return this.authUser.isSuperAdmin;
     }
 }

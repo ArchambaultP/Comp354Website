@@ -35,6 +35,13 @@ import { AccountFormComponent } from './Components/admin/account-form/account-fo
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 import { ProductFormComponent } from './Components/product-form/product-form.component';
+import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
+import { EmailVerification } from './Components/account/email-verification/email-verification.component';
+import { PasswordUpdate } from './Components/account/password-update/password-update.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
+import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 
 @NgModule({
   declarations: [
@@ -58,6 +65,11 @@ import { ProductFormComponent } from './Components/product-form/product-form.com
     AccountUpdateComponent,
     AccountDetailsComponent,
     ProductFormComponent
+    AccountDetailsComponent,
+    EmailRequestComponent,
+    EmailVerification,
+    PasswordUpdate,
+    SocialMediaButtonsComponent,
   ],
     imports: [
         BrowserModule,
@@ -70,4 +82,5 @@ import { ProductFormComponent } from './Components/product-form/product-form.com
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
