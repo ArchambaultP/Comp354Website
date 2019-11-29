@@ -15,7 +15,6 @@ import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
 import { RegistrationComponent } from './Components/register/registration.component';
-import { CartComponent } from './Components/checkout/checkout';
 RegistrationComponent
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
@@ -35,7 +34,7 @@ import {MatCardModule} from '@angular/material/card';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
-import { ShippingComponent } from './Components/shipping/shipping.component';]
+import { ShippingComponent } from './Components/shipping/shipping.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +58,6 @@ import { ShippingComponent } from './Components/shipping/shipping.component';]
     AccountUpdateComponent,
     AccountDetailsComponent,
     ShippingComponent,
-    CartComponent,
   ],
     imports: [
         BrowserModule,

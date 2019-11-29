@@ -5,14 +5,15 @@ import { ProductListComponent } from './Components/product-list/product-list.com
 import { DepartmentListComponent } from './Components/department-list/department-list.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegistrationComponent } from './Components/register/registration.component';
-import {ProductPageComponent} from "./Components/product-page/product-page.component";
-import {ProductDetailsComponent} from "./Components/product-details/product-details.component";
-import {MainComponent} from "./Components/main/main.component";
+import {ProductPageComponent} from './Components/product-page/product-page.component';
+import {ProductDetailsComponent} from './Components/product-details/product-details.component';
+import {MainComponent} from './Components/main/main.component';
+import { CartComponent } from './Components/checkout/checkout';
 import { AccountListComponent } from './Components/admin/account-list/account-list.component';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
-import {AccountUpdateComponent} from "./Components/admin/account-update/account-update.component";
-import {AccountDetailsComponent} from "./Components/admin/account-details/account-details.component";
-import { CartComponent } from './Components/checkout/checkout';
+import {AccountUpdateComponent} from './Components/admin/account-update/account-update.component';
+import {AccountDetailsComponent} from './Components/admin/account-details/account-details.component';
+import {ShippingFormComponent} from './Components/shipping/shipping.component';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
   { path: '', component: MainComponent},
   { path: 'checkout', component: CartComponent},
+  { path: 'shipping', component: ShippingFormComponent},
 ];
 
 @NgModule({

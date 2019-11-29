@@ -1,1 +1,17 @@
-<p>shipping works!</p>
+<div [formGroup]='shippingForm'>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Country" formControlName='country'>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="City" formControlName='city'>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Address" formControlName='address'>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Zip" formControlName='zip'>
+    </mat-form-field>
+</div>
