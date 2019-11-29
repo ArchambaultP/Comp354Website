@@ -40,7 +40,9 @@ export class ProductFormComponent implements OnInit {
 
   onSubmit(value: any){
     this.submitted = true;
-    console.log(value);
+    //console.log(value);
+
+    this.productService.save(value.name, value.description, String(value.price), String(value.quantity), imgURL, value.category, user.id);
 
   }
 
