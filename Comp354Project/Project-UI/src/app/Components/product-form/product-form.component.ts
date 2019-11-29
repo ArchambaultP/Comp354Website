@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../../service/product.service';
+import { Product } from '../model/product';
+
 
 @Component({
   selector: 'app-product-form',
@@ -9,26 +12,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService) {
 
-  ngOnInit() {
+    this.productService.findAllCategories().subscribe(data=> {
+          for(let item of data){
+            this.categories.push(item.name);
+          }
+        });
   }
 
-  categories = ['Clothes', 'Electronics', 'Sports'];
+  categories = [];
   submitted = false;
   selectedFile: File = null;
   public imagePath;
   imgURL: any;
   public message:string;
 
+   ngOnInit() {
+
+     }
+
+
   onSubmit(value: any){
     this.submitted = true;
     console.log(value);
+
+
 
     //const fd = new FormData();
     //fd.append('image', this.selectedFile, this.selectedFile.name);
     //this.http.post('', fd).subscribe(res => {console.log(res)});
   }
+
+
   onFileSelected(files){
     //this.selectedFile = <File>event.target.files[0];
     if (files.length === 0)

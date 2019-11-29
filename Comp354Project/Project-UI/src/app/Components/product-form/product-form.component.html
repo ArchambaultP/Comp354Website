@@ -14,7 +14,7 @@
                 <span style="color:red;" *ngIf="message">{{message}}</span>
                 <img [src]="imgURL"  *ngIf="imgURL" class="oversize">
                 <br>
-                <input #file type="file" accept='image/*' (change)="onFileSelected(file.files)">
+                <input #file type="file" accept='image/*' (change)="onFileSelected(file.files)" name="image" ngModel>
 
             </div>
         </div>
@@ -54,7 +54,7 @@
 
             <div class="form-group">
                 <label>Category</label>
-                <select class="form-control" required>
+                <select class="form-control" required name="category" ngModel>
                     <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
                 </select>
             </div>
