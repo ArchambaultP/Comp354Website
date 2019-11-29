@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthenticatedUser } from '../../model/authenticatedUser';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EmailRequestComponent } from '../account/email-request/email-request.component';
+import { RegistrationComponent } from '../register/registration.component';
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit{
     loginSuccess = false;
     authUser: AuthenticatedUser;
 
-    constructor(private auth: AuthService, private http: HttpClient, private router: Router, public activeModal: NgbActiveModal){
+    constructor(private auth: AuthService, private http: HttpClient, private router: Router, public activeModal: NgbActiveModal, private modalService: NgbModal){
         if(this.auth.isUserLoggedIn()){
             this.router.navigate(['/']);
         }
@@ -44,7 +46,15 @@ export class LoginComponent implements OnInit{
                         }
                     }
             );
+   }
 
+   onForget(){
+        this.modalService.open(EmailRequestComponent);
+   }
 
+   onRegister(){
+        const registrationModal = this.modalService.open(RegistrationComponent,{scrollable:true});
+        registrationModal.componentInstance.modalTitle = 'Sign Up';
+        registrationModal.componentInstance.submitBtn = 'Register';
    }
 }

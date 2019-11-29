@@ -116,9 +116,9 @@ public class AuthenticationController {
         activation.setCode(activationCode);
         String subject= "354TheStars Account Activation.";
         String instructionTitle = "Welcome to our site, follow the instructions below to activate your account";
-        String instructions =  "Head over to the account activation page of 354TheStars and enter the activation code provided below along with your email address or click the link below to access the page directly.";
-        String activationPage = " Activation Page";
-        String activationUrl = "http://localhost:4200/activation";
+        String instructions =  "Head over to 354TheStars. Click the 'Help' button on the top right of the page and select 'Activate Account'. Enter the activation code provided below along with your email address to activate your account.";
+        String activationPage = "354TheStars";
+        String activationUrl = "http://localhost:4200/";
         String codeName = "Activation Code";
 
         passwordResetRepository.save(activation);
@@ -139,9 +139,9 @@ public class AuthenticationController {
         pwdReset.setCode(recoveryCode);
         String subject = "354TheStars - Account Password Reset Request.";
         String instructionTitle = "Thank you for contacting us. Follow the instructions below to reset your password";
-        String instructions = "Head over to the password recovery page of 354TheStars or click on the link below. Enter your email and the recovery code provided below to set a new password on your account. If you did not request to reset your password, please contact the authorities and ignore this email.";
-        String page = "Password Recovery Page";
-        String url = "http://localhost:4200/passwordrecovery";
+        String instructions = "Head over to 354TheStars. Click the 'Help' button on the top right of the page and select 'Reset Password'. Enter your email and the recovery code provided below to set a new password on your account. If you did not request to reset your password, please contact the authorities and ignore this email.";
+        String page = "354TheStars";
+        String url = "http://localhost:4200/";
         String recCode = "Password Recovery Code";
 
         try{
@@ -170,21 +170,28 @@ public class AuthenticationController {
     @RequestMapping(value="/passwordrecovery", method = RequestMethod.POST)
     public String passwordRecovery(@RequestParam("email") String email, @RequestParam("code") String recoveryCode){
         JSONObject response = new JSONObject();
-        PasswordReset record = passwordResetRepository.findByCode(recoveryCode);
-        Account acc = accountRepository.findByEmail(email);
-        if(record.isActive() && (record.getEmail().equals(email))){
-            record.setActive(false);
-            passwordResetRepository.save(record);
-            if(!acc.isActive()){
-                acc.setActive(true);
-                accountRepository.save(acc);
+        try{
+            PasswordReset record = passwordResetRepository.findByCode(recoveryCode);
+            Account acc = accountRepository.findByEmail(email);
+            if(record.isActive() && (record.getEmail().equals(email))){
+                record.setActive(false);
+                passwordResetRepository.save(record);
+                if(!acc.isActive()){
+                    acc.setActive(true);
+                    accountRepository.save(acc);
+                }
+                response.put("success",true);
+                response.put("error",false);
+            }else{
+                response.put("error",true);
+                response.put("message","Invalid code or email address.");
+
             }
-            response.put("success",true);
-        }else{
+        }catch(Exception e){
             response.put("error",true);
             response.put("message","Invalid code or email address.");
-
         }
+
         return response.toJSONString();
     }
 }

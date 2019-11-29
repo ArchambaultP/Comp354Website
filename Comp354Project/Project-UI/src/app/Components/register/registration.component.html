@@ -6,9 +6,11 @@
     </button>
 </div>
 <div class="modal-body">
-    <div class="alert alert-warning" *ngIf='error'>{{errorMsg}}</div>
     <div *ngIf='submitted'>
-        <div class="alert alert-success" *ngIf='!error'>{{successMsg}}</div>
+        <div *ngIf="!loading">
+            <div class="alert alert-danger" *ngIf='error'>{{errorMsg}}</div>
+            <div class="alert alert-success" *ngIf='!error'>{{successMsg}}</div>
+        </div>
     </div>
     <form [formGroup]="regForm"  (ngSubmit)="onSubmit()">
         <div class="form-group">

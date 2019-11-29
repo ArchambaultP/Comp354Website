@@ -34,6 +34,7 @@ export class RegistrationComponent implements OnInit{
     error;
     errorPwdMsg = 'Passwords do not match';
     invalidPwd = false;
+    loading = false;
 
     //Variables for modal reuse. Changes displayed text of some elements.
     @Input() modalTitle;

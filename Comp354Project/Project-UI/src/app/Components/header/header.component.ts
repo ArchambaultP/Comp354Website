@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from '../login/login.component';
 import { RegistrationComponent } from '../register/registration.component';
-
+import { EmailVerification } from '../account/email-verification/email-verification.component';
+import { PasswordUpdate } from '../account/password-update/password-update.component';
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -55,8 +56,22 @@ export class HeaderComponent implements OnInit{
   }
 
   register(){
-    const registrationModal = this.modalService.open(RegistrationComponent);
+    const registrationModal = this.modalService.open(RegistrationComponent,{scrollable:true});
     registrationModal.componentInstance.modalTitle = 'Sign Up';
     registrationModal.componentInstance.submitBtn = 'Register';
+  }
+
+  resetPassword(){
+    const resetPwdModal = this.modalService.open(EmailVerification);
+    resetPwdModal.componentInstance.modalTitle = 'Account Recovery';
+    resetPwdModal.componentInstance.codeName = 'Recovery Code';
+    resetPwdModal.componentInstance.submitBtn = 'Recover';
+  }
+
+  activateAccount(){
+    const actModal = this.modalService.open(EmailVerification);
+    actModal.componentInstance.modalTitle = 'Account Activation';
+    actModal.componentInstance.codeName = 'Activation Code';
+    actModal.componentInstance.submitBtn = 'Activate';
   }
 }
