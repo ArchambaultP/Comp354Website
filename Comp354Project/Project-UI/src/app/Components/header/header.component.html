@@ -10,7 +10,18 @@
             </a>
 
         </div>
-
+    <!--
+            <div style="height:150px;width:300px;border-style:none;border-color:none;float:right;background-color:#163172;">
+                <h2 class="card-title text-center text-white py-3" >{{ title }}</h2>
+                    <div *ngIf="!isLoggedIn">
+                        <a routerLink="/login">Login</a>
+                    </div>
+                    <div *ngIf="isLoggedIn">
+                       <a routerLink="/users">{{ this.currentUser }}</a>
+                        <a class="nav-link" (click)=logout()>Logout</a>
+                    </div>
+            </div>
+-->
 
         <!-- login button-->
         <div style="height:150px;width:300px;border-style:none;border-color:none;float:right;background-color:#163172;">
@@ -19,10 +30,15 @@
             <p style="color:white;">Register or Login to shop & sell!</p>
 
             <div style="width:50px;height:auto;display:inline-block;"></div>
-            <button type="button" style="height:35px;width:100px;"><a href="registration" >Register</a></button>
+            <!--<button type="button" style="height:35px;width:100px;"><a href="registration" >Register</a></button> -->
             <div style="width:10px;height:auto;display:inline-block;"></div>
-            <button type="button" style="height:35px;width:100px;"><a href="login">Login</a></button>
-
+            <div *ngIf="!isLoggedIn">
+                <button type="button" style="height:35px;width:100px;"><a href="/login">Login</a></button>
+            </div>
+            <div *ngIf="isLoggedIn">
+                <button type="button" style="height:35px">{{ this.currentUser }}</button>
+                <button type="button" style="height:35px;width:100px;" (click)=logout()>Logout</button>
+            </div>
         </div>
 
     </div>
