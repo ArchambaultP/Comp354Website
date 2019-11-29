@@ -34,6 +34,10 @@ import {MatCardModule} from '@angular/material/card';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
+import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
+import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +59,9 @@ import { AccountDetailsComponent } from './Components/admin/account-details/acco
     AccountListComponent,
     AccountFormComponent,
     AccountUpdateComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    SocialMediaButtonsComponent,
+
   ],
     imports: [
         BrowserModule,
@@ -63,9 +69,15 @@ import { AccountDetailsComponent } from './Components/admin/account-details/acco
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        MatCardModule
-    ],
+        MatCardModule,
+        ButtonsModule,
+        InputsModule,
+        JwSocialButtonsModule,
+
+
+],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
