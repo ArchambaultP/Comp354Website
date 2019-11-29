@@ -39,8 +39,6 @@ import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,10 +72,12 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
         MatCardModule,
         ButtonsModule,
         InputsModule,
-JwSocialButtonsModule
+        JwSocialButtonsModule,
+
 
 ],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
