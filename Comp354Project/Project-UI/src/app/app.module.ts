@@ -15,7 +15,6 @@ import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
 import { RegistrationComponent } from './Components/register/registration.component';
-RegistrationComponent
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
 } from '@angular/common/http';
@@ -34,10 +33,13 @@ import {MatCardModule} from '@angular/material/card';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
+import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
+import { EmailVerification } from './Components/account/email-verification/email-verification.component';
+import { PasswordUpdate } from './Components/account/password-update/password-update.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
-
 
 @NgModule({
   declarations: [
@@ -60,8 +62,10 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
     AccountFormComponent,
     AccountUpdateComponent,
     AccountDetailsComponent,
+    EmailRequestComponent,
+    EmailVerification,
+    PasswordUpdate,
     SocialMediaButtonsComponent,
-
   ],
     imports: [
         BrowserModule,
@@ -70,12 +74,11 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
         FormsModule,
         ReactiveFormsModule,
         MatCardModule,
+        NgbModule,
         ButtonsModule,
         InputsModule,
         JwSocialButtonsModule,
-
-
-],
+      ],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent]
 })

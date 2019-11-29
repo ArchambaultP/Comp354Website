@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthenticatedUser } from '../../model/authenticatedUser';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EmailRequestComponent } from '../account/email-request/email-request.component';
+import { RegistrationComponent } from '../register/registration.component';
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -18,9 +21,8 @@ export class LoginComponent implements OnInit{
     loginSuccess = false;
     authUser: AuthenticatedUser;
 
-    constructor(private auth: AuthService, private http: HttpClient, private router: Router){
+    constructor(private auth: AuthService, private http: HttpClient, private router: Router, public activeModal: NgbActiveModal, private modalService: NgbModal){
         if(this.auth.isUserLoggedIn()){
-            console.log('user: '+this.auth.isUserLoggedIn());
             this.router.navigate(['/']);
         }
     }
@@ -37,14 +39,22 @@ export class LoginComponent implements OnInit{
                             this.authUser = data;
                             this.auth.registerSuccessfulLogin(this.authUser);
                             this.loginSuccess = true;
-                            this.router.navigate(['/']);
+                            this.activeModal.close('Login Success');
                         }else{
                             this.errorMsg=data['error'];
                             this.invalidLogin= true;
                         }
                     }
             );
+   }
 
+   onForget(){
+        this.modalService.open(EmailRequestComponent);
+   }
 
+   onRegister(){
+        const registrationModal = this.modalService.open(RegistrationComponent,{scrollable:true});
+        registrationModal.componentInstance.modalTitle = 'Sign Up';
+        registrationModal.componentInstance.submitBtn = 'Register';
    }
 }
