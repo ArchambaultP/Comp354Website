@@ -39,6 +39,7 @@ export class RegistrationComponent implements OnInit{
     //Variables for modal reuse. Changes displayed text of some elements.
     @Input() modalTitle;
     @Input() submitBtn;
+    @Input() accountToUpdate;
 
     constructor(private auth: AuthService, private http: HttpClient, private router: Router
         , private formBuilder: FormBuilder, private iv: InputValidator, public activeModal: NgbActiveModal){
@@ -47,22 +48,44 @@ export class RegistrationComponent implements OnInit{
     }
 
     ngOnInit(){
-        this.regForm =
-            this.formBuilder.group({
-                name:['', Validators.required],
-                email:['', [Validators.required,Validators.email]],
-                password:['', Validators.required],
-                conPassword:['',Validators.required],
-                address:[''],
-                city:[''],
-                province:[''],
-                country:[''],
-                postalCode:[''],
-                phone:['']
-            },
-            {
-                validator: [this.iv.confirmInput('password','conPassword'),this.iv.isEmailUnique('email')]
-            });
+        // Check if there's an account to be updated.
+        if(this.accountToUpdate != null){
+            this.regForm =
+                this.formBuilder.group({
+                        name:[this.accountToUpdate.name, Validators.required],
+                        email:[this.accountToUpdate.email, [Validators.required,Validators.email]],
+                        password:['', Validators.required],
+                        conPassword:['',Validators.required],
+                        address:[this.accountToUpdate.address1],
+                        city:[this.accountToUpdate.city],
+                        province:[this.accountToUpdate.province],
+                        country:[this.accountToUpdate.country],
+                        postalCode:[this.accountToUpdate.postalCode],
+                        phone:[this.accountToUpdate.phone]
+                    },
+                    {
+                        validator: [this.iv.confirmInput('password','conPassword'),this.iv.isEmailUnique('email')]
+                    });
+        }
+        else{
+            this.regForm =
+                this.formBuilder.group({
+                        name:['', Validators.required],
+                        email:['', [Validators.required,Validators.email]],
+                        password:['', Validators.required],
+                        conPassword:['',Validators.required],
+                        address:[''],
+                        city:[''],
+                        province:[''],
+                        country:[''],
+                        postalCode:[''],
+                        phone:['']
+                    },
+                    {
+                        validator: [this.iv.confirmInput('password','conPassword'),this.iv.isEmailUnique('email')]
+                    });
+        }
+
     }
 
     get form(){ return this.regForm.controls; }
@@ -105,5 +128,4 @@ export class RegistrationComponent implements OnInit{
 
 
     }
-
 }

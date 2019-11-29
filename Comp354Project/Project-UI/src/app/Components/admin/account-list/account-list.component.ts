@@ -59,7 +59,7 @@ export class AccountListComponent implements OnInit {
   }
 
   updateAccount(accountToUpdate){
-    const dialogConfig = new MatDialogConfig();
+    /*const dialogConfig = new MatDialogConfig();
     //dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
@@ -67,7 +67,11 @@ export class AccountListComponent implements OnInit {
     dialogConfig.data = {
       account: accountToUpdate
     };
-    this.dialog.open(RegistrationComponent, dialogConfig);
+    this.dialog.open(RegistrationComponent, dialogConfig);*/
+    const registrationModal = this.modalService.open(RegistrationComponent);
+    registrationModal.componentInstance.modalTitle = 'Update Account';
+    registrationModal.componentInstance.submitBtn = 'Update';
+    registrationModal.componentInstance.accountToUpdate = accountToUpdate;
   }
 
   createAccount(){
