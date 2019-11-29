@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'admin/accounts/add', component: AccountFormComponent},
   { path: 'admin/accounts/update/:id', component: AccountUpdateComponent},
   { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
+  {path: '', component: MainComponent}
 ];
 
 @NgModule({
