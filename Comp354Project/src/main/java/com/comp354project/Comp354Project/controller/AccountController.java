@@ -58,6 +58,8 @@ public class AccountController {
                 response.put("canSell",acc.isCanSell());
                 response.put("isAdmin",acc.isAdmin());
                 response.put("isSuperAdmin",acc.isSuperAdmin());
+                response.put("error",false);
+                response.put("message","Password successful updated. Please Sign In.");
             }catch(Exception e){
                 response.put("error",true);
                 response.put("message","An unexpected error occurred. Please try again.");
