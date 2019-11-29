@@ -1,17 +1,8 @@
-<div style="height:25px;background-color:white;"></div>
-<div class="sidebar">
-    <ul *ngFor="let department of departments" style="list-style: none;">
-        <li><strong>{{ department.name }}</strong>
-            <ul *ngFor="let category of department.categories" style="list-style: none;">
-                <li  ><a [routerLink]="'/products'" (click) = "categorychange(category.name)">{{ category.name }}</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-<app-product-page></app-product-page>
 
+<app-product-page></app-product-page>
+<!--
 <hr>
-<!-- Buttons to navigate pages?-->
+
 <div style="height:35px;background-color:white;">
     <div style="float:left;">
         <button type="button"><a href="prevpage">Previous Page</a></button>
@@ -27,7 +18,7 @@
 
 </div>
 <hr/>
-<!--
+
 <br>
 <br>
 <hr/>
