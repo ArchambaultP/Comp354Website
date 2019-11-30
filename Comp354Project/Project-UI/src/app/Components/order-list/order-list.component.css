@@ -24,6 +24,11 @@ tr.order-element-row:not(.order-expanded-row):active {
     display: flex;
 }
 
+order-element-detail .table{
+    height: 100%;
+    width: 100%;
+}
+
 .order-element-diagram {
     min-width: 80px;
     border: 2px solid black;

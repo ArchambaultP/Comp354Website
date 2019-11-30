@@ -26,8 +26,7 @@ export class AccountListComponent implements OnInit {
 
   constructor(private adminService: AdminService, private router:Router, private auth: AuthService, private dialog: MatDialog,
               private modalService: NgbModal) {
-    // TODO: Check if admin or superAdmin
-    if(!this.auth.isAdmin()){
+    if(!this.auth.isAdmin() || !this.auth.isSuperAdmin()){
       this.router.navigate(['/']);
     }
   }
@@ -57,15 +56,7 @@ export class AccountListComponent implements OnInit {
   }
 
   updateAccount(accountToUpdate){
-    /*const dialogConfig = new MatDialogConfig();
-    //dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
-    dialogConfig.height = "95%";
-    dialogConfig.data = {
-      account: accountToUpdate
-    };
-    this.dialog.open(RegistrationComponent, dialogConfig);*/
+    // TODO: Allow superAdmin to edit 'admin' permissions
     const registrationModal = this.modalService.open(RegistrationComponent);
     registrationModal.componentInstance.modalTitle = 'Update Account';
     registrationModal.componentInstance.submitBtn = 'Update';
@@ -76,15 +67,6 @@ export class AccountListComponent implements OnInit {
     const registrationModal = this.modalService.open(RegistrationComponent);
     registrationModal.componentInstance.modalTitle = 'Create Account';
     registrationModal.componentInstance.submitBtn = 'Create';
-
-    /*
-    const dialogConfig = new MatDialogConfig();
-    //dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    //dialogConfig.width = "50%";
-    //dialogConfig.height = "95%";
-    this.dialog.open(RegistrationComponent, dialogConfig);
-    */
   }
 
   accountDetails(accountId: number){

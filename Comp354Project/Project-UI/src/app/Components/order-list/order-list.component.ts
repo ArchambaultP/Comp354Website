@@ -1,19 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {Product} from "../../model/product";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
-import {Account} from "../../model/account";
 import {OrderService} from "../../service/order.service";
 import {AuthService} from "../../service/auth.service";
 import {AuthenticatedUser} from "../../model/authenticatedUser";
-import {OrderItem} from "../../model/orderItem";
-import {RegistrationComponent} from "../register/registration.component";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {AccountDetailsComponent} from "../admin/account-details/account-details.component";
 import {Router} from "@angular/router";
 import {AccountOrder} from "../../model/accountOrder";
-import {OrderInfo} from "../../model/orderInfo";
 import {Observable} from "rxjs";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
@@ -35,8 +29,6 @@ export class OrderListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'date'];
   searchKey: string;
 
-  // TODO: delete orderinfo
-  orderInfos: OrderInfo[];
   accountOrders: Observable<AccountOrder>;
   authUser: AuthenticatedUser;
   expandedElement: AccountOrder | null;
@@ -52,7 +44,7 @@ export class OrderListComponent implements OnInit {
   }
 
   reloadData() {
-    // Convert Observable<Account[]> to a list for MatTableDataSource
+    // Convert Observable<AccountOrder[]> to a list for MatTableDataSource
     this.authUser = JSON.parse(sessionStorage.getItem('user'));
     this.orderService.getAccountOrders(+this.authUser.id).subscribe(
         list => {
@@ -62,19 +54,6 @@ export class OrderListComponent implements OnInit {
           this.listData.paginator = this.paginator;
         });
     this.accountOrders = this.orderService.getAccountOrders(+this.authUser.id);
-    //console.log(this.accountOrders);
-  }
-
-  orderDetails(productId: number){
-    /*const dialogConfig = new MatDialogConfig();
-    //dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
-    //dialogConfig.height = "95%";
-    dialogConfig.data = {
-      id: productId
-    };
-    this.dialog.open(AccountDetailsComponent, dialogConfig);*/
   }
 
   onSearchClear(){

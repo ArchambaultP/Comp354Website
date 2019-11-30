@@ -40,20 +40,4 @@ public class OrderController {
                 .orElseThrow(() -> new IllegalArgumentException("Account not found for id: " + id));
         return account.getOrders();
     }
-
-    @GetMapping(path="/orders/{id}")
-    public Iterable<OrderItem> getOrderItemsFromAccountOrderId(@PathVariable(value = "id") int id)
-            throws IllegalArgumentException {
-        AccountOrder accountOrder = accountOrderRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("AccountOrder not found for id: " + id));
-        return accountOrder.getOrderItemList();
-    }
-
-    @GetMapping(path="/product/{id}")
-    public Product getProductFromOrderItemId(@PathVariable(value = "id") int id)
-            throws IllegalArgumentException {
-        OrderItem orderItem = orderItemRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("OrderItem not found for id: " + id));
-        return orderItem.getProduct();
-    }
 }
