@@ -1,0 +1,114 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="panel-heading">
+    <h2>Order List</h2>
+</div>
+<div class="search-div">
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput type="text" [(ngModel)]="searchKey" placeholder="Search..." autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+
+<!--<div class="mat-elevation-z8">
+    <mat-table [dataSource]="listData" matSort>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Order #</mat-header-cell>
+            <mat-cell *matCellDef="let accountOrder">{{accountOrder.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+            <mat-cell *matCellDef="let accountOrder">{{accountOrder.date}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let accountOrder">
+                <button mat-icon-button (click)="orderDetails(accountOrder.idAccountOrder)"><mat-icon>launch</mat-icon></button>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="4">
+                Loading...
+            </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef colspan="4">
+                No data found.
+            </mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+        <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>-->
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="listData" matSort multiTemplateDataRows>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Order #</th>
+            <td mat-cell *matCellDef="let accountOrder">{{accountOrder.id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td mat-cell *matCellDef="let accountOrder">{{accountOrder.date}}</td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let accountOrder" [attr.colspan]="displayedColumns.length">
+                <div class="order-element-detail"
+                     [@detailExpand]="accountOrder == expandedElement ? 'expanded' : 'collapsed'">
+                    <table>
+                        <tr *ngFor="let order of accountOrder.orderItemList">
+                            <td>
+                                <div class="order-element-diagram">
+                                    <img [src]="order.product.imageURL" height="100%">
+                                </div>
+                            </td>
+                            <td>
+                                {{order.product.name}}
+                            </td>
+                            <td>
+                                Price: {{order.product.price}}
+                            </td>
+                            <td>
+                                Qty: {{order.quantity}}
+                            </td>
+                            <td>
+                                Total: {{order.price}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="4">
+                Loading...
+            </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef colspan="4">
+                No data found.
+            </mat-footer-cell>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let accountOrder; columns: displayedColumns;"
+                 class="order-element-row"
+                 [class.example-expanded-row]="expandedElement === accountOrder"
+                 (click)="expandedElement = expandedElement === accountOrder ? null : accountOrder">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="order-detail-row"></tr>
+
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+        <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>

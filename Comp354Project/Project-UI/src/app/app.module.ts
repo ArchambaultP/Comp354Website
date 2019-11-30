@@ -46,6 +46,8 @@ import {
     MatTableModule
 } from "@angular/material/";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { OrderListComponent } from './Components/order-list/order-list.component';
+import {OrderService} from "./service/order.service";
 import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
@@ -74,6 +76,7 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
     EmailRequestComponent,
     EmailVerification,
     PasswordUpdate,
+    OrderListComponent,
     SocialMediaButtonsComponent,
   ],
     imports: [
@@ -92,12 +95,12 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDialogModule
+        MatDialogModule,
         ButtonsModule,
         InputsModule,
         JwSocialButtonsModule,
       ],
-  providers: [UserService, AuthService, AdminService, ProductService],
+  providers: [UserService, AuthService, AdminService, ProductService, OrderService],
   bootstrap: [AppComponent],
   entryComponents: [RegistrationComponent]
 })

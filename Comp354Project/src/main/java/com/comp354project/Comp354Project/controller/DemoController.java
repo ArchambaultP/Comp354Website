@@ -2,11 +2,7 @@ package com.comp354project.Comp354Project.controller;
 
 
 import com.comp354project.Comp354Project.Entities.*;
-import com.comp354project.Comp354Project.repository.AccountRepository;
-import com.comp354project.Comp354Project.repository.DemoRepository;
-import com.comp354project.Comp354Project.repository.CategoryRepository;
-import com.comp354project.Comp354Project.repository.DepartmentRepository;
-import com.comp354project.Comp354Project.repository.ProductRepository;
+import com.comp354project.Comp354Project.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +32,15 @@ public class DemoController {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    @Autowired
+    private AccountOrderRepository accountOrderRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     private final PasswordHelper pwdHelper = new PasswordHelper();
 
@@ -489,6 +494,100 @@ public class DemoController {
             prod.setCategory(categoryRepository.findByName("Woman Clothing").get(0));
             productRepository.save(prod);
         }
+
+        return "done";
+    }
+
+    @GetMapping(path="/instatiateOrders")
+    public @ResponseBody String instatiateOrders(){
+
+        if(accountRepository.findByEmail("seller1@outlook.com") == null
+                || productRepository.findByName("Microsoft Surface Pro 6").isEmpty()
+                || productRepository.findByName("Apple Ipad Pro").isEmpty()){
+            return "ERROR - /demo/instatiateOrders: Please instantiate accounts & products first.";
+        }
+
+        // ACCOUNT ORDER 1
+        Payment payment = new Payment();
+        payment.setPaymentType("Credit");
+        payment.setPaymentConfirmed(true);
+        payment.setPaymentDate(new Date(0));
+
+        AccountOrder accountOrder = new AccountOrder();
+        accountOrder.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+        accountOrder.setDate(new Date(0));
+        accountOrder.setPayment(payment);
+        payment.setOrder(accountOrder);
+
+        List<OrderItem> orderItems = new ArrayList<>();
+
+        OrderItem temp1 = new OrderItem();
+        temp1.setOrder(accountOrder);
+        temp1.setProduct(productRepository.findByName("Microsoft Surface Pro 6").get(0));
+        temp1.setPrice(productRepository.findByName("Microsoft Surface Pro 6").get(0).getPrice());
+        temp1.setQuantity(1);
+        //temp1.setShippingDate(new Date(0));
+        orderItems.add(temp1);
+
+        OrderItem temp2 = new OrderItem();
+        temp2.setOrder(accountOrder);
+        temp2.setProduct(productRepository.findByName("Apple Ipad Pro").get(0));
+        temp2.setPrice(productRepository.findByName("Apple Ipad Pro").get(0).getPrice());
+        temp2.setQuantity(1);
+        //temp2.setShippingDate(new Date(0));
+        orderItems.add(temp2);
+
+        accountOrder.setOrderItemList(orderItems);
+
+        paymentRepository.save(payment);
+        accountOrderRepository.save(accountOrder);
+        orderItemRepository.save(temp1);
+        orderItemRepository.save(temp2);
+
+        // ACCOUNT ORDER 2
+        Payment payment2 = new Payment();
+        payment2.setPaymentType("Bank");
+        payment2.setPaymentConfirmed(true);
+        payment2.setPaymentDate(new Date(0));
+
+        AccountOrder accountOrder2 = new AccountOrder();
+        accountOrder2.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+        accountOrder2.setDate(new Date(0));
+        accountOrder2.setPayment(payment2);
+        payment2.setOrder(accountOrder2);
+
+        List<OrderItem> orderItems2 = new ArrayList<>();
+
+        OrderItem temp3 = new OrderItem();
+        temp3.setOrder(accountOrder2);
+        temp3.setProduct(productRepository.findByName("Levi's Womens 721 High Rise Skinny Jeans").get(0));
+        temp3.setPrice(productRepository.findByName("Levi's Womens 721 High Rise Skinny Jeans").get(0).getPrice());
+        temp3.setQuantity(1);
+        //temp1.setShippingDate(new Date(0));
+        orderItems2.add(temp3);
+
+        OrderItem temp4 = new OrderItem();
+        temp4.setOrder(accountOrder2);
+        temp4.setProduct(productRepository.findByName("Damascus Chef Knife 8 inch").get(0));
+        temp4.setPrice(productRepository.findByName("Damascus Chef Knife 8 inch").get(0).getPrice());
+        temp4.setQuantity(1);
+        //temp2.setShippingDate(new Date(0));
+        orderItems2.add(temp4);
+
+        accountOrder2.setOrderItemList(orderItems2);
+
+        paymentRepository.save(payment2);
+        accountOrderRepository.save(accountOrder2);
+        orderItemRepository.save(temp3);
+        orderItemRepository.save(temp4);
+
+        /*Account seller = accountRepository.findByEmail("seller1@outlook.com");
+
+        List<AccountOrder> accountOrders = new ArrayList<>();
+        accountOrders.add(accountOrder);
+        seller.setOrders(accountOrders);
+
+        accountRepository.save(seller);*/
 
         return "done";
     }
