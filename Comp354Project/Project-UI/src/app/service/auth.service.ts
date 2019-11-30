@@ -67,6 +67,16 @@ export class AuthService {
         }
     }
 
+    getFullCurrentAccount(): Observable<any>{
+        const uid = this.currentUserId();
+        return this.http.get<any>('http://localhost:8080/account/user/'+uid);
+    }
+
+    getCurrentUserProducts(){
+        const uid = this.currentUserId();
+        return this.http.get<any>('http://localhost:8080/account/user/'+uid+"/products");
+    }
+
     update(credentials, id:number): Observable<any>{
         if(credentials != undefined){
             const body = new HttpParams()
@@ -197,4 +207,10 @@ export class AuthService {
         this.authUser = JSON.parse(sessionStorage.getItem('user'));
         return this.authUser.isSuperAdmin;
     }
+
+    currentUserId(){
+        this.authUser = JSON.parse(sessionStorage.getItem('user'));
+        return this.authUser.id;
+    }
+
 }

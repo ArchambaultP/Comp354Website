@@ -46,7 +46,7 @@
                     <div ngbDropdown class="d-inline-block">
                         <button id="dropdownAuthUser" type="button" class="btn btn-outline-primary" ngbDropdownToggle>{{ this.currentUser }}</button>
                         <div ngbDropdownMenu aria-labelledby="dropdownAuthUser"  class="col">
-                            <button ngbDropdownItem>Your Account</button>
+                            <button ngbDropdownItem><a routerLink="account/user-account">Your Account</a></button>
                             <div class="dropdown-divider"></div>
                             <button  (click)=logout() ngbDropdownItem>Sign Out</button>
                         </div>

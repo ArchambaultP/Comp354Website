@@ -49,6 +49,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import { UserAccountComponent } from './Components/account/user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
     EmailVerification,
     PasswordUpdate,
     SocialMediaButtonsComponent,
+    UserAccountComponent
   ],
     imports: [
         BrowserModule,
@@ -92,10 +94,10 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDialogModule
+        MatDialogModule,
         ButtonsModule,
         InputsModule,
-        JwSocialButtonsModule,
+        JwSocialButtonsModule
       ],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent],

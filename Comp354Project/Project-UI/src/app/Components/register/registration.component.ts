@@ -94,8 +94,10 @@ export class RegistrationComponent implements OnInit{
     get form(){ return this.regForm.controls; }
 
     onSubmit(){
+        this.loading = true;
         this.submitted = true;
         if(this.regForm.invalid){
+            this.loading = false;
             return;
         }
         this.credentials =
@@ -119,14 +121,15 @@ export class RegistrationComponent implements OnInit{
                     {
                         //if(data['registrationSuccess'] != true){
                         if(!data['error']){
-                            this.authUser = data;
-                            this.auth.registerSuccessfulLogin(this.authUser);
+                            //this.authUser = data;
+                            //this.auth.registerSuccessfulLogin(this.authUser);
                             this.successMsg = data['message'];
                             this.error = false;
                         }else{
                             this.errorMsg = data['message'];
                             this.error = true;
                         }
+                        this.loading = false;
                     }
                 );
         }
@@ -138,14 +141,15 @@ export class RegistrationComponent implements OnInit{
                     {
                         //if(data['registrationSuccess'] != true){
                         if(!data['error']){
-                            this.authUser = data;
-                            this.auth.registerSuccessfulLogin(this.authUser);
+                            //this.authUser = data;
+                            //this.auth.registerSuccessfulLogin(this.authUser);
                             this.successMsg = data['message'];
                             this.error = false;
                         }else{
                             this.errorMsg = data['message'];
                             this.error = true;
                         }
+                        this.loading = false;
                     }
                 );
         }

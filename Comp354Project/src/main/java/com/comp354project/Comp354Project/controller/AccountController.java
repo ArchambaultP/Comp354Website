@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.json.simple.JSONObject;
 
+import java.util.Optional;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
@@ -39,7 +41,7 @@ public class AccountController {
      * @param password New password to set the account to.
      * @return JSON representation of the user account.
      */
-    @RequestMapping(value="changepassword", method = RequestMethod.POST)
+    @RequestMapping(value="/changepassword", method = RequestMethod.POST)
     public String changePassword(@RequestParam("email") String email,@RequestParam("pwd") String password){
         JSONObject response = new JSONObject();
         Account acc = accountRepository.findByEmail(email);
@@ -69,5 +71,10 @@ public class AccountController {
             response.put("message","Invalid email address.");
         }
         return response.toJSONString();
+    }
+
+    @GetMapping(value="/user/{id}")
+    public Account getUser(@PathVariable("id") Integer id){
+        return accountRepository.getAccountByIdAccount(id);
     }
 }
