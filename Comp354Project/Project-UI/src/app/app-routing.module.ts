@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'account/email-verification', component: EmailVerification},
   { path: 'account/password-update', component: PasswordUpdate},
   {path: '', component: MainComponent},
-  { path: 'account/user-account', component: UserAccountComponent }
+  { path: 'account/user-account', component: UserAccountComponent },
   { path: 'order/account-orders/:id', component: OrderListComponent},
   { path: 'order/orders/:id', component: OrderListComponent},
   { path: 'order/product/:id', component: OrderListComponent}
