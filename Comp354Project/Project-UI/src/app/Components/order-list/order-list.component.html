@@ -48,13 +48,13 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>-->
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="listData" multiTemplateDataRows>
+    <table mat-table [dataSource]="listData" matSort multiTemplateDataRows>
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef >Order #</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Order #</th>
             <td mat-cell *matCellDef="let accountOrder">{{accountOrder.id}}</td>
         </ng-container>
         <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef >Date</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td mat-cell *matCellDef="let accountOrder">{{accountOrder.date}}</td>
         </ng-container>
 

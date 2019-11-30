@@ -507,6 +507,7 @@ public class DemoController {
             return "ERROR - /demo/instatiateOrders: Please instantiate accounts & products first.";
         }
 
+        // ACCOUNT ORDER 1
         Payment payment = new Payment();
         payment.setPaymentType("Credit");
         payment.setPaymentConfirmed(true);
@@ -542,6 +543,43 @@ public class DemoController {
         accountOrderRepository.save(accountOrder);
         orderItemRepository.save(temp1);
         orderItemRepository.save(temp2);
+
+        // ACCOUNT ORDER 2
+        Payment payment2 = new Payment();
+        payment2.setPaymentType("Bank");
+        payment2.setPaymentConfirmed(true);
+        payment2.setPaymentDate(new Date(0));
+
+        AccountOrder accountOrder2 = new AccountOrder();
+        accountOrder2.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+        accountOrder2.setDate(new Date(0));
+        accountOrder2.setPayment(payment2);
+        payment2.setOrder(accountOrder2);
+
+        List<OrderItem> orderItems2 = new ArrayList<>();
+
+        OrderItem temp3 = new OrderItem();
+        temp3.setOrder(accountOrder2);
+        temp3.setProduct(productRepository.findByName("Levi's Womens 721 High Rise Skinny Jeans").get(0));
+        temp3.setPrice(productRepository.findByName("Levi's Womens 721 High Rise Skinny Jeans").get(0).getPrice());
+        temp3.setQuantity(1);
+        //temp1.setShippingDate(new Date(0));
+        orderItems2.add(temp3);
+
+        OrderItem temp4 = new OrderItem();
+        temp4.setOrder(accountOrder2);
+        temp4.setProduct(productRepository.findByName("Damascus Chef Knife 8 inch").get(0));
+        temp4.setPrice(productRepository.findByName("Damascus Chef Knife 8 inch").get(0).getPrice());
+        temp4.setQuantity(1);
+        //temp2.setShippingDate(new Date(0));
+        orderItems2.add(temp4);
+
+        accountOrder2.setOrderItemList(orderItems2);
+
+        paymentRepository.save(payment2);
+        accountOrderRepository.save(accountOrder2);
+        orderItemRepository.save(temp3);
+        orderItemRepository.save(temp4);
 
         /*Account seller = accountRepository.findByEmail("seller1@outlook.com");
 
