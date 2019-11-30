@@ -46,6 +46,10 @@ import {
     MatTableModule
 } from "@angular/material/";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
+import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +73,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AccountDetailsComponent,
     EmailRequestComponent,
     EmailVerification,
-    PasswordUpdate
+    PasswordUpdate,
+    SocialMediaButtonsComponent,
   ],
     imports: [
         BrowserModule,
@@ -88,9 +93,13 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         MatFormFieldModule,
         MatInputModule,
         MatDialogModule
-    ],
+        ButtonsModule,
+        InputsModule,
+        JwSocialButtonsModule,
+      ],
   providers: [UserService, AuthService, AdminService, ProductService],
   bootstrap: [AppComponent],
   entryComponents: [RegistrationComponent]
 })
+
 export class AppModule { }

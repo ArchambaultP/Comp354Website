@@ -29,7 +29,8 @@ const routes: Routes = [
   { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
   { path: 'account/email-request', component: EmailRequestComponent},
   { path: 'account/email-verification', component: EmailVerification},
-  { path: 'account/password-update', component: PasswordUpdate}
+  { path: 'account/password-update', component: PasswordUpdate},
+  {path: '', component: MainComponent}
 ];
 
 @NgModule({
