@@ -12,4 +12,8 @@ export class ReviewComponent implements OnInit {
   ngOnInit() {
   }
 
+addReview() {
+    window.alert('Your review was added.');
+  }
+
 }
