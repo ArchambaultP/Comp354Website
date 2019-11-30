@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
     selector: 'billing-form',
     templateUrl: './billing.component.html',
-    styleUrls: [ './billing.component.scss' ]
+    styleUrls: [ './billing.component.css' ]
 })
 export class BillingFormComponent implements OnInit {
     @Output() formReady = new EventEmitter<FormGroup>()
