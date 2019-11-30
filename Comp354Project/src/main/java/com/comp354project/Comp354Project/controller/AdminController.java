@@ -32,6 +32,7 @@ public class AdminController {
     @Autowired
     private AccountRepository accountRepository;
 
+    // TODO: Remove - this was replaced with AuthController
     private final PasswordHelper pwdHelper = new PasswordHelper();
 
     @GetMapping(path="/accounts")
@@ -52,6 +53,7 @@ public class AdminController {
         return accountRepository.save(account);
     }
 
+    // TODO: Remove - this was replaced with AuthController
     @PutMapping(path="/accounts/{id}")
     public ResponseEntity<Account> updateAccount(@PathVariable(value = "id") int id, @Valid @RequestBody Account accountDetails)
             throws IllegalArgumentException  {

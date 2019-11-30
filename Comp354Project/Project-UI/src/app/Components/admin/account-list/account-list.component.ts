@@ -17,7 +17,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AccountListComponent implements OnInit {
 
-  accounts: Observable<Account[]>; // TODO: Remove, because it got replaced with Datasource = listData
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['id', 'name', 'email', 'actions'];
   searchKey: string;
@@ -38,7 +37,6 @@ export class AccountListComponent implements OnInit {
   }
 
   reloadData() {
-    //this.accounts = this.adminService.getAccounts();
     // Convert Observable<Account[]> to a list for MatTableDataSource
     this.adminService.getAccounts().subscribe(
         list => {

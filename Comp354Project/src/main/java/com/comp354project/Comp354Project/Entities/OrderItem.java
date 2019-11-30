@@ -1,5 +1,8 @@
 package com.comp354project.Comp354Project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -12,6 +15,7 @@ public class OrderItem {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer idOrderItem;
 
+    @JsonBackReference
     @NotNull
     @ManyToOne
     @JoinColumn(name = "idAccountOrder")

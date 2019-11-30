@@ -46,6 +46,8 @@ import {
     MatTableModule
 } from "@angular/material/";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { OrderListComponent } from './Components/order-list/order-list.component';
+import {OrderService} from "./service/order.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +71,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AccountDetailsComponent,
     EmailRequestComponent,
     EmailVerification,
-    PasswordUpdate
+    PasswordUpdate,
+    OrderListComponent
   ],
     imports: [
         BrowserModule,
@@ -89,7 +92,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         MatInputModule,
         MatDialogModule
     ],
-  providers: [UserService, AuthService, AdminService, ProductService],
+  providers: [UserService, AuthService, AdminService, ProductService, OrderService],
   bootstrap: [AppComponent],
   entryComponents: [RegistrationComponent]
 })
