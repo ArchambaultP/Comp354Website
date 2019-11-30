@@ -1,0 +1,48 @@
+/* --- ORDER-LIST PAGE --- */
+table {
+    width: 100%;
+}
+
+tr.order-detail-row {
+    height: 0;
+}
+
+tr.order-element-row:not(.order-expanded-row):hover {
+    background: #777;
+}
+
+tr.order-element-row:not(.order-expanded-row):active {
+    background: #efefef;
+}
+
+.order-element-row td {
+    border-bottom-width: 0;
+}
+
+.order-element-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+.order-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+}
+
+.order-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+}
+
+.order-element-description {
+    padding: 16px;
+}
+
+.order-element-description-attribution {
+    opacity: 0.5;
+}

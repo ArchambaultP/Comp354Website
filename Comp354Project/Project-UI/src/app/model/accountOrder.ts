@@ -1,7 +1,7 @@
-import {Order} from "./order";
+import {OrderItem} from "./orderItem";
 
 export class AccountOrder {
     id: number;
     date: string;
-    orderItemList: Order[];
+    orderItemList: OrderItem[];
 }
