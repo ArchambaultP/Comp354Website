@@ -93,6 +93,7 @@ public class Account {
     )
     private List<Review> reviews = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(
             mappedBy = "account",
             cascade = CascadeType.ALL,

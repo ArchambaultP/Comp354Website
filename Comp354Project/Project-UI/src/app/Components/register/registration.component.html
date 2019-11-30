@@ -83,6 +83,15 @@
             <label for="postalCode">Phone</label>
             <input formControlName="phone" type="text" class="form-control" id="phone" name="phone"/>
         </div>
-        <button class="btn btn-primary mr-1">{{ submitBtn }}</button>
+        <div *ngIf="!loading">
+            <button class="btn btn-primary mr-1">{{ submitBtn }}</button>
+        </div>
+        <div *ngIf="submitted">
+            <div *ngIf="loading">
+                <button class="btn btn-primary mr-1" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
     </form>
 </div>

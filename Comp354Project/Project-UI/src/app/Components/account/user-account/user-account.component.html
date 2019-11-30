@@ -1,0 +1,79 @@
+<div class="">
+    <div> <!-- Page heading -->
+        <h1>Your Account</h1>
+    </div>
+    <div class="mb-2 ml-2 mr-2"> <!-- body -->
+        <div> <!-- Update Account -->
+            <div *ngIf="!loading">
+                <button class="btn btn-primary" (click)="onUpdateInfo()">Account Information</button>
+            </div>
+            <div *ngIf="loading">
+                <button class="btn btn-primary mr-1" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        <div> <!-- Products sold -->
+            <h2>Your Products</h2>
+            <div class="mat-elevation-z8">
+                <mat-table [dataSource]="accountProductList" matSort>
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                        <mat-cell *matCellDef="let product">{{product.id}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="imageURL">
+                        <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
+                        <mat-cell *matCellDef="let product"><img class="img-fluid img-thumbnail" [src]="product.imageURL"/></mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="brand">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Brand</mat-header-cell>
+                        <mat-cell *matCellDef="let product">{{product.brand}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                        <mat-cell *matCellDef="let product">{{product.name}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+                        <mat-cell *matCellDef="let product">{{product.description}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="price">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+                        <mat-cell *matCellDef="let product">{{product.price}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="quantity">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+                        <mat-cell *matCellDef="let product">{{product.quantity}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="permanentPosting">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Permanent Posting</mat-header-cell>
+                        <mat-cell *matCellDef="let product">{{product.permanentPosting}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="loading">
+                        <mat-footer-cell *matFooterCellDef colspan="4">
+                            Loading...
+                        </mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="noData">
+                        <mat-footer-cell *matFooterCellDef colspan="4">
+                            You have no products for sale.
+                        </mat-footer-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+                    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':accountProductList!=null}"></mat-footer-row>
+                    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(accountProductList!=null && accountProductList.data.length==0)}"></mat-footer-row>
+                </mat-table>
+                <mat-paginator [pageSizeOptions]="[5,10,25,50]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+        <div> <!-- orders -->
+            <app-order-list></app-order-list>
+        </div>
+
+    </div>
+
+</div>

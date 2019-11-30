@@ -67,6 +67,40 @@ export class AuthService {
         }
     }
 
+    getFullCurrentAccount(): Observable<any>{
+        const uid = this.currentUserId();
+        return this.http.get<any>('http://localhost:8080/account/user/'+uid);
+    }
+
+    getCurrentUserProducts(){
+        const uid = this.currentUserId();
+        return this.http.get<any>('http://localhost:8080/account/user/'+uid+"/products");
+    }
+
+    update(credentials, id:number): Observable<any>{
+        if(credentials != undefined){
+            const body = new HttpParams()
+                .set('id',id.toString())
+                .set('email',credentials.email)
+                .set('password',credentials.password)
+                .set('name',credentials.name)
+                .set('address',credentials.address)
+                .set('city',credentials.city)
+                .set('province',credentials.province)
+                .set('country',credentials.country)
+                .set('postalCode',credentials.postalCode)
+                .set('phone',credentials.phone);
+
+            return this.http.put('http://localhost:8080/auth/update',
+                body.toString(),
+                {
+                    headers: new HttpHeaders()
+                        .set('Content-Type','application/x-www-form-urlencoded')
+                }
+            );
+        }
+    }
+
     /**
     * Request to reset an account's password
     */
@@ -173,4 +207,10 @@ export class AuthService {
         this.authUser = JSON.parse(sessionStorage.getItem('user'));
         return this.authUser.isSuperAdmin;
     }
+
+    currentUserId(){
+        this.authUser = JSON.parse(sessionStorage.getItem('user'));
+        return this.authUser.id;
+    }
+
 }

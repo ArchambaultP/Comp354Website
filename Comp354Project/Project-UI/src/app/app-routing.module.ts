@@ -15,6 +15,8 @@ import {AccountDetailsComponent} from "./Components/admin/account-details/accoun
 import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
 import { EmailVerification } from './Components/account/email-verification/email-verification.component';
 import { PasswordUpdate } from './Components/account/password-update/password-update.component';
+import { UserAccountComponent } from './Components/account/user-account/user-account.component';
+import {OrderListComponent} from "./Components/order-list/order-list.component";
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -30,7 +32,11 @@ const routes: Routes = [
   { path: 'account/email-request', component: EmailRequestComponent},
   { path: 'account/email-verification', component: EmailVerification},
   { path: 'account/password-update', component: PasswordUpdate},
-  {path: '', component: MainComponent}
+  {path: '', component: MainComponent},
+  { path: 'account/user-account', component: UserAccountComponent },
+  { path: 'order/account-orders/:id', component: OrderListComponent},
+  { path: 'order/orders/:id', component: OrderListComponent},
+  { path: 'order/product/:id', component: OrderListComponent}
 ];
 
 @NgModule({

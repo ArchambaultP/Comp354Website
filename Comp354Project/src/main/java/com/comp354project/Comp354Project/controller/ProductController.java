@@ -81,4 +81,10 @@ public class ProductController {
         return departmentRepository.findById(id);
     }
 
+    @CrossOrigin(origins="http://localhost:4200")
+    @GetMapping(path="/account/user/{id}/products")
+    public List<Product> getUserProducts(@PathVariable Integer id){
+        return productRepository.findById_account(id);
+    }
+
 }
