@@ -108,6 +108,58 @@ public class AuthenticationController {
         }
         return response.toJSONString();
     }
+    @RequestMapping(value="/update", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public String updateUser(@RequestParam("id") String id, @RequestParam("email") String email, @RequestParam("password") String pwd
+            ,@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("city") String city
+            , @RequestParam("province") String province, @RequestParam("country") String country
+            , @RequestParam("postalCode") String postalCode, @RequestParam("phone") String phone){
+
+        JSONObject response = new JSONObject();
+        Account acc = accountRepository.getAccountByIdAccount(Integer.parseInt(id));
+
+        //TODO: If email change is requested, use email verification
+        if(!email.isEmpty() && !name.isEmpty()){
+            if(!pwd.isEmpty()){
+                String salt = pwdHelper.getSalt();
+                acc.setPassword(pwdHelper.hash(pwd,salt));
+                acc.setSalt(salt);
+            }
+            acc.setEmail(email);
+            acc.setName(name);
+            acc.setAddress1(address);
+            acc.setCity(city);
+            acc.setProvince(province);
+            acc.setCountry(country);
+            acc.setPostalCode(postalCode);
+            acc.setPhone(phone);
+            acc.setDatejoined(new Date(0));
+            acc.setCanBuy(true);
+            acc.setCanSell(true);
+            acc.setActive(false);
+            try{
+                accountRepository.save(acc);
+                //response.put("registrationSuccess",true);
+                //confirmEmail(email);
+                response.put("error",false);
+                response.put("message", "Account successfully updated.");
+                /*
+                response.put("id",acc.getId());
+                response.put("name",acc.getName());
+                response.put("email",acc.getEmail());
+                response.put("canBuy",true);
+                response.put("canSell",true);
+                response.put("isAdmin",accRecord.isAdmin());
+                response.put("isSuperAdmin",accRecord.isSuperAdmin());
+                 */
+            }catch(Exception e){
+                response.put("error", true);
+                response.put("message","Unexpected error occurred when creating the account.");
+                //response.put("registrationSuccess",false);
+            }
+        }
+        return response.toJSONString();
+    }
     @RequestMapping(value="/confirmEmail", method = RequestMethod.POST)
     public String confirmEmail(@RequestParam("email") String email){
         String activationCode = pwdHelper.generateRecoveryCode();

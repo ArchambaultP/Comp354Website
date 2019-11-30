@@ -37,6 +37,15 @@ import { EmailRequestComponent } from './Components/account/email-request/email-
 import { EmailVerification } from './Components/account/email-verification/email-verification.component';
 import { PasswordUpdate } from './Components/account/password-update/password-update.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+    MatButtonModule, MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule, MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule
+} from "@angular/material/";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
@@ -75,12 +84,22 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
         ReactiveFormsModule,
         MatCardModule,
         NgbModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatSortModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule
         ButtonsModule,
         InputsModule,
         JwSocialButtonsModule,
       ],
   providers: [UserService, AuthService, AdminService, ProductService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RegistrationComponent]
 })
 
 export class AppModule { }

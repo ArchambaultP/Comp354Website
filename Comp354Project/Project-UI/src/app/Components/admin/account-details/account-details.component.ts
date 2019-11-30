@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {AdminService} from "../../../service/admin.service";
 import {Account} from "../../../model/account";
 import { AuthenticatedUser } from '../../../model/authenticatedUser';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-account-details',
@@ -15,12 +16,13 @@ export class AccountDetailsComponent implements OnInit {
   account: Account;
 
   constructor(private route: ActivatedRoute,private router: Router,
-              private adminService: AdminService) { }
+              private adminService: AdminService, @Inject(MAT_DIALOG_DATA) public data: any,
+              public dialogRef: MatDialogRef<AccountDetailsComponent>) { }
 
   ngOnInit() {
     this.account = new Account();
 
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.data.id;
 
     this.adminService.getAccount(this.id)
         .subscribe(data => {
@@ -29,8 +31,8 @@ export class AccountDetailsComponent implements OnInit {
         }, error => console.log(error));
   }
 
-  list(){
-    this.router.navigate(['admin/accounts']);
+  close(){
+    this.dialogRef.close();
   }
 
 }
