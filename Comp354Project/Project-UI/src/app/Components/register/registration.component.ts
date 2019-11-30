@@ -119,10 +119,7 @@ export class RegistrationComponent implements OnInit{
                 (
                     data =>
                     {
-                        //if(data['registrationSuccess'] != true){
                         if(!data['error']){
-                            //this.authUser = data;
-                            //this.auth.registerSuccessfulLogin(this.authUser);
                             this.successMsg = data['message'];
                             this.error = false;
                         }else{
@@ -139,10 +136,7 @@ export class RegistrationComponent implements OnInit{
                 (
                     data =>
                     {
-                        //if(data['registrationSuccess'] != true){
                         if(!data['error']){
-                            //this.authUser = data;
-                            //this.auth.registerSuccessfulLogin(this.authUser);
                             this.successMsg = data['message'];
                             this.error = false;
                         }else{
@@ -153,8 +147,5 @@ export class RegistrationComponent implements OnInit{
                     }
                 );
         }
-
-
-
     }
 }

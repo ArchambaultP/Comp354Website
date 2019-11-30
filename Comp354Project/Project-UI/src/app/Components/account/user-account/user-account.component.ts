@@ -26,6 +26,9 @@ export class UserAccountComponent implements OnInit{
     }
 
     ngOnInit(){
+        if(!this.auth.isUserLoggedIn()){
+            this.router.navigate(['/']);
+        }
         this.loadProducts();
     }
 

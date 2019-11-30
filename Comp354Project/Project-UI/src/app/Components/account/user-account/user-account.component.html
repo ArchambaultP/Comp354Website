@@ -2,7 +2,7 @@
     <div> <!-- Page heading -->
         <h1>Your Account</h1>
     </div>
-    <div> <!-- body -->
+    <div class="mb-2 ml-2 mr-2"> <!-- body -->
         <div> <!-- Update Account -->
             <div *ngIf="!loading">
                 <button class="btn btn-primary" (click)="onUpdateInfo()">Account Information</button>
@@ -13,7 +13,7 @@
                 </button>
             </div>
         </div>
-        <div class="mb-2 ml-2 mr-2"> <!-- Products sold -->
+        <div> <!-- Products sold -->
             <h2>Your Products</h2>
             <div class="mat-elevation-z8">
                 <mat-table [dataSource]="accountProductList" matSort>
@@ -69,6 +69,9 @@
                 </mat-table>
                 <mat-paginator [pageSizeOptions]="[5,10,25,50]" [pageSize]="5" showFirstLastButtons></mat-paginator>
             </div>
+        </div>
+        <div> <!-- orders -->
+            <app-order-list></app-order-list>
         </div>
 
     </div>
