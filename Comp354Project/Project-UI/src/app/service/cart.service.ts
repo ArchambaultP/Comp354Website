@@ -24,6 +24,7 @@ export class CartService {
         }
     }
 
+<<<<<<< HEAD
     addToCart(item){
       this.cartItemsList += item;
     }
@@ -63,6 +64,60 @@ export class CartService {
         return this.storage.get(storageKey)
     }
 
+=======
+    addToCart(pid,qty,replace){
+
+        if(this.cartData[pid] == undefined){
+            this.cartData[pid] = 0;
+        }
+        if(replace===''){
+            this.cartData[pid] =  this.cartData[pid] + qty;
+        }else{
+            this.cartData[pid] =  parseInt(qty);
+        }
+
+        if(this.cartData[pid]==0){
+            delete this.cartData[pid];
+        }
+        this.storeItems();
+    }
+
+    storeItems(){
+        this.storage.set({
+            'mycart' : this.cartData
+        });
+        this.listCartItems();
+    }
+
+    listCartItems(){
+        let tempCart = [];
+        let getActualItems = Object.keys(this.cartData);
+        let cartDataItems = this.cartData;
+        let tempTotal = 0;
+
+        var onlyChoosenItems = (this.allItems).filter(function(item) {
+            if(getActualItems.indexOf(item.p_id) !== -1 ){
+                tempCart.push({
+                    pid:  item.p_id,
+                    name:  item.product_name,
+                    qty:  cartDataItems[item.p_id],
+                    price:  item.product_price*cartDataItems[item.p_id],
+                });
+                tempTotal += item.product_price*cartDataItems[item.p_id];
+            }
+        });
+
+
+        this.cartItemsList = tempCart;
+        this.cartTotal = tempTotal;
+
+    }
+
+    loadCheckoutInfo(storageKey: string){
+        return this.storage.get(storageKey)
+    }
+
+>>>>>>> parent of c6d049ab... cart page
     emptyCart(){
         this.storage.set({
             mycart:{}
@@ -70,4 +125,8 @@ export class CartService {
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> parent of c6d049ab... cart page
