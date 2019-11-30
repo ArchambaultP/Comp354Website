@@ -63,6 +63,7 @@ import { UserAccountComponent } from './Components/account/user-account/user-acc
 import { CookieService } from 'ngx-cookie-service';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { ReviewComponent } from './Components/review/review.component';
+import { DisplayReviewsComponent } from './Components/display-reviews/display-reviews.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { ReviewComponent } from './Components/review/review.component';
     SocialMediaButtonsComponent,
     UserAccountComponent,
     ReviewComponent,
+    DisplayReviewsComponent,
   ],
   imports: [
         BrowserModule,
