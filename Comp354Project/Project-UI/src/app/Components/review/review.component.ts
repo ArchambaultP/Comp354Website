@@ -30,20 +30,9 @@ export class ReviewComponent {
 
   }
 
-  clearCart() {
-    let temp = {};
-    localStorage.setItem(this.storage.storageName, JSON.stringify(temp));
-
-    //this.checkOutFlag = Object.keys(this.storage.get()).length;
-    //console.log(this.checkOutFlag)
-    document.location.href = '/products';
+addReview() {
+    window.alert('Your review was added.');
   }
 
-  print() {
-    let temp = {};
-    localStorage.setItem(this.storage.storageName, JSON.stringify(temp));
-    window.focus();
-    window.print();
-  }
 }
 

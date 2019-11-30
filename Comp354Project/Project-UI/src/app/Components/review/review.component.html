@@ -1,111 +1,34 @@
-<div>
-    <h3>Review Your Order:</h3>
-    <div>
-        <h4>Your Shipping Address:</h4>
-        <h4>Your Payment Information</h4>
-    </div>
-    <h4>Your Order:</h4>
+<!-- This component lets you add a review, given that you are logged in.-->
+<!-- display-review will show all reviews on a product if any-->
+
+<div style="height:500px;width:400px;border-style:solid;border-color:black;">
+
+
+
+    <h2>Add your review for this item!!</h2>
+    <br/>
+
+    <br/>
+    Add your rating:
+    <select>
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+    </select>
+
+    <br/>
+
+    <textarea rows="4" cols="50" placeholder="Enter your review."></textarea>
+
+
+    <br/>
+
+    <!-- if not logged it, show it as Log in to review-->
+    <!--<button type="button">Add Review</button>-->
+    <button onclick="addReview()">Add Review</button>
+
+
 
 </div>
-
-<div *ngIf="customerDetails && customerDetails.firstName;else emptyCheckout ">
-    <div class="alert alert-success d-print-none" role="alert">
-        Thank you so much <strong>{{customerDetails.firstName}} {{customerDetails.lastName}}</strong>.Your order has been placed successfully and will be delivered in <strong>3 days.</strong>
-        <button class="btn btn-sm btn-info ml-2 mr-1" (click)="print()">Print Invoice</button><button class="btn btn-sm btn-info ml-1" (click)="clearCart()">Place a New Order</button>
-
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            Invoice Date:
-            <strong>{{invoiceDate | date:'d-MMM-yyyy'}}</strong>
-            <span class="float-right"> <strong>Status:</strong> Pending</span>
-
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6 text-left">
-                </div>
-                <div class="col-md-6 text-right">
-                    <h4># INV-{{invoiceNo}}</h4>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <div class="col-sm-6">
-                    <h6 class="mb-3">Shipping Address:</h6>
-                    <div>
-                        <strong>{{customerDetails.firstName}} {{customerDetails.lastName}}</strong>
-                    </div>
-                    <div>{{customerDetails.addressOne}}, {{customerDetails.addressTwo}}</div>
-                    <div>{{customerDetails.city}},{{customerDetails.state}},{{customerDetails.zip}}</div>
-                    <div>Email: {{customerDetails.email}}</div>
-                    <div>Phone: {{customerDetails.mobile}}</div>
-                </div>
-            </div>
-
-            <div class="table-responsive-sm">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="center">#</th>
-                        <th>Item</th>
-                        <th class="right">Unit Cost</th>
-                        <th class="center">Qty</th>
-                        <th class="right">Total</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor = "let cartItems of cart.cartItemsList;let i=index;">
-                        <td class="center">{{i+1}}</td>
-                        <td class="left strong">{{cartItems.name}}</td>
-                        <td class="right">{{(cartItems.price/cartItems.qty)}}</td>
-                        <td class="center">{{cartItems.qty}}</td>
-                        <td class="right">{{cartItems.price}}</td>
-                    </tr>
-
-                    </tbody>
-                </table>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-sm-5">
-
-                </div>
-
-                <div class="col-lg-4 col-sm-5 ml-auto">
-                    <table class="table table-clear">
-                        <tbody>
-                        <tr>
-                            <td class="left">
-                                <strong>Subtotal</strong>
-                            </td>
-                            <td class="right">INR {{cart.cartTotal}}</td>
-                        </tr>
-
-                        <tr>
-                            <td class="left">
-                                <strong>Total</strong>
-                            </td>
-                            <td class="right">
-                                <strong>INR {{cart.cartTotal}}</strong>
-                            </td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-<ng-template #emptyCheckout>
-    <div class="card alert alert-primary">
-        <div class="card-body">
-            Please shop some products & Provide billing information .<a class="btn btn-sm btn-info float-right ml-2" routerLink = '/products'> Continue Shopping</a> &nbsp;  &nbsp; <a class="btn btn-sm btn-info float-right" routerLink = '/billing' *ngIf="cart.cartItemsList && cart.cartTotal"> Go to Billing</a>
-        </div>
-    </div>
-
-
-</ng-template>
