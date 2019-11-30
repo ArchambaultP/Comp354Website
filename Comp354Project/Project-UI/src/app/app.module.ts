@@ -48,6 +48,10 @@ import {
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { OrderListComponent } from './Components/order-list/order-list.component';
 import {OrderService} from "./service/order.service";
+import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
+import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +76,8 @@ import {OrderService} from "./service/order.service";
     EmailRequestComponent,
     EmailVerification,
     PasswordUpdate,
-    OrderListComponent
+    OrderListComponent,
+    SocialMediaButtonsComponent,
   ],
     imports: [
         BrowserModule,
@@ -90,10 +95,14 @@ import {OrderService} from "./service/order.service";
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDialogModule
-    ],
+        MatDialogModule,
+        ButtonsModule,
+        InputsModule,
+        JwSocialButtonsModule,
+      ],
   providers: [UserService, AuthService, AdminService, ProductService, OrderService],
   bootstrap: [AppComponent],
   entryComponents: [RegistrationComponent]
 })
+
 export class AppModule { }

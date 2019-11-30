@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'order/account-orders/:id', component: OrderListComponent},
   { path: 'order/orders/:id', component: OrderListComponent},
   { path: 'order/product/:id', component: OrderListComponent},
+  {path: '', component: MainComponent}
 ];
 
 @NgModule({
