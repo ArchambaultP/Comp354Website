@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3eacd00-d0c2-4911-8fec-f8060e42f981" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/display-reviews/display-reviews.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/display-reviews/display-reviews.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/display-reviews/display-reviews.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/display-reviews/display-reviews.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-details/product-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/product-details/product-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

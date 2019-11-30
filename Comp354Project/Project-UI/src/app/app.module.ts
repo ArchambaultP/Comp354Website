@@ -41,6 +41,7 @@ import { SocialMediaButtonsComponent } from './Components/social-media-buttons/s
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { ReviewComponent } from './Components/review/review.component';
+import { DisplayReviewsComponent } from './Components/display-reviews/display-reviews.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ReviewComponent } from './Components/review/review.component';
     PasswordUpdate,
     SocialMediaButtonsComponent,
     ReviewComponent,
+    DisplayReviewsComponent,
   ],
     imports: [
         BrowserModule,
