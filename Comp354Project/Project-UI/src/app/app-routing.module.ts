@@ -15,6 +15,7 @@ import {AccountDetailsComponent} from "./Components/admin/account-details/accoun
 import {BillingFormComponent} from './Components/billing/billing.component';
 import {ShippingFormComponent} from './Components/shipping/shipping.component';
 import {ShippingPage} from "./Components/shipping2/shipping2.component";
+import{CartComponent} from "./Components/cart/cart.component";
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -29,6 +30,9 @@ const routes: Routes = [
   { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
   { path: 'billing', component: BillingFormComponent},
   { path: 'shipping', component: ShippingFormComponent},
+  { path: 'cart', component: CartComponent},
+
+
   //{ path: 'shipping2', component: ShippingPage},
 ];
 

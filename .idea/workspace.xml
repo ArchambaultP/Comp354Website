@@ -5,6 +5,7 @@
       <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/model/shipping.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/service/cart.service.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/service/storage.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/billing/billing.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/billing/billing.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/cart/cart.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.html" afterDir="false" />
