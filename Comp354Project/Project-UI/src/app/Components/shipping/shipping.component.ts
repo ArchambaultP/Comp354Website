@@ -15,6 +15,7 @@ export class ShippingFormComponent implements /*OnChanges,*/ OnInit {
     constructor(private fb: FormBuilder) {}
 
     ngOnInit() {
+        console.log("entering shipping page");
         this.shippingForm = this.fb.group({
             Name: null,
             country: null,
