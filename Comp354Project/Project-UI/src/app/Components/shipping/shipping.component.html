@@ -1,0 +1,45 @@
+<div [formGroup]='shippingForm'>
+
+    <h3>Add a new address:</h3>
+
+    <h5>Full Name:</h5>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Full Name" formControlName='Name'>
+    </mat-form-field>
+
+    <h5>Address line:</h5>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Address" formControlName='address'>
+    </mat-form-field>
+
+    <h5>Country:</h5>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Country" formControlName='country'>
+    </mat-form-field>
+
+    <h5>City:</h5>
+    <mat-form-field>
+        <input matInput type="text" placeholder="City" formControlName='city'>
+    </mat-form-field>
+
+    <h5>Postal Code/ZIP:</h5>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Zip" formControlName='zip'>
+    </mat-form-field>
+
+    <h5>Phone number:</h5>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Phone Number" formControlName='phonenumber'>
+    </mat-form-field>
+    <div>
+        <div>
+            <div>
+                <br /> <br />
+    <mat-card-actions>
+        <input type="submit" value="Deliver to this address">
+    </mat-card-actions>
+            </div>
+        </div>
+    </div>
+
+</div>
