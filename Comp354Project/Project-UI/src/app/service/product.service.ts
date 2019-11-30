@@ -13,6 +13,8 @@ export class ProductService {
   private categoriesUrl: string;
   private departmentsUrl: string;
   selectedCategoryButtonValue = "";
+  maxPriceFilter = 99999999;
+  minPriceFilter = 0;
 
   constructor(private http: HttpClient) {
     this.productsUrl = 'http://localhost:8080/products';

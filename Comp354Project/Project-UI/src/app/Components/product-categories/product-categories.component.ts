@@ -20,6 +20,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductCategoriesComponent implements OnInit {
   selectedCategoryButtonValue = "";
+  maxFilter = null;
+  minFilter = null;
   departments: Department[];
   constructor(private productService: ProductService,
               private route: ActivatedRoute) {}
@@ -33,5 +35,21 @@ export class ProductCategoriesComponent implements OnInit {
       this.departments = data;
       console.log(data);
      });
+   }
+   filterProducts(){
+     if(this.maxFilter == null)
+      this.productService.minPriceFilter = this.minFilter;
+     else if(this.minFilter == null)
+      this.productService.maxPriceFilter = this.maxFilter;
+    else
+      this.productService.maxPriceFilter = this.maxFilter;
+      this.productService.minPriceFilter = this.minFilter;
+
+   }
+   resetFilterProducts(){
+     this.productService.maxPriceFilter = 9999999;
+     this.productService.minPriceFilter = 0;
+     this.maxFilter = null;
+     this.minFilter = null;
    }
  }
