@@ -24,21 +24,8 @@ export class CartService {
         }
     }
 
-    addToCart(pid,qty,replace){
-
-        if(this.cartData[pid] == undefined){
-            this.cartData[pid] = 0;
-        }
-        if(replace===''){
-            this.cartData[pid] =  this.cartData[pid] + qty;
-        }else{
-            this.cartData[pid] =  parseInt(qty);
-        }
-
-        if(this.cartData[pid]==0){
-            delete this.cartData[pid];
-        }
-        this.storeItems();
+    addToCart(item){
+      this.cartItemsList += item;
     }
 
     storeItems(){

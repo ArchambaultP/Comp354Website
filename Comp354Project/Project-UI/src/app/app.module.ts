@@ -15,6 +15,8 @@ import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
 import { RegistrationComponent } from './Components/register/registration.component';
+import { CartService } from './service/cart.service';
+import { StorageService } from './service/storage.service';
 RegistrationComponent
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
@@ -66,7 +68,8 @@ import { CartComponent } from './Components/cart/cart.component';
     ShippingFormComponent,
     ReviewComponent,
     CartComponent,
-    ShippingPage
+    ShippingPage,
+
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,7 @@ import { CartComponent } from './Components/cart/cart.component';
     MatCardModule,
     MatFormFieldModule
   ],
-  providers: [UserService, AuthService, AdminService, ProductService],
+  providers: [UserService, AuthService, AdminService, ProductService, CartService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

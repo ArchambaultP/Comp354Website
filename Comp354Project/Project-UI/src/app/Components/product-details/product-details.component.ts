@@ -24,8 +24,9 @@ product: Product;
       })
     });
   }
-
-  addToCart() {
-    window.alert('Item added to cart');
+  addToCart(){
+    this.productService.addToCart(this.product);
+    console.log('product added to cart')
   }
+
 }

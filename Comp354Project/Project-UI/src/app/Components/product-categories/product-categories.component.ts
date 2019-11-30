@@ -37,14 +37,25 @@ export class ProductCategoriesComponent implements OnInit {
      });
    }
    filterProducts(){
-     if(this.maxFilter == null)
+     if(this.maxFilter == null){
       this.productService.minPriceFilter = this.minFilter;
-     else if(this.minFilter == null)
-      this.productService.maxPriceFilter = this.maxFilter;
-    else
-      this.productService.maxPriceFilter = this.maxFilter;
-      this.productService.minPriceFilter = this.minFilter;
+      console.log('passing through only max')
+    }
 
+     else if(this.minFilter == null){
+      this.productService.maxPriceFilter = this.maxFilter;
+      console.log('passing through only min')
+    }
+
+    else if(this.minFilter == null && this.maxFilter == null){
+      this.productService.maxPriceFilter = 999999999;
+      this.productService.minPriceFilter = 0;
+      console.log('passing through nothing')
+    }
+    else{
+      this.productService.maxPriceFilter = this.maxFilter;
+      this.productService.minPriceFilter = this.minFilter;
+}
    }
    resetFilterProducts(){
      this.productService.maxPriceFilter = 9999999;
