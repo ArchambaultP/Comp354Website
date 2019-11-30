@@ -40,6 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import { ReviewComponent } from './Components/review/review.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
     EmailVerification,
     PasswordUpdate,
     SocialMediaButtonsComponent,
+    ReviewComponent,
   ],
     imports: [
         BrowserModule,

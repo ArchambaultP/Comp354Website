@@ -4,6 +4,7 @@ import { ActivatedRoute} from '@angular/router';
 import {ProductService} from "../../service/product.service";
 import { Product } from '../../model/product';
 
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
