@@ -111,22 +111,13 @@ export class BillingFormComponent implements OnInit {
             (
                 data =>
                 {
-                    /*
-                    if(!data['error']){
-                        this.authUser = data;
-                        this.auth.registerSuccessfulLogin(this.authUser);
-                        this.successMsg = data['message'];
-                        this.error = false;
-                    }else{
-                        this.errorMsg = data['message'];
-                        this.error = true;
-                    }*/
+                    console.log('payment success');
 
-                    alert(data);
                 }
             );
 
         this.showSuccess = true;
+        //REDIRECT HERE
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
