@@ -27,6 +27,9 @@ public class Product {
     private Account account;
 
     @NotNull
+    private Integer userId;
+
+    @NotNull
     @Column(length = 100)
     private String name;
 
@@ -54,6 +57,14 @@ public class Product {
     )
     @JsonManagedReference
     private List<Review> reviews;
+
+    public Integer getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(Integer id) {
+        this.userId = id;
+    }
 
     public Integer getId() {
         return idProduct;

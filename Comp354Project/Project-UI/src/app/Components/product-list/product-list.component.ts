@@ -22,6 +22,7 @@ export class ProductListComponent implements OnInit {
     this.productService.findAllProducts().subscribe(data => {
      this.products = data;
      console.log(data);
+
     });
   }
 

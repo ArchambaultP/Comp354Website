@@ -12,6 +12,7 @@ import { AccountListComponent } from './Components/admin/account-list/account-li
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import {AccountUpdateComponent} from "./Components/admin/account-update/account-update.component";
 import {AccountDetailsComponent} from "./Components/admin/account-details/account-details.component";
+import { ProductFormComponent } from './Components/product-form/product-form.component';
 import {BillingFormComponent} from './Components/billing/billing.component';
 import {ShippingFormComponent} from './Components/shipping/shipping.component';
 import {ShippingPage} from "./Components/shipping2/shipping2.component";
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'admin/accounts/add', component: AccountFormComponent},
   { path: 'admin/accounts/update/:id', component: AccountUpdateComponent},
   { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
+  { path: 'product-form', component: ProductFormComponent},
   { path: 'billing', component: BillingFormComponent},
   { path: 'shipping', component: ShippingFormComponent},
   { path: 'review', component: ReviewComponent},

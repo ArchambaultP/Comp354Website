@@ -35,6 +35,7 @@ import {MatCardModule} from '@angular/material/card';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
+import { ProductFormComponent } from './Components/product-form/product-form.component';
 import {BillingFormComponent} from './Components/billing/billing.component';
 import {ShippingFormComponent} from './Components/shipping/shipping.component';
 import { ReviewComponent } from './Components/review/review.component';
@@ -83,6 +84,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     AccountFormComponent,
     AccountUpdateComponent,
     AccountDetailsComponent,
+    ProductFormComponent
     BillingFormComponent,
     ShippingFormComponent,
     ReviewComponent,

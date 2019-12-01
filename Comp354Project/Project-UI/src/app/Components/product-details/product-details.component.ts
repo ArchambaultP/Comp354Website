@@ -14,6 +14,8 @@ import { CookieService } from 'ngx-cookie-service';
 export class ProductDetailsComponent implements OnInit {
   // products = products;
   // product;
+   product: Product;
+   ans: string;
    cookieValue = 'UNKNOWN';
    userId;
    product: Product;
@@ -26,6 +28,12 @@ export class ProductDetailsComponent implements OnInit {
       this.productService.findProductById(params.get('id')).subscribe(p =>{
         this.product = p;
       })
+
+      // test code to make sure it works on the front-end
+      //this.productService.deleteProductById(params.get('id')).subscribe(a => {
+      //  this.ans = a;
+      //})
+
     });
 
     if(this.auth.isUserLoggedIn()){ //if user is logged in

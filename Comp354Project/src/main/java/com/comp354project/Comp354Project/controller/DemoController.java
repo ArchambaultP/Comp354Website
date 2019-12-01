@@ -242,56 +242,66 @@ public class DemoController {
 
         if(productRepository.findByName("Microsoft Surface Pro 6").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("Microsoft Surface Pro 6");
             prod.setDescription("(Intel Core i5, 8GB RAM, 256GB)");
             prod.setPrice(1179.0);
             prod.setQuantity(20);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6298/6298148ld.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Computers And Tablets").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Apple Ipad Pro").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("Apple Ipad Pro");
             prod.setDescription("(10.5-inch, Wi-Fi, 256GB)");
             prod.setPrice(999.0);
             prod.setQuantity(20);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://assets.pcmag.com/media/images/616567-apple-ipad-pro.jpg?thumb=y");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Computers And Tablets").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Acer ChromeBook").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
+
             prod.setName("Acer ChromeBook");
             prod.setDescription("(14\" FHD IPS Display/ICQ N3160 / 4GB RAM)");
             prod.setPrice(399.0);
             prod.setQuantity(20);
             prod.setPermanentPosting(true);
             prod.setImageURL("http://dwm.technology/wp-content/uploads/2017/08/a6517cbe8d08.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Computers And Tablets").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Acer Aspire7").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("Acer Aspire7");
             prod.setDescription("(15.6\" FHD IPS Display/ Ci7 9750H/GTX 1650 4GB/ 16GB Ram/ 512 SSD)");
             prod.setPrice(1499.0);
             prod.setQuantity(20);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://static.acer.com/up/Resource/Acer/Laptops/Aspire_7/photogallery/20190104/Acer-Aspire-7-A715-73G-photogallery-02.png");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Computers And Tablets").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
 
 
         if(productRepository.findByName("Sony XBR65X900F/A LCD Television").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("Sony XBR65X900F/A LCD Television");
             prod.setDescription("(65\", Black)");
             prod.setPrice(1998.0);
@@ -300,72 +310,84 @@ public class DemoController {
             prod.setImageURL("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6179/6179726_sd.jpg;maxHeight=640;maxWidth=550");
             prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
             prod.setCategory(categoryRepository.findByName("TV And HomeTheatre").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Samsung UN40NU7100FXZC").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("Samsung UN40NU7100FXZC");
             prod.setDescription("(40\" 4K Ultra HD Smart LED TV (2018), Charcoal Black)");
             prod.setPrice(478.0);
             prod.setQuantity(10);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://images.samsung.com/is/image/samsung/ca-uhdtv-nu7100-un40nu7100fxzc-frontblack-99882967?$PD_GALLERY_L_JPG$");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("TV And HomeTheatre").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("TCL 40S325-CA").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("TCL 40S325-CA");
             prod.setDescription("(1080p Smart LED Television (2019), 40\")");
             prod.setPrice(299.0);
             prod.setQuantity(10);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://multimedia.bbycastatic.ca/multimedia/products/500x500/131/13185/13185854.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("TV And HomeTheatre").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("LG OLED65C8PUA").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("LG OLED65C8PUA");
             prod.setDescription("(65\" 4K Ultra HD Smart OLED TV)");
             prod.setPrice(3049.94);
             prod.setQuantity(10);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://www.lg.com/us/images/tvs/md05913436/gallery/OLEDC8_1100_v1.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("TV And HomeTheatre").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
 
 
         if(productRepository.findByName("Furinno 12095GYW").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("Furinno 12095GYW");
             prod.setDescription("(Econ Multipurpose Home Office Computer Writing Desk with Bin, French Oak Grey)");
             prod.setPrice(148.47);
             prod.setQuantity(30);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/71Jmpf0gxlL._SX425_.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Home Office").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("AmazonBasics Mid-Back Desk Office Chair with Armrests").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("AmazonBasics Mid-Back Desk Office Chair with Armrests");
             prod.setDescription("(Mesh Back, Swivels - Black)");
             prod.setPrice(89.14);
             prod.setQuantity(30);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/91ulA958MKL._SY355_.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Home Office").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Sharpie Pens").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller1@outlook.com");
             prod.setName("Sharpie Pens");
             prod.setBrand("Sharpie");
             prod.setDescription("(Fine Point (0.8mm), Black, 2 Pack - 1742659)");
@@ -373,26 +395,30 @@ public class DemoController {
             prod.setQuantity(300);
             prod.setPermanentPosting(true);
             prod.setImageURL("https://smedia.webcollage.net/rwvfp/wc/cp/25256916_legacycode/module/sharpieus/_cp/products/1490871840958/tab-1c2d7515-3c53-4c92-80c9-ec995ddd223d/a7ddbc73-26e0-45d7-8164-c108d1149290.jpg.w960.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Home Office").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
 
 
         if(productRepository.findByName("Jamie Oliver Non-Stick Silicone Spatula Set of 2").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("Jamie Oliver Non-Stick Silicone Spatula Set of 2");
             prod.setDescription("(Kitchen Utensils for Baking and Cooking - Heat Resistant)");
             prod.setPrice(23.24);
             prod.setQuantity(40);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://secure.img1-fg.wfcdn.com/im/93971896/compr-r85/6324/63246885/default_name.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Kitchen").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("T-fal Intuition 30cm Non-Stick Wok").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("T-fal Intuition 30cm Non-Stick Wok");
             prod.setBrand("T-fal");
             prod.setDescription("(Advanced non-stick coating is metal utensil-safe and resistant to scratches for easy cooking and even easier cleanup)");
@@ -400,38 +426,44 @@ public class DemoController {
             prod.setQuantity(50);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://pisces..com//BestBuy_US/images/products/6179/6179726_sd.jpg;maxHeight=640;maxWidth=550");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Kitchen").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Damascus Chef Knife 8 inch").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("Damascus Chef Knife 8 inch");
             prod.setDescription("(Kitchen Knife Ultra Sharp Knife with Ergonomic Handle, Stain & Corrosion Resistant Chefs Knives)");
             prod.setPrice(79.99);
             prod.setQuantity(20);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/81aoEiJKEJL._SX425_.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Kitchen").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
 
 
         if(productRepository.findByName("Jerzees Men's Long-Sleeve T-Shirt").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("Jerzees Men's Long-Sleeve T-Shirt");
             prod.setDescription("(Size : Medium)");
             prod.setPrice(9.09);
             prod.setQuantity(300);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/41LpY4FDk2L.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Men Clothing").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Levi's Men's 559 Relaxed Straight Fit Jean").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("Levi's Men's 559 Relaxed Straight Fit Jean");
             prod.setBrand("Levi");
             prod.setDescription("(Size : 30Wx30L)");
@@ -439,38 +471,44 @@ public class DemoController {
             prod.setQuantity(300);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/81ehlYkOk6L._UX522_.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Men Clothing").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Haggar Mens Cool 18 Hidden Expandable-Waist Plain-Front Pant").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("Haggar Mens Cool 18 Hidden Expandable-Waist Plain-Front Pant");
             prod.setDescription("(Size : 32Wx30L)");
             prod.setPrice(47.47);
             prod.setQuantity(300);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/71bRcCj5gQL._UX466_.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Men Clothing").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
 
 
         if(productRepository.findByName("Hanes Womens Long Sleeve Tee Shirt").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("Hanes Womens Long Sleeve Tee Shirt");
             prod.setDescription("(Size : Medium)");
             prod.setPrice(8.99);
             prod.setQuantity(300);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/81K0dTtZ6fL._UX466_.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Woman Clothing").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Levi's Womens 721 High Rise Skinny Jeans").isEmpty()){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("Levi's Womens 721 High Rise Skinny Jeans");
             prod.setBrand("Levi");
             prod.setDescription("(Size : 27(long))");
@@ -478,20 +516,23 @@ public class DemoController {
             prod.setQuantity(300);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/91EhPwFynNL._UX342_.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Woman Clothing").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
         if(productRepository.findByName("Dickies Women's Slim Fit Boot Cut Stretch Twill Pant").isEmpty() ){
             Product prod = new Product();
+            Account acc = accountRepository.findByEmail("seller2@outlook.com");
             prod.setName("Dickies Women's Slim Fit Boot Cut Stretch Twill Pant");
             prod.setDescription("(Size : 10(long), Color : Dark Navy)");
             prod.setPrice(44.99);
             prod.setQuantity(300);
             prod.setPermanentPosting(false);
             prod.setImageURL("https://images-na.ssl-images-amazon.com/images/I/71kjQEzhaNL._UL1500_.jpg");
-            prod.setAccount(accountRepository.findByEmail("seller2@outlook.com"));
+            prod.setAccount(acc);
             prod.setCategory(categoryRepository.findByName("Woman Clothing").get(0));
+            prod.setUserId(acc.getId());
             productRepository.save(prod);
         }
 
