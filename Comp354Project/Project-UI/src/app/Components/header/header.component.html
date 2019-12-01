@@ -1,46 +1,57 @@
-<div style="height:150px;border-style:solid;border-color:black;background-color:#163172;">
-
-
-    <div>
-        <div style="height:60px;width:190px;border-style:none;border-color:none;float:left;">
-    <a href="/">
-            <p style="font-family: Impact, Charcoal, sans-serif;font-size:28px;font-style:italic;font-variant:small-caps;color:white;letter-spacing:2px;">
-                354TheStars
-            </p>
-            </a>
-
-        </div>
-    <!--
-            <div style="height:150px;width:300px;border-style:none;border-color:none;float:right;background-color:#163172;">
-                <h2 class="card-title text-center text-white py-3" >{{ title }}</h2>
-                    <div *ngIf="!isLoggedIn">
-                        <a routerLink="/login">Login</a>
+<div>
+    <div class="w-100" style="height:100px;border-style:solid;border-color:black;background-color:#163172;">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="clearfix">
+            <div class="float-left ml-2">
+                <div style="height:60px;width:190px;border-style:none;border-color:none;float:left;">
+                    <a href="/">
+                        <p style="font-family: Impact, Charcoal, sans-serif;font-size:28px;font-style:italic;font-variant:small-caps;color:white;letter-spacing:2px;">
+                            354TheStars
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="float-left">
+                <div class="d-inline-flex">
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm ml-1 mt-1">
+                        <div class="input-group">
+                            <input id = "searchBar" type="search" class="form-control rounded rounded-pill border-0 bg-light" placeholder="Search 354TheStars.." [(ngModel)] = "searchText" >
+                            <div class="input-group-append">
+                                <button *ngIf="searchText != ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="'/products'" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                                <button *ngIf="searchText == ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="''" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
                     </div>
-                    <div *ngIf="isLoggedIn">
-                       <a routerLink="/users">{{ this.currentUser }}</a>
-                        <a class="nav-link" (click)=logout()>Logout</a>
+                </div>
+            </div>
+            <div class="float-right">
+                <div *ngIf="!isLoggedIn">
+                    <p class="text-right mr-2 mt-2" style="color:white">Register or Login to shop & sell!</p>
+                </div>
+                <div *ngIf="!isLoggedIn">
+                    <button type="button" class="btn btn-primary border border-dark" (click)="login()">Sign In</button>
+                    <button type="button" class="btn btn-secondary border border-dark" (click)="register()">Sign Up</button>
+                    <div ngbDropdown class="d-inline-block">
+                        <button type="button" id="dropdownAccountHelp" class="btn btn-outline-info" ngbDropdownToggle>Help</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownAccountHelp">
+                            <button ngbDropdownItem (click)="resetPassword()">Reset Password</button>
+                            <button ngbDropdownItem (click)="activateAccount()">Activate Account</button>
+                        </div>
                     </div>
-            </div>
--->
-
-        <!-- login button-->
-        <div style="height:150px;width:300px;border-style:none;border-color:none;float:right;background-color:#163172;">
-
-            <div style="width:50px;height:auto;display:inline-block;"></div>
-            <p style="color:white;">Register or Login to shop & sell!</p>
-
-            <div style="width:50px;height:auto;display:inline-block;"></div>
-            <!--<button type="button" style="height:35px;width:100px;"><a href="registration" >Register</a></button> -->
-            <div style="width:10px;height:auto;display:inline-block;"></div>
-            <div *ngIf="!isLoggedIn">
-                <button type="button" style="height:35px;width:100px;"><a href="/login">Login</a></button>
-            </div>
-            <div *ngIf="isLoggedIn">
-                <button type="button" style="height:35px">{{ this.currentUser }}</button>
-                <button type="button" style="height:35px;width:100px;" (click)=logout()>Logout</button>
+                </div>
+                <div *ngIf="isLoggedIn">
+                    <div ngbDropdown class="d-inline-block">
+                        <button id="dropdownAuthUser" type="button" class="btn btn-outline-primary" ngbDropdownToggle>{{ this.currentUser }}</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownAuthUser"  class="col">
+                            <button ngbDropdownItem><a routerLink="account/user-account">Your Account</a></button>
+                            <div class="dropdown-divider"></div>
+                            <button  (click)=logout() ngbDropdownItem>Sign Out</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 
     <br/>
@@ -55,5 +66,5 @@
             <button *ngIf="searchText == ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="''"> Search </button>
         </div>
     </div>
-
+<button type="button" [routerLink] = "'/cartpage'"name="button">cart</button>
 </div>

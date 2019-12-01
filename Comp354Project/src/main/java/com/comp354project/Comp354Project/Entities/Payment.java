@@ -1,5 +1,7 @@
 package com.comp354project.Comp354Project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -20,13 +22,14 @@ public class Payment {
     @NotNull
     private boolean paymentConfirmed;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL)
     private AccountOrder order;
 
     public Payment(){
         super();
         paymentDate = new Date();
-        paymentConfirmed = false;
+        paymentConfirmed = true;
     }
 
     public Integer getId() {

@@ -15,7 +15,8 @@ import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
 import { RegistrationComponent } from './Components/register/registration.component';
-RegistrationComponent
+import { CartService } from './service/cart.service';
+import { StorageService } from './service/storage.service';
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
 } from '@angular/common/http';
@@ -35,6 +36,32 @@ import { AccountFormComponent } from './Components/admin/account-form/account-fo
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
 import { ProductFormComponent } from './Components/product-form/product-form.component';
+import {BillingFormComponent} from './Components/billing/billing.component';
+import {ShippingFormComponent} from './Components/shipping/shipping.component';
+import { ReviewComponent } from './Components/review/review.component';
+import { ShippingPage} from './Components/shipping2/shipping2.component';
+import { CartComponent } from './Components/cart/cart.component';
+import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
+import { EmailVerification } from './Components/account/email-verification/email-verification.component';
+import { PasswordUpdate } from './Components/account/password-update/password-update.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+    MatButtonModule, MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule, MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule
+} from "@angular/material/";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { OrderListComponent } from './Components/order-list/order-list.component';
+import {OrderService} from "./service/order.service";
+import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
+import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import { UserAccountComponent } from './Components/account/user-account/user-account.component';
+import { CookieService } from 'ngx-cookie-service';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -58,16 +85,43 @@ import { ProductFormComponent } from './Components/product-form/product-form.com
     AccountUpdateComponent,
     AccountDetailsComponent,
     ProductFormComponent
+    BillingFormComponent,
+    ShippingFormComponent,
+    ReviewComponent,
+    CartComponent,
+    ShippingPage,
+    EmailRequestComponent,
+    EmailVerification,
+    PasswordUpdate,
+    OrderListComponent,
+    SocialMediaButtonsComponent,
+    UserAccountComponent,
   ],
-    imports: [
+  imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        MatCardModule
-    ],
-  providers: [UserService, AuthService, AdminService, ProductService],
-  bootstrap: [AppComponent]
+        MatCardModule,
+        NgbModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatSortModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule,
+        ButtonsModule,
+        InputsModule,
+        JwSocialButtonsModule,
+        NgxPayPalModule,
+  ],
+  providers: [UserService, AuthService, AdminService, ProductService, OrderService, CartService, StorageService, CookieService],
+  bootstrap: [AppComponent],
+  entryComponents: [RegistrationComponent]
 })
+
 export class AppModule { }

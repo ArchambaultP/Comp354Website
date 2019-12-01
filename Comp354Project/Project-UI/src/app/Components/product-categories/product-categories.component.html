@@ -1,9 +1,15 @@
 <div class="sidebar">
-<ul *ngFor="let department of departments" style="list-style: none;">
-  <li><strong>{{ department.name }}</strong>
-    <ul *ngFor="let category of department.categories" style="list-style: none;">
-      <li  ><a [routerLink]="'/products'" (click) = "categorychange(category.name)">{{ category.name }}</a></li>
-    </ul>
-  </li>
-</ul>
+  <ul *ngFor="let department of departments" style="list-style: none;">
+    <li><strong>{{ department.name }}</strong>
+      <ul *ngFor="let category of department.categories" style="list-style: none;">
+        <li  ><a [routerLink]="'/products'" (click) = "categorychange(category.name)">{{ category.name }}</a></li>
+      </ul>
+    </li>
+  </ul>
+  <div class="">
+    <input type="text" placeholder="$min" [(ngModel)] = "minFilter"><br>
+    <input type="text" placeholder="$max" [(ngModel)] = "maxFilter"><br>
+    <button type="button" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
+    <button type="button" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
+  </div>
 </div>

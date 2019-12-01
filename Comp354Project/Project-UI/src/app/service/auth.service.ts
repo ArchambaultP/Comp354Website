@@ -72,6 +72,99 @@ export class AuthService {
         }
     }
 
+    getFullCurrentAccount(): Observable<any>{
+        const uid = this.currentUserId();
+        return this.http.get<any>('http://localhost:8080/account/user/'+uid);
+    }
+
+    getCurrentUserProducts(){
+        const uid = this.currentUserId();
+        return this.http.get<any>('http://localhost:8080/account/user/'+uid+"/products");
+    }
+
+    update(credentials, id:number): Observable<any>{
+        if(credentials != undefined){
+            const body = new HttpParams()
+                .set('id',id.toString())
+                .set('email',credentials.email)
+                .set('password',credentials.password)
+                .set('name',credentials.name)
+                .set('address',credentials.address)
+                .set('city',credentials.city)
+                .set('province',credentials.province)
+                .set('country',credentials.country)
+                .set('postalCode',credentials.postalCode)
+                .set('phone',credentials.phone);
+
+            return this.http.put('http://localhost:8080/auth/update',
+                body.toString(),
+                {
+                    headers: new HttpHeaders()
+                        .set('Content-Type','application/x-www-form-urlencoded')
+                }
+            );
+        }
+    }
+
+    /**
+    * Request to reset an account's password
+    */
+    resetPassword(email:string): Observable<any>{
+        if(email != undefined){
+            const body = new HttpParams()
+                .set('email',email);
+
+            return this.http.post('http://localhost:8080/auth/resetpassword',
+                body.toString(),
+                    {
+                        headers: new HttpHeaders()
+                            .set('Content-Type','application/x-www-form-urlencoded')
+                    });
+        }
+    }
+
+    sendEmailConfirmation(email:string,endPoint:string): Observable<any>{
+        if(email != undefined){
+                    const body = new HttpParams()
+                        .set('email',email);
+
+                    return this.http.post('http://localhost:8080/auth/'+endPoint,
+                        body.toString(),
+                            {
+                                headers: new HttpHeaders()
+                                    .set('Content-Type','application/x-www-form-urlencoded')
+                            });
+                }
+    }
+
+    confirmEmail(email:string, code:string): Observable<any>{
+        const body = new HttpParams()
+            .set('email',email)
+            .set('code',code);
+
+        return this.http.post('http://localhost:8080/auth/passwordrecovery',
+            body.toString(),
+                {
+                    headers: new HttpHeaders()
+                         .set('Content-Type','application/x-www-form-urlencoded')
+                });
+    }
+
+    changePassword(email:string, pwd:string): Observable<any>{
+        if((email != undefined) && (pwd != undefined)){
+            const body = new HttpParams()
+                .set('email',email)
+                .set('pwd',pwd);
+
+            return this.http.post('http://localhost:8080/account/changepassword',
+                body.toString(),
+                    {
+                        headers: new HttpHeaders()
+                            .set('Content-Type','application/x-www-form-urlencoded')
+                    });
+        }
+    }
+
     isEmailUnique(email:string): Observable<any> {
         return this.http.get(this.emailValidationUrl+email);
     }
@@ -114,4 +207,15 @@ export class AuthService {
             return false;
         }
     }
+
+    isSuperAdmin(){
+        this.authUser = JSON.parse(sessionStorage.getItem('user'));
+        return this.authUser.isSuperAdmin;
+    }
+
+    currentUserId(){
+        this.authUser = JSON.parse(sessionStorage.getItem('user'));
+        return this.authUser.id;
+    }
+
 }

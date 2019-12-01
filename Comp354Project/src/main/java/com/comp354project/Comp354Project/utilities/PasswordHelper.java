@@ -56,4 +56,8 @@ public class PasswordHelper {
             throw new RuntimeException(e);
         }
     }
+
+    public String generateRecoveryCode(){
+        return getSalt();
+    }
 }
