@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { StorageService } from '../../service/storage.service';
+import { Review } from '../../model/review';
+import { ReviewService} from "../../service/review.service";
+import { ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-review',
@@ -13,14 +17,13 @@ export class ReviewComponent {
   public invoiceDate: any = new Date();
   public invoiceNo: any = Math.floor(Math.random() * 10000);
 
-  @Input("allProductList") __allprdts: any = {};
 
-  constructor(
-      public cart: CartService,
-      public storage: StorageService
-  ) {
+    review: Review = new Review();
+   constructor(private reviewService: ReviewService,private route: ActivatedRoute)
+   {
 
-  }
+   }
+
 
   ngOnInit() {
     this.customerDetails = this.cart.loadCheckoutInfo('customerInfo');
@@ -30,9 +33,25 @@ export class ReviewComponent {
 
   }
 
-addReview() {
-    window.alert('Your review was added.');
+
+  newReview(): void {
+    this.review = new Review();
   }
+
+  save() {
+    this.reviewService.createReview(this.review)
+        .subscribe(data => console.log(data), error => console.log(error));
+    this.review = new Review();
+  }
+
+  onSubmit() {
+
+    window.alert("review submitted test");
+    this.save();
+  }
+
+
+
 
 }
 
