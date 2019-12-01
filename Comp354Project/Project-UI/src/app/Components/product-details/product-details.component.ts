@@ -13,6 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   // products = products;
   // product;
 product: Product;
+ans: string;
   constructor(public productService: ProductService, private route: ActivatedRoute,) {
   }
 
@@ -22,6 +23,12 @@ product: Product;
       this.productService.findProductById(params.get('id')).subscribe(p =>{
         this.product = p;
       })
+
+      // test code to make sure it works on the front-end
+      //this.productService.deleteProductById(params.get('id')).subscribe(a => {
+      //  this.ans = a;
+      //})
+
     });
   }
 

@@ -33,8 +33,27 @@ export class ProductService {
         return this.http.get<Product>(`${this.productsUrl}/${ProductId}`);
    }
 
-  public save(product: Product) {
-     return this.http.post<Product>(this.productsUrl, product);
+  public deleteProductById(id: string): Observable<string> {
+            return this.http.get<string>(`${this.productsUrl}/delete/${id}`);
+  }
+
+  public saveProduct(productName: string,
+                     description: string,
+                     price: string,
+                     quantity: string,
+                     imageUrl: string,
+                     categoryName: string,
+                     accountName: string,
+                     userId: string)
+  {
+         return this.http.post<string>(`${this.productsUrl}/add`, {params: {productName: productName,
+                                                                    description: description,
+                                                                    price: price,
+                                                                    quantity: quantity,
+                                                                    imageUrl: imageUrl,
+                                                                    categoryName: categoryName,
+                                                                    accountName: categoryName,
+                                                                    userId: userId}})
   }
 
   // CATEGORIES

@@ -5,12 +5,16 @@ import org.springframework.web.bind.annotation.*;
 import com.comp354project.Comp354Project.Entities.Product;
 import com.comp354project.Comp354Project.Entities.Category;
 import com.comp354project.Comp354Project.Entities.Department;
+import com.comp354project.Comp354Project.Entities.Account;
 import com.comp354project.Comp354Project.repository.ProductRepository;
 import com.comp354project.Comp354Project.repository.CategoryRepository;
 import com.comp354project.Comp354Project.repository.DepartmentRepository;
+import com.comp354project.Comp354Project.repository.AccountRepository;
 
 import java.util.List;
 import java.util.Optional;
+
+import java.lang.*;
 
 @RestController
 public class ProductController {
@@ -23,6 +27,9 @@ public class ProductController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     @CrossOrigin(origins="http://localhost:4200")
     @GetMapping(path="/products")
@@ -41,11 +48,40 @@ public class ProductController {
         return productRepository.findById(id);
     }
 
+    @CrossOrigin(origins="http://localhost:4200")
     @PostMapping(path="/products/add")
     @ResponseBody
-    public String addProduct(Product product) {
-        productRepository.save(product);
+    public String addProduct(@RequestParam(value = "productName", required = false) String productName,
+                             @RequestParam(value = "description", required = false) String description,
+                             @RequestParam(value = "price", required = false) String price,
+                             @RequestParam(value = "quantity", required = false) String quantity,
+                             @RequestParam(value = "imageUrl", required = false) String imageUrl,
+                             @RequestParam(value = "categoryName", required = false) String categoryName,
+                             @RequestParam(value = "accountName", required = false) String accountName,
+                             @RequestParam(value = "userId", required = false) String userId) {
+
+        Account acc = accountRepository.findByName(accountName).get(0);
+        if(productRepository.findByName(productName).isEmpty()){
+            Product prod = new Product();
+            prod.setName(productName);
+            prod.setDescription(description);
+            prod.setPrice((Double.parseDouble(price)));
+            prod.setQuantity(Integer.parseInt(quantity));
+            prod.setPermanentPosting(true);
+            prod.setImageURL(imageUrl);
+            prod.setAccount(acc);
+            prod.setCategory(categoryRepository.findByName(categoryName).get(0));
+            prod.setUserId(acc.getId());
+            productRepository.save(prod);
+        }
         return "Done";
+    }
+
+    @CrossOrigin(origins="http://localhost:4200")
+    @GetMapping(value = "/products/delete/{id}")
+    public @ResponseBody String deleteProduct(@PathVariable("id") Integer id) {
+        productRepository.deleteById(id);
+        return "done";
     }
 
     @CrossOrigin(origins="http://localhost:4200")
