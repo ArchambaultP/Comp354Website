@@ -41,6 +41,13 @@ public class AccountOrder { //decided to name this AccountOrder, simply because 
         date = new Date();
     }
 
+    public AccountOrder(Account acc, Payment pay){
+        super();
+        this.date = new Date();
+        this.account = acc;
+        this.payment = pay;
+    }
+
     public Integer getId() {
         return idAccountOrder;
     }

@@ -60,6 +60,7 @@ import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { UserAccountComponent } from './Components/account/user-account/user-account.component';
 import { CookieService } from 'ngx-cookie-service';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,7 @@ import { CookieService } from 'ngx-cookie-service';
         ButtonsModule,
         InputsModule,
         JwSocialButtonsModule,
+        NgxPayPalModule,
   ],
   providers: [UserService, AuthService, AdminService, ProductService, OrderService, CartService, StorageService, CookieService],
   bootstrap: [AppComponent],

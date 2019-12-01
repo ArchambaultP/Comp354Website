@@ -33,17 +33,23 @@ export class ProductDetailsComponent implements OnInit {
        this.cookieService.set('CartUser', this.userId);
 
         this.cookieValue = this.cookieService.get('Cart');
-        console.log(JSON.parse(this.cookieValue));
     }
   }
 
   addToCart(){
 
     var cartVal = this.cookieValue = this.cookieService.get('Cart');
-    var cartArray = JSON.parse(cartVal);
+    var cartArray;
+    if(cartVal !== '')
+        cartArray = JSON.parse(cartVal);
+
     if(cartVal === '') //empty cart
     {
-        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}]));
+        //have to set cookies for every page we need to access their value
+        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}])); //set the cookie for prod detail page
+        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}]), 100, '/cartpage'); //set the cookies for the cartpage
+        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}]), 100, '/billing'); //set the cookies for the cartpage
+        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}]), 100, '/review'); //set the cookies for the cartpage
         this.cookieValue = this.cookieService.get('Cart');
         console.log('product added to cart')
     }
@@ -60,6 +66,12 @@ export class ProductDetailsComponent implements OnInit {
         if(insert)
         {
             cartArray.push({'id':this.product.id, 'quantity':1});
+            this.cookieService.set('Cart', JSON.stringify(cartArray));
+            this.cookieService.set('Cart', JSON.stringify(cartArray), 100, '/cartpage');
+            this.cookieService.set('Cart', JSON.stringify(cartArray), 100, '/billing');
+            this.cookieService.set('Cart', JSON.stringify(cartArray), 100, '/review');
+            this.cookieValue = this.cookieService.get('Cart');
+            console.log('Product added to cart');
         }
         else
         {
