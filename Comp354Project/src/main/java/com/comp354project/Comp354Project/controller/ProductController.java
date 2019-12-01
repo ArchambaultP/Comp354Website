@@ -13,6 +13,7 @@ import com.comp354project.Comp354Project.repository.DepartmentRepository;
 
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 
 @RestController
 public class ProductController {
@@ -25,6 +26,10 @@ public class ProductController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
+
 
     @CrossOrigin(origins="http://localhost:4200")
     @GetMapping(path="/products")
@@ -92,4 +97,12 @@ public class ProductController {
         return product.getReviews();
     }
 
+
+    @CrossOrigin(origins="http://localhost:4200")
+    @PostMapping(path="/reviews/add")
+    public Review createReview(@Valid @RequestBody Review review)
+    {
+        System.out.println("Test (CreateReview): AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        return reviewRepository.save(review);
+    }
 }

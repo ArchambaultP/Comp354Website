@@ -24,6 +24,14 @@ export class ReviewService {
    }
 
 
+
+  public createReview(review: Review): Observable<Object>
+  {
+        return this.http.post(`${this.reviewsUrl}/add`,review);
+  }
+
+
+
   public save(review: Review) {
      return this.http.post<Review>(this.reviewsUrl, review);
   }

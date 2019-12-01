@@ -3,6 +3,7 @@ package com.comp354project.Comp354Project.controller;
 
 import com.comp354project.Comp354Project.Entities.*;
 import com.comp354project.Comp354Project.repository.AccountRepository;
+import com.comp354project.Comp354Project.repository.ReviewRepository;
 import com.comp354project.Comp354Project.repository.DemoRepository;
 import com.comp354project.Comp354Project.repository.CategoryRepository;
 import com.comp354project.Comp354Project.repository.DepartmentRepository;
@@ -30,6 +31,9 @@ public class DemoController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -235,6 +239,16 @@ public class DemoController {
     @GetMapping(path="/instantiateProduct")
     public @ResponseBody String instantiateProduct(){
 
+        //review -- remove
+        /*
+        Review rev=new Review();
+        rev.setDescription("Very nice product.");
+        rev.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+        rev.setRating(5);
+        //reviewRepository.save(rev);
+        */
+
+
         if(productRepository.findByName("Microsoft Surface Pro 6").isEmpty()){
             Product prod = new Product();
             prod.setName("Microsoft Surface Pro 6");
@@ -245,6 +259,12 @@ public class DemoController {
             prod.setImageURL("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6298/6298148ld.jpg");
             prod.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
             prod.setCategory(categoryRepository.findByName("Computers And Tablets").get(0));
+
+            /*
+            List<Review> r= new ArrayList<Review>();
+            r.add(rev);
+            prod.setReviews(r);
+            */
             productRepository.save(prod);
         }
         if(productRepository.findByName("Apple Ipad Pro").isEmpty()){

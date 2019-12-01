@@ -8,27 +8,25 @@
     <h2>Add your review for this item!!</h2>
     <br/>
 
-    <br/>
-    Add your rating:
-    <select>
-        <option>5</option>
-        <option>4</option>
-        <option>3</option>
-        <option>2</option>
-        <option>1</option>
-    </select>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" id="description" required [(ngModel)]="review.description" name="description">
+        </div>
 
-    <br/>
+        <div class="form-group">
+            <label>Ratings:</label>
 
-    <textarea rows="4" cols="50" placeholder="Enter your review."></textarea>
+            <input type="radio" name="rating" value="5" required [(ngModel)]="review.rating">5
+            <input type="radio" name="rating" value="4" required [(ngModel)]="review.rating">4
+            <input type="radio" name="rating" value="3" required [(ngModel)]="review.rating">3
+            <input type="radio" name="rating" value="2" required [(ngModel)]="review.rating">2
+            <input type="radio" name="rating" value="1" required [(ngModel)]="review.rating">1
 
+        </div>
 
-    <br/>
-
-    <!-- if not logged it, show it as Log in to review-->
-    <!--<button type="button">Add Review</button>-->
-    <button onclick="addReview()">Add Review</button>
-
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
 
 
 </div>
