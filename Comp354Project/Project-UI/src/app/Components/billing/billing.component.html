@@ -1,39 +1,43 @@
-<div [formGroup]="billingForm">
+<!-- <div [formGroup]="billingForm">
 
-    <h3>Billing Information</h3>
-    <mat-form-field>
-        <input matInput type="text" placeholder="Card Number" formControlName="cardNumber">
-    </mat-form-field>
+  <h3>Billing Information</h3>
+<mat-form-field>
+      <input matInput type="text" placeholder="Card Number" formControlName="cardNumber">
+  </mat-form-field>
 
-    <mat-form-field>
-        <input matInput type="text" placeholder="CVV" formControlName="cvv">
-    </mat-form-field>
+  <mat-form-field>
+      <input matInput type="text" placeholder="CVV" formControlName="cvv">
+  </mat-form-field>
 
-    <h5>Expiration</h5>
+  <h5>Expiration</h5>
 
-    <mat-form-field>
-        <input matInput type="number" placeholder="Month" formControlName="expirationMonth">
-    </mat-form-field>
+  <mat-form-field>
+      <input matInput type="number" placeholder="Month" formControlName="expirationMonth">
+  </mat-form-field>
 
-    <mat-form-field>
-        <input matInput type="number" placeholder="Year" formControlName="expirationYear">
-    </mat-form-field>
+  <mat-form-field>
+      <input matInput type="number" placeholder="Year" formControlName="expirationYear">
+  </mat-form-field>
 
-    <h5>Billing Address</h5>
+  <h5>Billing Address</h5>
 
-    <mat-form-field>
-        <input matInput type="text" placeholder="Country" formControlName='country'>
-    </mat-form-field>
+  <mat-form-field>
+      <input matInput type="text" placeholder="Country" formControlName='country'>
+  </mat-form-field>
 
-    <mat-form-field>
-        <input matInput type="text" placeholder="City" formControlName='city'>
-    </mat-form-field>
+  <mat-form-field>
+      <input matInput type="text" placeholder="City" formControlName='city'>
+  </mat-form-field>
 
-    <mat-form-field>
-        <input matInput type="text" placeholder="Address" formControlName='address'>
-    </mat-form-field>
+  <mat-form-field>
+      <input matInput type="text" placeholder="Address" formControlName='address'>
+  </mat-form-field>
 
-    <mat-form-field>
-        <input matInput type="text" placeholder="Zip" formControlName='zip'>
-    </mat-form-field>
-</div>
+  <mat-form-field>
+      <input matInput type="text" placeholder="Zip" formControlName='zip'>
+  </mat-form-field>
+
+
+</div>-->
+
+<ngx-paypal [config]="payPalConfig"></ngx-paypal>

@@ -1,10 +1,8 @@
 package com.comp354project.Comp354Project.controller;
 
 import com.comp354project.Comp354Project.Entities.*;
-import com.comp354project.Comp354Project.repository.AccountOrderRepository;
-import com.comp354project.Comp354Project.repository.AccountRepository;
-import com.comp354project.Comp354Project.repository.OrderItemRepository;
-import com.comp354project.Comp354Project.repository.PaymentRepository;
+import com.comp354project.Comp354Project.repository.*;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +31,12 @@ public class OrderController {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private AccountOrderRepository orderRepository;
+
     @GetMapping(path="/account-orders/{id}")
     public Iterable<AccountOrder> getAccountOrdersFromAccountId(@PathVariable(value = "id") int id)
             throws IllegalArgumentException {
@@ -55,5 +59,29 @@ public class OrderController {
         OrderItem orderItem = orderItemRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("OrderItem not found for id: " + id));
         return orderItem.getProduct();
+    }
+
+    @RequestMapping(value="/add", method = RequestMethod.POST)
+    public String AddOrder(@RequestBody  List<Integer> prodIds){
+        JSONObject response = new JSONObject();
+
+        Payment payment = new Payment();
+        payment.setPaymentType("paypal");
+        paymentRepository.save(payment);
+
+        Account user = accountRepository.findByEmail("admin@admin.com");
+        AccountOrder order = new AccountOrder(user, payment);
+        orderRepository.save(order);
+
+        for(Integer id: prodIds)
+        {
+            Product p = productRepository.findByIdOverride(id);
+            OrderItem ordItem = new OrderItem(order, p , p.getPrice(), 1);
+            orderItemRepository.save(ordItem);
+        }
+
+        response.put("message", "Order created successfully");
+
+        return "";
     }
 }

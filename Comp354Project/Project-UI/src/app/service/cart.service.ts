@@ -23,48 +23,6 @@ export class CartService {
             this.cartData = temp;
         }
     }
-
-<<<<<<< HEAD
-    addToCart(item){
-      this.cartItemsList += item;
-    }
-
-    storeItems(){
-        this.storage.set({
-            'mycart' : this.cartData
-        });
-        this.listCartItems();
-    }
-
-    listCartItems(){
-        let tempCart = [];
-        let getActualItems = Object.keys(this.cartData);
-        let cartDataItems = this.cartData;
-        let tempTotal = 0;
-
-        var onlyChoosenItems = (this.allItems).filter(function(item) {
-            if(getActualItems.indexOf(item.p_id) !== -1 ){
-                tempCart.push({
-                    pid:  item.p_id,
-                    name:  item.product_name,
-                    qty:  cartDataItems[item.p_id],
-                    price:  item.product_price*cartDataItems[item.p_id],
-                });
-                tempTotal += item.product_price*cartDataItems[item.p_id];
-            }
-        });
-
-
-        this.cartItemsList = tempCart;
-        this.cartTotal = tempTotal;
-
-    }
-
-    loadCheckoutInfo(storageKey: string){
-        return this.storage.get(storageKey)
-    }
-
-=======
     addToCart(pid,qty,replace){
 
         if(this.cartData[pid] == undefined){
@@ -117,16 +75,9 @@ export class CartService {
         return this.storage.get(storageKey)
     }
 
->>>>>>> parent of c6d049ab... cart page
     emptyCart(){
         this.storage.set({
             mycart:{}
         })
     }
-
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> parent of c6d049ab... cart page

@@ -35,6 +35,17 @@ public class OrderItem {
     @Null
     private Date shippingDate;
 
+    public OrderItem()
+    {super();};
+
+    public OrderItem(AccountOrder order, Product p, double price, Integer quantity){
+        super();
+        this.order = order;
+        this.product = p;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     public Integer getId() {
         return idOrderItem;
     }

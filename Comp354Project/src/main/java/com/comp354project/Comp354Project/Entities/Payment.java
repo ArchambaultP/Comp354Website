@@ -29,7 +29,7 @@ public class Payment {
     public Payment(){
         super();
         paymentDate = new Date();
-        paymentConfirmed = false;
+        paymentConfirmed = true;
     }
 
     public Integer getId() {
