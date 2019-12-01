@@ -43,6 +43,7 @@ import {
     MatIconModule, MatInputModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSortModule,
     MatTableModule
 } from "@angular/material/";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
