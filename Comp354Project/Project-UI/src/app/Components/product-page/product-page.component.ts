@@ -78,10 +78,12 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     if (this.selectedCategoryButtonValue == ""){
     this.productService.findAllProducts().subscribe(data => {
      this.products = data;
+     this.filterprice();
     });
     }
     else{
       this.catChange();
+      this.filterprice();
     }
   }
   ngOnDestroy(){
@@ -91,9 +93,12 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   }
 
   catChange(){
+    this.productService.selectedCategoryButtonValue = this.selectedCategoryButtonValue;
+
     if(this.selectedCategoryButtonValue == ""){
       this.productService.findAllProducts().subscribe(data => {
         this.products = data;
+        this.filterprice();
       });
     }
     else{
@@ -101,13 +106,17 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       {
         this.category = data;
         this.products = this.category[0].products;
+        this.filterprice();
       });
     }
   }
   catChange2(){
+    this.productService.selectedCategoryButtonValue = this.selectedCategoryButtonValue;
+
     if(this.productService.selectedCategoryButtonValue == ""){
       this.productService.findAllProducts().subscribe(data => {
         this.products = data;
+        this.filterprice();
       });
     }
     else{
@@ -115,7 +124,36 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       {
         this.category = data;
         this.products = this.category[0].products;
+        this.filterprice();
       });
     }
   }
+  maxFilter = null;
+minFilter = null;
+
+ filterProducts(){
+   console.log("this is dddd" + this.maxFilter + this.minFilter)
+   if(this.minFilter == null && this.maxFilter == null){
+     console.log('nothing here');
+   }
+   else if(this.maxFilter == null)
+    this.productService.minPriceFilter = this.minFilter;
+   else if(this.minFilter == null)
+    this.productService.maxPriceFilter = this.maxFilter;
+   else{
+    this.productService.maxPriceFilter = this.maxFilter;
+    this.productService.minPriceFilter = this.minFilter;
+    console.log('nothing here111');
+  }
+
+ }
+ resetFilterProducts(){
+   this.productService.maxPriceFilter = 9999999;
+   this.productService.minPriceFilter = 0;
+   this.maxFilter = null;
+   this.minFilter = null;
+ }
+filterprice(){
+  this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+}
 }

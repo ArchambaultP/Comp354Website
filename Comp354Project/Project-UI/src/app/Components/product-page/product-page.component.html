@@ -13,6 +13,12 @@
         <option value="3">Sort By Price (Low to High)</option>
         <option value="4">Sort By Price (High to Low)</option>
     </select>
+    <div class="form-control">
+  <input type="text" placeholder="$min" [(ngModel)] = "minFilter">
+  <input type="text" placeholder="$max" [(ngModel)] = "maxFilter">
+  <button type="button" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
+  <button type="button" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
+</div>
 </div>
 <br />
 <div class="grid-container">
