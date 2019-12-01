@@ -11,6 +11,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class ProductFormComponent implements OnInit {
   categories = [];
+  res: string;
   submitted = false;
   selectedFile: File = null;
   imgURL: any;
@@ -41,8 +42,10 @@ export class ProductFormComponent implements OnInit {
                                     value.price,
                                     value.quantity,
                                     value.category,
-                                    this.authService.currentUserId());
-
+                                    this.authService.currentUserId()).subscribe(result => {
+                                        this.res = result;
+                                    })
+    console.log(this.res);
     console.log("WOOWW")
 
     //const fd = new FormData();
