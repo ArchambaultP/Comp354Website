@@ -41,19 +41,18 @@ export class ProductService {
                      description: string,
                      price: string,
                      quantity: string,
-                     imageUrl: string,
                      categoryName: string,
-                     accountName: string,
-                     userId: string)
+                     userId: string,
+                     imageUrl: string = ''): Observable<string>
   {
-         return this.http.post<string>(`${this.productsUrl}/add`, {params: {productName: productName,
+
+  return this.http.get<string>(`${this.productsUrl}/add`, {params: {productName: productName,
                                                                     description: description,
                                                                     price: price,
                                                                     quantity: quantity,
                                                                     imageUrl: imageUrl,
                                                                     categoryName: categoryName,
-                                                                    accountName: categoryName,
-                                                                    userId: userId}})
+                                                                    userId: userId}});
   }
 
   // CATEGORIES

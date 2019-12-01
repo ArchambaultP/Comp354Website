@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ProductService } from '../../service/product.service';
-import { Product } from '../model/product';
-
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-product-form',
@@ -11,33 +10,40 @@ import { Product } from '../model/product';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
+  categories = [];
+  submitted = false;
+  selectedFile: File = null;
+  imgURL: any;
+  public imagePath;
+  public message: string;
 
-  constructor(private productService: ProductService) {
-
+  constructor(private productService: ProductService,
+              private authService: AuthService) {
     this.productService.findAllCategories().subscribe(data=> {
           for(let item of data){
             this.categories.push(item.name);
           }
-        });
+    });
   }
-
-  categories = [];
-  submitted = false;
-  selectedFile: File = null;
-  public imagePath;
-  imgURL: any;
-  public message:string;
 
    ngOnInit() {
 
-     }
-
+   }
 
   onSubmit(value: any){
     this.submitted = true;
+    console.log("YESS")
     console.log(value);
+    console.log(this.authService.currentUserId());
 
+    this.productService.saveProduct(value.name,
+                                    value.description,
+                                    value.price,
+                                    value.quantity,
+                                    value.category,
+                                    this.authService.currentUserId());
 
+    console.log("WOOWW")
 
     //const fd = new FormData();
     //fd.append('image', this.selectedFile, this.selectedFile.name);
@@ -62,5 +68,4 @@ export class ProductFormComponent implements OnInit {
         this.imgURL = reader.result;
     }
   }
-
 }

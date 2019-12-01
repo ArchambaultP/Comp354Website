@@ -28,6 +28,11 @@ export class AuthService {
         return this.subject.asObservable();
     }
 
+    currentUserId(): string {
+            this.authUser = JSON.parse(sessionStorage.getItem('user'));
+            return this.authUser.id;
+    }
+
     login(credentials): Observable<any>{
         if(credentials != undefined){
             const body = new HttpParams()

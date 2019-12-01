@@ -49,18 +49,18 @@ public class ProductController {
     }
 
     @CrossOrigin(origins="http://localhost:4200")
-    @PostMapping(path="/products/add")
+    @GetMapping(path="/products/add")
     @ResponseBody
-    public String addProduct(@RequestParam(value = "productName", required = false) String productName,
-                             @RequestParam(value = "description", required = false) String description,
-                             @RequestParam(value = "price", required = false) String price,
-                             @RequestParam(value = "quantity", required = false) String quantity,
-                             @RequestParam(value = "imageUrl", required = false) String imageUrl,
-                             @RequestParam(value = "categoryName", required = false) String categoryName,
-                             @RequestParam(value = "accountName", required = false) String accountName,
-                             @RequestParam(value = "userId", required = false) String userId) {
+    public String addProduct(@RequestParam(value = "productName") String productName,
+                             @RequestParam(value = "description") String description,
+                             @RequestParam(value = "price") String price,
+                             @RequestParam(value = "quantity") String quantity,
+                             @RequestParam(value = "categoryName") String categoryName,
+                             @RequestParam(value = "userId") String userId,
+                             @RequestParam(value = "imageUrl") String imageUrl) {
 
-        Account acc = accountRepository.findByName(accountName).get(0);
+        Account acc = accountRepository.getAccountByIdAccount(Integer.parseInt(userId));
+        Category category = categoryRepository.findByName(categoryName).get(0);
         if(productRepository.findByName(productName).isEmpty()){
             Product prod = new Product();
             prod.setName(productName);
@@ -69,9 +69,9 @@ public class ProductController {
             prod.setQuantity(Integer.parseInt(quantity));
             prod.setPermanentPosting(true);
             prod.setImageURL(imageUrl);
+            prod.setCategory(category);
             prod.setAccount(acc);
-            prod.setCategory(categoryRepository.findByName(categoryName).get(0));
-            prod.setUserId(acc.getId());
+            prod.setUserId(Integer.parseInt(userId));
             productRepository.save(prod);
         }
         return "Done";
