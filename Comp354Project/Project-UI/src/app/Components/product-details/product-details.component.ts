@@ -24,15 +24,10 @@ product: Product;
       })
     });
   }
-<<<<<<< HEAD
+
   addToCart(){
     this.productService.addToCart(this.product);
     console.log('product added to cart')
-=======
-
-  addToCart() {
-    window.alert('Item added to cart');
->>>>>>> parent of c6d049ab... cart page
-  }
+   }
 
 }

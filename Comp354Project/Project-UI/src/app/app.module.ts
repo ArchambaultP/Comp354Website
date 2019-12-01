@@ -38,7 +38,6 @@ import { AccountDetailsComponent } from './Components/admin/account-details/acco
 import {BillingFormComponent} from './Components/billing/billing.component';
 import {ShippingFormComponent} from './Components/shipping/shipping.component';
 import { ReviewComponent } from './Components/review/review.component';
-import {MatFormFieldModule} from "@angular/material/form-field";
 import { ShippingPage} from './Components/shipping2/shipping2.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
