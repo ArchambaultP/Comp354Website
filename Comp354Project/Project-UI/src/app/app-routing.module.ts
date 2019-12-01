@@ -15,11 +15,13 @@ import {AccountDetailsComponent} from "./Components/admin/account-details/accoun
 import {BillingFormComponent} from './Components/billing/billing.component';
 import {ShippingFormComponent} from './Components/shipping/shipping.component';
 import {ShippingPage} from "./Components/shipping2/shipping2.component";
-<<<<<<< HEAD
 import { ReviewComponent } from './Components/review/review.component';
 import { CartComponent } from './Components/cart/cart.component';
-=======
->>>>>>> parent of c6d049ab... cart page
+import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
+import { EmailVerification } from './Components/account/email-verification/email-verification.component';
+import { PasswordUpdate } from './Components/account/password-update/password-update.component';
+import { UserAccountComponent } from './Components/account/user-account/user-account.component';
+import {OrderListComponent} from "./Components/order-list/order-list.component";
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -34,12 +36,16 @@ const routes: Routes = [
   { path: 'admin/accounts/details/:id', component: AccountDetailsComponent},
   { path: 'billing', component: BillingFormComponent},
   { path: 'shipping', component: ShippingFormComponent},
-<<<<<<< HEAD
   { path: 'review', component: ReviewComponent},
   {path: 'cartpage', component: CartComponent},
-=======
->>>>>>> parent of c6d049ab... cart page
-  //{ path: 'shipping2', component: ShippingPage},
+  { path: 'account/email-request', component: EmailRequestComponent},
+  { path: 'account/email-verification', component: EmailVerification},
+  { path: 'account/password-update', component: PasswordUpdate},
+  {path: '', component: MainComponent},
+  { path: 'account/user-account', component: UserAccountComponent },
+  { path: 'order/account-orders/:id', component: OrderListComponent},
+  { path: 'order/orders/:id', component: OrderListComponent},
+  { path: 'order/product/:id', component: OrderListComponent},
 ];
 
 @NgModule({

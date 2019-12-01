@@ -21,6 +21,8 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   selectedDropDownButtonValue: any = "";
   selectedCategoryButtonValue: string = "";
   categoryNames = [];
+  a=8;
+
 
   //IMPORTANT
   // By default sort products based on rating
