@@ -59,6 +59,7 @@ import { SocialMediaButtonsComponent } from './Components/social-media-buttons/s
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { UserAccountComponent } from './Components/account/user-account/user-account.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,7 @@ import { UserAccountComponent } from './Components/account/user-account/user-acc
         InputsModule,
         JwSocialButtonsModule,
   ],
-  providers: [UserService, AuthService, AdminService, ProductService, OrderService, CartService, StorageService],
+  providers: [UserService, AuthService, AdminService, ProductService, OrderService, CartService, StorageService, CookieService],
   bootstrap: [AppComponent],
   entryComponents: [RegistrationComponent]
 })
