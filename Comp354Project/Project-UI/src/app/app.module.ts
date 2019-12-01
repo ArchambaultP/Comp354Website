@@ -15,6 +15,8 @@ import { AuthService } from './service/auth.service';
 import { Injectable } from '@angular/core';
 import { UserService } from './service/user.service';
 import { RegistrationComponent } from './Components/register/registration.component';
+import { CartService } from './service/cart.service';
+import { StorageService } from './service/storage.service';
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
 } from '@angular/common/http';
@@ -33,6 +35,12 @@ import {MatCardModule} from '@angular/material/card';
 import { AccountFormComponent } from './Components/admin/account-form/account-form.component';
 import { AccountUpdateComponent } from './Components/admin/account-update/account-update.component';
 import { AccountDetailsComponent } from './Components/admin/account-details/account-details.component';
+import {BillingFormComponent} from './Components/billing/billing.component';
+import {ShippingFormComponent} from './Components/shipping/shipping.component';
+import { ReviewComponent } from './Components/review/review.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import { ShippingPage} from './Components/shipping2/shipping2.component';
+import { CartComponent } from './Components/cart/cart.component';
 import { EmailRequestComponent } from './Components/account/email-request/email-request.component';
 import { EmailVerification } from './Components/account/email-verification/email-verification.component';
 import { PasswordUpdate } from './Components/account/password-update/password-update.component';
@@ -74,14 +82,19 @@ import { UserAccountComponent } from './Components/account/user-account/user-acc
     AccountFormComponent,
     AccountUpdateComponent,
     AccountDetailsComponent,
+    BillingFormComponent,
+    ShippingFormComponent,
+    ReviewComponent,
+    CartComponent,
+    ShippingPage,
     EmailRequestComponent,
     EmailVerification,
     PasswordUpdate,
     OrderListComponent,
     SocialMediaButtonsComponent,
-    UserAccountComponent
+    UserAccountComponent,
   ],
-    imports: [
+  imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
@@ -100,9 +113,9 @@ import { UserAccountComponent } from './Components/account/user-account/user-acc
         MatDialogModule,
         ButtonsModule,
         InputsModule,
-        JwSocialButtonsModule
-      ],
-  providers: [UserService, AuthService, AdminService, ProductService, OrderService],
+        JwSocialButtonsModule,
+  ],
+  providers: [UserService, AuthService, AdminService, ProductService, OrderService, CartService, StorageService],
   bootstrap: [AppComponent],
   entryComponents: [RegistrationComponent]
 })
