@@ -26,6 +26,7 @@
     "jw-angular-social-buttons": "^1.0.0",
     "ng6-social-button": "^1.0.5",
     "ngx-facebook": "^2.4.0",
+    "ngx-paypal": "^5.0.0",
     "ngx-social-button": "^1.0.4",
     "ramda": "^0.26.1",
     "rxjs": "~6.4.0",

@@ -21,24 +21,31 @@ public class AccountOrder { //decided to name this AccountOrder, simply because 
     @NotNull
     private Payment payment;
 
-    @JsonBackReference
     @NotNull
     @ManyToOne
     @JoinColumn(name = "idAccount")
+    @JsonBackReference
     private Account account;
 
     @NotNull
     private Date date;
 
-    @JsonManagedReference
     @OneToMany(
             mappedBy = "order"
     )
+    @JsonManagedReference
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     public AccountOrder(){
         super();
         date = new Date();
+    }
+
+    public AccountOrder(Account acc, Payment pay){
+        super();
+        this.date = new Date();
+        this.account = acc;
+        this.payment = pay;
     }
 
     public Integer getId() {

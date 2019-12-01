@@ -52,6 +52,7 @@ public class Product {
     @OneToMany(
             mappedBy = "product"
     )
+    @JsonManagedReference
     private List<Review> reviews;
 
     public Integer getId() {

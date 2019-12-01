@@ -52,6 +52,8 @@ import { SocialMediaButtonsComponent } from './Components/social-media-buttons/s
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { UserAccountComponent } from './Components/account/user-account/user-account.component';
+import {PaypalComponent} from './Components/paypal/paypal.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,8 @@ import { UserAccountComponent } from './Components/account/user-account/user-acc
     PasswordUpdate,
     OrderListComponent,
     SocialMediaButtonsComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    PaypalComponent,
   ],
     imports: [
         BrowserModule,
@@ -100,7 +103,8 @@ import { UserAccountComponent } from './Components/account/user-account/user-acc
         MatDialogModule,
         ButtonsModule,
         InputsModule,
-        JwSocialButtonsModule
+        JwSocialButtonsModule,
+        NgxPayPalModule,
       ],
   providers: [UserService, AuthService, AdminService, ProductService, OrderService],
   bootstrap: [AppComponent],
