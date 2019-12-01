@@ -3,9 +3,11 @@ package com.comp354project.Comp354Project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.comp354project.Comp354Project.Entities.Product;
+import com.comp354project.Comp354Project.Entities.Review;
 import com.comp354project.Comp354Project.Entities.Category;
 import com.comp354project.Comp354Project.Entities.Department;
 import com.comp354project.Comp354Project.repository.ProductRepository;
+import com.comp354project.Comp354Project.repository.ReviewRepository;
 import com.comp354project.Comp354Project.repository.CategoryRepository;
 import com.comp354project.Comp354Project.repository.DepartmentRepository;
 
@@ -79,6 +81,15 @@ public class ProductController {
     @GetMapping(path="/departments/{id}")
     public Optional<Department> getDepartmentById(@PathVariable Integer id) {
         return departmentRepository.findById(id);
+    }
+
+
+    @CrossOrigin(origins="http://localhost:4200")
+    @GetMapping(path="/reviews/{id}")
+    public List<Review> getAllReviewsByProduct(@PathVariable Integer id)
+    {
+        Product product=productRepository.getProductByIdProduct(id);
+        return product.getReviews();
     }
 
 }
