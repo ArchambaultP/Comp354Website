@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3eacd00-d0c2-4911-8fec-f8060e42f981" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/controller/ReviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/model/review.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/model/review.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/service/review.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/service/review.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/display-reviews/display-reviews.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/display-reviews/display-reviews.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/display-reviews/display-reviews.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/display-reviews/display-reviews.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/Entities/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/Entities/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/controller/ReviewController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/repository/ReviewRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +51,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Documents\School\Fall-Winter 2019-20\Fall 2019\COMP 354\project repo clone 2\Comp354Website\Comp354Project\Project-UI\src\app\model" />
       <recent name="C:\Users\ASUS\Documents\School\Fall-Winter 2019-20\Fall 2019\COMP 354\project repo clone 2\Comp354Website\Comp354Project\src\main\java\com\comp354project\Comp354Project\controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

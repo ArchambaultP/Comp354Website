@@ -141,4 +141,9 @@ public class Product {
     public String getImageURL() { return imageURL;}
 
     public void setImageURL(String imageURL) {this.imageURL = imageURL;}
+
+    // getters and setters for review
+    public List<Review> getReviews( ){  return reviews;}
+
+    public  void setReviews(List<Review> reviews){this.reviews=reviews;}
 }

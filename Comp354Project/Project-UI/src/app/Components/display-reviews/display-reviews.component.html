@@ -11,4 +11,40 @@
     <br>
     <br>
 
+    <div class="grid-container">
+        <!-- <div *ngFor="let review of reviews | filter : searchText : inCategory let i=index"> -->
+        <div *ngFor="let review of reviews ; let i=index">
+            <div *ngIf="i<a">
+                <mat-card class="product-card">
+                    <mat-card-header>
+
+
+                        <mat-card-title>
+                            <!-- name of user -->
+                            ${{review.name}}
+
+                        </mat-card-title>
+
+                        <mat-card-subtitle>
+
+                            ${{review.rating}}
+                        </mat-card-subtitle>
+
+
+
+                    </mat-card-header>
+
+                    <!-- Description of review-->
+                    <mat-card-content>
+                        ${{review.description}}
+
+                    </mat-card-content>
+
+                </mat-card>
+                <p *ngIf="!product">No products to display</p>
+            </div>
+        </div>
+    </div>
+
+
 </div>

@@ -3,10 +3,12 @@ package com.comp354project.Comp354Project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.comp354project.Comp354Project.Entities.Product;
+import com.comp354project.Comp354Project.Entities.Review;
 import com.comp354project.Comp354Project.Entities.Category;
 import com.comp354project.Comp354Project.Entities.Department;
 import com.comp354project.Comp354Project.Entities.Account;
 import com.comp354project.Comp354Project.repository.ProductRepository;
+import com.comp354project.Comp354Project.repository.ReviewRepository;
 import com.comp354project.Comp354Project.repository.CategoryRepository;
 import com.comp354project.Comp354Project.repository.DepartmentRepository;
 import com.comp354project.Comp354Project.repository.AccountRepository;
@@ -119,8 +121,16 @@ public class ProductController {
 
     @CrossOrigin(origins="http://localhost:4200")
     @GetMapping(path="/account/user/{id}/products")
-    public List<Product> getUserProducts(@PathVariable Integer id){
+    public List<Product> getUserProducts(@PathVariable Integer id) {
         return productRepository.findById_account(id);
+    }
+
+    @CrossOrigin(origins="http://localhost:4200")
+    @GetMapping(path="/reviews/{id}")
+    public List<Review> getAllReviewsByProduct(@PathVariable Integer id)
+    {
+        Product product=productRepository.findByIdOverride(id);
+        return product.getReviews();
     }
 
 }
