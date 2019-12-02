@@ -52,9 +52,9 @@ export class ProductService {
                      quantity: string,
                      categoryName: string,
                      userId: string,
-                     imageUrl: string = ''): Observable<string>
+                     imageUrl: string): Observable<string>
   {
-
+  console.log(imageUrl);
   return this.http.get<string>(`${this.productsUrl}/add`, {params: {productName: productName,
                                                                     description: description,
                                                                     price: price,

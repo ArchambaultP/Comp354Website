@@ -42,33 +42,17 @@ export class ProductFormComponent implements OnInit {
                                     value.price,
                                     value.quantity,
                                     value.category,
-                                    this.authService.currentUserId()).subscribe(result => {
+                                    this.authService.currentUserId(),
+                                    value.image).subscribe(result => {
                                         this.res = result;
                                     })
+
+
+    if(!alert("Your product has been submitted successfully !")){window.location.reload();}
     console.log(this.res);
     console.log("WOOWW")
 
-    //const fd = new FormData();
-    //fd.append('image', this.selectedFile, this.selectedFile.name);
-    //this.http.post('', fd).subscribe(res => {console.log(res)});
   }
 
 
-  onFileSelected(files){
-    //this.selectedFile = <File>event.target.files[0];
-    if (files.length === 0)
-        return;
-
-    var mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-        this.message = "Only images are supported.";
-            return;
-    }
-    var reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    reader.onload = (_event) => {
-        this.imgURL = reader.result;
-    }
-  }
 }
