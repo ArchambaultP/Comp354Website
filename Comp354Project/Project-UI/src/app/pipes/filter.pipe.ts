@@ -5,22 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
   filteredProducts;
-
-  transform(products: any={},searchText: string='', inCategory: boolean){
+  results;
+  transform(products: any={},searchText: string=''){
     if(!products){
       return {}
     }
     this.filteredProducts = products.filter( items => {
-        return items.name.toLowerCase().includes(searchText.toLowerCase())
+        this.results =  items.name.toLowerCase().includes(searchText.toLowerCase());
+        return this.results;
     })
-
-    // Runs if no products are found
-    // if(this.filteredProducts.length === 0 && searchText != ""){
-    //     window.alert("That item isn't in the database");
-    //     (<HTMLInputElement>document.getElementById('searchBar')).value = "";
-    //
-    //     return products;
-    // }
     console.log(searchText);
     return this.filteredProducts;
   }

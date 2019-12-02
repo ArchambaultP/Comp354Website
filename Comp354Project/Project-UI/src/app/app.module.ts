@@ -84,7 +84,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     AccountFormComponent,
     AccountUpdateComponent,
     AccountDetailsComponent,
-    ProductFormComponent
+    ProductFormComponent,
     BillingFormComponent,
     ShippingFormComponent,
     ReviewComponent,

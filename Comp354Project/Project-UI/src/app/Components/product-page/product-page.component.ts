@@ -22,7 +22,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   selectedCategoryButtonValue: string = "";
   categoryNames = [];
   a=8;
-
+  // result;
 
   //IMPORTANT
   // By default sort products based on rating
@@ -72,9 +72,11 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   //Gets the search text from the product service
   ngOnInit() {
     this.selectedCategoryButtonValue = this.productService.selectedCategoryButtonValue;
-    console.log(this.productService.selectedCategoryButtonValue)
-    console.log("this is the selected category" + this.selectedCategoryButtonValue )
-    this.searchText = this.searchService.searchText;
+
+    this.searchService.searchText.subscribe( value => {
+      this.searchText = value;
+    });
+
     if (this.selectedCategoryButtonValue == ""){
       console.log('this is a test' + this.selectedCategoryButtonValue)
       this.productService.findAllProducts().subscribe(data => {

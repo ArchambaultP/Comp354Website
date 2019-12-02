@@ -58,13 +58,5 @@
     <br/>
     <br/>
     <br/>
-    <!-- Search Bar-->
-    <div>
-        <div style="display: inline-block">
-            <input id = "searchBar" type="search" placeholder="Search 354TheStars.." [(ngModel)] = "searchText" >
-            <button *ngIf="searchText != ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="'/products'"> Search </button>
-            <button *ngIf="searchText == ''" id = "searchButton" type="button" (click) = "setSearchText()" [routerLink]="''"> Search </button>
-        </div>
-    </div>
 <button type="button" [routerLink] = "'/cartpage'"name="button">cart</button>
 </div>

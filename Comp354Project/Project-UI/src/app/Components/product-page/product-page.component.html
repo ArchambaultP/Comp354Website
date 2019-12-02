@@ -38,23 +38,26 @@
 </div>
 <br />
 <div class="grid-container">
-<div *ngFor="let product of products | filter : searchText : inCategory let i=index">
-    <div *ngIf="i<a">
-        <mat-card class="product-card">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
+    <div *ngIf="(products | filter : searchText) as result">
+        <div *ngFor="let product of result let i=index">
+            <div *ngIf="i<a">
+                <mat-card class="product-card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
 
-                <mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
-                    {{product.name}}</a>
-                </mat-card-title>
+                        <mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+                            {{product.name}}</a>
+                        </mat-card-title>
 
-                <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="{{product.imageURL}}" >
-        </mat-card>
-      <p *ngIf="!product">No products to display</p>
+                        <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="{{product.imageURL}}" >
+                </mat-card>
+            </div>
+        </div>
+        <p *ngIf="result.length === 0">The search: {{searchText}} returned no items!</p>
     </div>
-</div>
+
 </div>
 <hr>
 <div class="clearfix mb-2">
