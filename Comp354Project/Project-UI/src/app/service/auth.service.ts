@@ -155,6 +155,11 @@ export class AuthService {
         }
     }
 
+    currentUserObject(){
+            this.authUser = JSON.parse(sessionStorage.getItem('user'));
+            return this.authUser;
+        }
+
     isUserLoggedIn(){
         let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
         return user;

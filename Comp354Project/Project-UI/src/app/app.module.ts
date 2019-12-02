@@ -64,7 +64,7 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
     AccountFormComponent,
     AccountUpdateComponent,
     AccountDetailsComponent,
-    ProductFormComponent
+    ProductFormComponent,
     AccountDetailsComponent,
     EmailRequestComponent,
     EmailVerification,

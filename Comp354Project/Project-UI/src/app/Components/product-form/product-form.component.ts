@@ -22,7 +22,7 @@ export class ProductFormComponent implements OnInit {
           }
         });
 
-    this.user = this.authService.currentUser();
+    this.user = this.authService.currentUserObject();
   }
 
   user: AuthenticatedUser;
@@ -42,7 +42,7 @@ export class ProductFormComponent implements OnInit {
     this.submitted = true;
     //console.log(value);
 
-    this.productService.save(value.name, value.description, String(value.price), String(value.quantity), imgURL, value.category, user.name, user.id);
+    //this.productService.save(value.name, value.description, String(value.price), String(value.quantity), imgURL, value.category, user.name, user.id);
 
   }
 
