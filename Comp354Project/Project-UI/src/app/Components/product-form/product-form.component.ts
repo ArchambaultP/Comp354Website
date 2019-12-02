@@ -44,7 +44,7 @@ export class ProductFormComponent implements OnInit {
                                     value.category,
                                     this.authService.currentUserId()).subscribe(result => {
                                         this.res = result;
-                                    }, this.imageURL)
+                                    }, this.imgURL)
     console.log(this.res);
     console.log("WOOWW")
 
