@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Observable } from "rxjs";
 import {AdminService} from "../../../service/admin.service";
 import {Account} from "../../../model/account";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../service/auth.service";
+import {MatTableDataSource, MatSort, MatDialog, MatDialogConfig} from '@angular/material';
+import {MatPaginator} from "@angular/material/paginator";
+import {RegistrationComponent} from "../../register/registration.component";
+import {AccountDetailsComponent} from "../account-details/account-details.component";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-account-list',
@@ -12,9 +17,15 @@ import {AuthService} from "../../../service/auth.service";
 })
 export class AccountListComponent implements OnInit {
 
-  accounts: Observable<Account[]>;
+  listData: MatTableDataSource<any>;
+  displayedColumns: string[] = ['id', 'name', 'email', 'actions'];
+  searchKey: string;
 
-  constructor(private adminService: AdminService, private router:Router, private auth: AuthService) {
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+
+  constructor(private adminService: AdminService, private router:Router, private auth: AuthService, private dialog: MatDialog,
+              private modalService: NgbModal) {
     // TODO: Check if admin or superAdmin
     if(!this.auth.isAdmin()){
       this.router.navigate(['/']);
@@ -26,7 +37,13 @@ export class AccountListComponent implements OnInit {
   }
 
   reloadData() {
-    this.accounts = this.adminService.getAccounts();
+    // Convert Observable<Account[]> to a list for MatTableDataSource
+    this.adminService.getAccounts().subscribe(
+        list => {
+            this.listData = new MatTableDataSource(list as Account[]);
+            this.listData.sort = this.sort;
+            this.listData.paginator = this.paginator;
+        });
   }
 
   deleteAccount(id:number){
@@ -39,20 +56,55 @@ export class AccountListComponent implements OnInit {
             error => console.log(error));
   }
 
-  employeeDetails(id: number){
-    this.router.navigate(['admin/accounts/details', id]);
-  }
-
-  updateAccount(id: number){
-    this.router.navigate(['admin/accounts/update', id]);
+  updateAccount(accountToUpdate){
+    /*const dialogConfig = new MatDialogConfig();
+    //dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "95%";
+    dialogConfig.data = {
+      account: accountToUpdate
+    };
+    this.dialog.open(RegistrationComponent, dialogConfig);*/
+    const registrationModal = this.modalService.open(RegistrationComponent);
+    registrationModal.componentInstance.modalTitle = 'Update Account';
+    registrationModal.componentInstance.submitBtn = 'Update';
+    registrationModal.componentInstance.accountToUpdate = accountToUpdate;
   }
 
   createAccount(){
-    //this.router.navigate(['admin/accounts/add']);
-    this.router.navigate(['registration']);
+    const registrationModal = this.modalService.open(RegistrationComponent);
+    registrationModal.componentInstance.modalTitle = 'Create Account';
+    registrationModal.componentInstance.submitBtn = 'Create';
+
+    /*
+    const dialogConfig = new MatDialogConfig();
+    //dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    //dialogConfig.width = "50%";
+    //dialogConfig.height = "95%";
+    this.dialog.open(RegistrationComponent, dialogConfig);
+    */
   }
 
-  accountDetails(id: number){
-    this.router.navigate(['admin/accounts/details', id]);
+  accountDetails(accountId: number){
+    const dialogConfig = new MatDialogConfig();
+    //dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    //dialogConfig.height = "95%";
+    dialogConfig.data = {
+      id: accountId
+    };
+    this.dialog.open(AccountDetailsComponent, dialogConfig);
+  }
+
+  onSearchClear(){
+    this.searchKey = "";
+    this.applyFilter();
+  }
+
+  applyFilter(){
+    this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 }

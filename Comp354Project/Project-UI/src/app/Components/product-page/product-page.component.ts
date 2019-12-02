@@ -76,9 +76,19 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     console.log("this is the selected category" + this.selectedCategoryButtonValue )
     this.searchText = this.searchService.searchText;
     if (this.selectedCategoryButtonValue == ""){
+<<<<<<< HEAD
     this.productService.findAllProducts().subscribe(data => {
      this.products = data;
      this.filterprice();
+=======
+      console.log('this is a test' + this.selectedCategoryButtonValue)
+      this.productService.findAllProducts().subscribe(data => {
+      this.products = data;
+      this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+      // this.filteredProducts = [...this.Stores[0].Products.filter(product => product.Price
+ // >= value.lower && product.Price <= value.upper )]
+
+>>>>>>> master
     });
     }
     else{
@@ -98,7 +108,12 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     if(this.selectedCategoryButtonValue == ""){
       this.productService.findAllProducts().subscribe(data => {
         this.products = data;
+<<<<<<< HEAD
         this.filterprice();
+=======
+        this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
+>>>>>>> master
       });
     }
     else{
@@ -106,7 +121,12 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       {
         this.category = data;
         this.products = this.category[0].products;
+<<<<<<< HEAD
         this.filterprice();
+=======
+        this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
+>>>>>>> master
       });
     }
   }
@@ -116,7 +136,12 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     if(this.productService.selectedCategoryButtonValue == ""){
       this.productService.findAllProducts().subscribe(data => {
         this.products = data;
+<<<<<<< HEAD
         this.filterprice();
+=======
+        this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
+>>>>>>> master
       });
     }
     else{
@@ -124,7 +149,12 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       {
         this.category = data;
         this.products = this.category[0].products;
+<<<<<<< HEAD
         this.filterprice();
+=======
+        this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
+>>>>>>> master
       });
     }
   }

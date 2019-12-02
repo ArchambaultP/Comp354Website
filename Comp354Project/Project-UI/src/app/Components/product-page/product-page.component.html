@@ -1,4 +1,26 @@
 <div id="wrapper">
+    <div class="clearfix">
+        <div class="float-left">
+            <select class="form-control"  [(ngModel)] = "selectedCategoryButtonValue" (change)="catChange()">
+                <option value="">All</option>
+                <option *ngFor= "let name of categoryNames"
+                        [value]="name">{{name}}
+                </option>
+            </select>
+        </div>
+        <div class="float-left">
+            <select class="form-control"  [(ngModel)] = "selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
+                <option value="">Sort</option>
+                <option value="1">Sort By Name (A to Z)</option>
+                <option value="2">Sort By Name (Z to A)</option>
+                <option value="3">Sort By Price (Low to High)</option>
+                <option value="4">Sort By Price (High to Low)</option>
+            </select>
+        </div>
+
+
+    </div>
+    <!--
     <select class="form-control"  [(ngModel)] = "selectedCategoryButtonValue" (change)="catChange()">
     <option value="">All</option>
     <option *ngFor= "let name of categoryNames"
@@ -12,6 +34,7 @@
         <option value="2">Sort By Name (Z to A)</option>
         <option value="3">Sort By Price (Low to High)</option>
         <option value="4">Sort By Price (High to Low)</option>
+<<<<<<< HEAD
     </select>
     <div class="form-control">
   <input type="text" placeholder="$min" [(ngModel)] = "minFilter">
@@ -19,6 +42,9 @@
   <button type="button" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
   <button type="button" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
 </div>
+=======
+    </select> -->
+>>>>>>> master
 </div>
 <br />
 <div class="grid-container">
@@ -41,5 +67,16 @@
 </div>
 </div>
 <hr>
+<<<<<<< HEAD
 <button id=button1 (click)="a = a-8">View Less</button>
 <button id=button2 (click)="a = a+8">View More</button>
+=======
+<div class="clearfix mb-2">
+    <div class="float-left">
+        <button class="btn btn-primary" id='button1' (click)="a = a-8">View Less</button>
+    </div>
+    <div class="float-right">
+        <button class="btn btn-primary" id='button2' (click)="a = a+8">View More</button>
+    </div>
+</div>
+>>>>>>> master

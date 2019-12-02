@@ -12,14 +12,28 @@ export class ProductService {
   private productsUrl: string;
   private categoriesUrl: string;
   private departmentsUrl: string;
+<<<<<<< HEAD
   selectedCategoryButtonValue = "";
   maxPriceFilter = 99999999;
   minPriceFilter = 0;
+=======
+  public selectedCategoryButtonValue = "";
+  maxPriceFilter = 99999999;
+  minPriceFilter = 0;
+  public cart = [];
+
+>>>>>>> master
   constructor(private http: HttpClient) {
     this.productsUrl = 'http://localhost:8080/products';
     this.departmentsUrl = 'http://localhost:8080/departments';
     this.categoriesUrl = 'http://localhost:8080/categories';
   }
+
+  public addToCart(item){
+    this.cart += item;
+    console.log('product added to service' + this.cart);
+  }
+
 
   // PRODUCTS
   public findAllProducts(): Observable<Product[]> {
@@ -34,8 +48,26 @@ export class ProductService {
         return this.http.get<Product>(`${this.productsUrl}/${ProductId}`);
    }
 
-  public save(product: Product) {
-     return this.http.post<Product>(this.productsUrl, product);
+  public deleteProductById(id: string): Observable<string> {
+            return this.http.get<string>(`${this.productsUrl}/delete/${id}`);
+  }
+
+  public saveProduct(productName: string,
+                     description: string,
+                     price: string,
+                     quantity: string,
+                     categoryName: string,
+                     userId: string,
+                     imageUrl: string = ''): Observable<string>
+  {
+
+  return this.http.get<string>(`${this.productsUrl}/add`, {params: {productName: productName,
+                                                                    description: description,
+                                                                    price: price,
+                                                                    quantity: quantity,
+                                                                    imageUrl: imageUrl,
+                                                                    categoryName: categoryName,
+                                                                    userId: userId}});
   }
 
   // CATEGORIES

@@ -7,4 +7,5 @@ export class Product {
     permanentPosting: string;
     imageUrl: string;
     id: string;
+    userId;
 }

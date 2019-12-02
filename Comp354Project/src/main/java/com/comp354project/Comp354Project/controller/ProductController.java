@@ -5,12 +5,16 @@ import org.springframework.web.bind.annotation.*;
 import com.comp354project.Comp354Project.Entities.Product;
 import com.comp354project.Comp354Project.Entities.Category;
 import com.comp354project.Comp354Project.Entities.Department;
+import com.comp354project.Comp354Project.Entities.Account;
 import com.comp354project.Comp354Project.repository.ProductRepository;
 import com.comp354project.Comp354Project.repository.CategoryRepository;
 import com.comp354project.Comp354Project.repository.DepartmentRepository;
+import com.comp354project.Comp354Project.repository.AccountRepository;
 
 import java.util.List;
 import java.util.Optional;
+
+import java.lang.*;
 
 @RestController
 public class ProductController {
@@ -23,6 +27,9 @@ public class ProductController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     @CrossOrigin(origins="http://localhost:4200")
     @GetMapping(path="/products")
@@ -41,11 +48,40 @@ public class ProductController {
         return productRepository.findById(id);
     }
 
-    @PostMapping(path="/products/add")
+    @CrossOrigin(origins="http://localhost:4200")
+    @GetMapping(path="/products/add")
     @ResponseBody
-    public String addProduct(Product product) {
-        productRepository.save(product);
+    public String addProduct(@RequestParam(value = "productName") String productName,
+                             @RequestParam(value = "description") String description,
+                             @RequestParam(value = "price") String price,
+                             @RequestParam(value = "quantity") String quantity,
+                             @RequestParam(value = "categoryName") String categoryName,
+                             @RequestParam(value = "userId") String userId,
+                             @RequestParam(value = "imageUrl") String imageUrl) {
+
+        Account acc = accountRepository.getAccountByIdAccount(Integer.parseInt(userId));
+        Category category = categoryRepository.findByName(categoryName).get(0);
+        if(productRepository.findByName(productName).isEmpty()){
+            Product prod = new Product();
+            prod.setName(productName);
+            prod.setDescription(description);
+            prod.setPrice((Double.parseDouble(price)));
+            prod.setQuantity(Integer.parseInt(quantity));
+            prod.setPermanentPosting(true);
+            prod.setImageURL(imageUrl);
+            prod.setCategory(category);
+            prod.setAccount(acc);
+            prod.setUserId(Integer.parseInt(userId));
+            productRepository.save(prod);
+        }
         return "Done";
+    }
+
+    @CrossOrigin(origins="http://localhost:4200")
+    @GetMapping(value = "/products/delete/{id}")
+    public @ResponseBody String deleteProduct(@PathVariable("id") Integer id) {
+        productRepository.deleteById(id);
+        return "done";
     }
 
     @CrossOrigin(origins="http://localhost:4200")
@@ -79,6 +115,12 @@ public class ProductController {
     @GetMapping(path="/departments/{id}")
     public Optional<Department> getDepartmentById(@PathVariable Integer id) {
         return departmentRepository.findById(id);
+    }
+
+    @CrossOrigin(origins="http://localhost:4200")
+    @GetMapping(path="/account/user/{id}/products")
+    public List<Product> getUserProducts(@PathVariable Integer id){
+        return productRepository.findById_account(id);
     }
 
 }

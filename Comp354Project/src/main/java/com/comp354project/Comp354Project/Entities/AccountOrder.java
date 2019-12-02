@@ -1,5 +1,8 @@
 package com.comp354project.Comp354Project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -13,10 +16,12 @@ public class AccountOrder { //decided to name this AccountOrder, simply because 
     @Column(name = "id_account_order", nullable = false, unique = true)
     private Integer idAccountOrder;
 
+    @JsonManagedReference
     @OneToOne
     @NotNull
     private Payment payment;
 
+    @JsonBackReference
     @NotNull
     @ManyToOne
     @JoinColumn(name = "idAccount")
@@ -25,6 +30,7 @@ public class AccountOrder { //decided to name this AccountOrder, simply because 
     @NotNull
     private Date date;
 
+    @JsonManagedReference
     @OneToMany(
             mappedBy = "order"
     )
@@ -33,6 +39,13 @@ public class AccountOrder { //decided to name this AccountOrder, simply because 
     public AccountOrder(){
         super();
         date = new Date();
+    }
+
+    public AccountOrder(Account acc, Payment pay){
+        super();
+        this.date = new Date();
+        this.account = acc;
+        this.payment = pay;
     }
 
     public Integer getId() {

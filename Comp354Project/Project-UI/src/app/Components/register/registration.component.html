@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-    <!-- bootstrap css -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
+<link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<div class="modal-header">
+    <h4 class="modal-title">{{ modalTitle }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div *ngIf='submitted'>
+        <div *ngIf="!loading">
+            <div class="alert alert-danger" *ngIf='error'>{{errorMsg}}</div>
+            <div class="alert alert-success" *ngIf='!error'>{{successMsg}}</div>
+        </div>
+    </div>
     <form [formGroup]="regForm"  (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="name">Name</label>
@@ -53,18 +58,18 @@
         </div>
         <div class="form-group">
             <label for="province">Province</label>
-                <select formControlName="province" class="form-control" id="province" name="province">
-                    <option value="Ontario">Ontario</option>
-                    <option value="Quebec">Quebec</option>
-                    <option value="Nova Scotia">Nova Scotia</option>
-                    <option value="New Brunswick">New Brunswick</option>
-                    <option value="Manitoba">Manitoba</option>
-                    <option value="British Columbia">British Columbia</option>
-                    <option value="Prince Edward Island">Prince Edward Island</option>
-                    <option value="Saskwatchewan">Saskwatchewan</option>
-                    <option value="Alberta">Alberta</option>
-                    <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
-                </select>
+            <select formControlName="province" class="form-control" id="province" name="province">
+                <option value="Ontario">Ontario</option>
+                <option value="Quebec">Quebec</option>
+                <option value="Nova Scotia">Nova Scotia</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="British Columbia">British Columbia</option>
+                <option value="Prince Edward Island">Prince Edward Island</option>
+                <option value="Saskwatchewan">Saskwatchewan</option>
+                <option value="Alberta">Alberta</option>
+                <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="country">Country</label>
@@ -76,9 +81,17 @@
         </div>
         <div class="form-group">
             <label for="postalCode">Phone</label>
-            <input formControlName="postalCode" type="text" class="form-control" id="phone" name="phone"/>
+            <input formControlName="phone" type="text" class="form-control" id="phone" name="phone"/>
         </div>
-        <button class="btn btn-primary mr-1">Register</button>
+        <div *ngIf="!loading">
+            <button class="btn btn-primary mr-1">{{ submitBtn }}</button>
+        </div>
+        <div *ngIf="submitted">
+            <div *ngIf="loading">
+                <button class="btn btn-primary mr-1" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
     </form>
-</body>
-</html>
+</div>

@@ -1,0 +1,48 @@
+<!-- bootstrap css -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div>
+    <div class="modal-header">
+    <h4 class="modal-title">{{ modalTitle }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <div *ngIf='submitted'>
+            <div *ngIf="!loading">
+                <div class="alert alert-danger" *ngIf='error'>{{errorMsg}}</div>
+                <div class="alert alert-success" *ngIf='!error'>{{successMsg}}</div>
+            </div>
+        </div>
+        <form [formGroup]="eForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input formControlName="email" type="text" class="form-control" id="email" name="email"  [ngClass]="{'is-invalid': submitted && form.email.errors}">
+                <div *ngIf="submitted && form.email.errors" class="invalid-feedback">
+                    <div *ngIf="form.email.errors.required">Email is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="code">{{ codeName }}</label>
+                <input formControlName="code" type="text" class="form-control" id="code" name="code" [ngClass]="{'is-invalid': submitted && form.code.errors}">
+                <div *ngIf="submitted && form.code.errors" class="invalid-feedback">
+                    <div *ngIf="form.code.errors.required"> {{ codeName }} is required</div>
+                </div>
+            </div>
+            <div *ngIf='!submitted'>
+                <button class="btn btn-success">{{ submitBtn }}</button>
+            </div>
+            <div *ngIf='submitted'>
+                <div *ngIf="loading">
+                    <button class="btn btn-primary mr-1" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div *ngIf="!loading&&error">
+                    <button class="btn btn-success">{{ submitBtn }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

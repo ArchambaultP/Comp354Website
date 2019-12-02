@@ -8,4 +8,5 @@ import java.util.List;
 public interface AccountRepository extends CrudRepository<Account, Integer> {
     Account findByEmail(String email);
     Account getAccountByIdAccount(int idAccount);
+    public List<Account> findByName(String name);
 }
