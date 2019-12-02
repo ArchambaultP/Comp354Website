@@ -3,4 +3,8 @@ export class Review {
     description: string;
 
     id: number;
+
+    userId: number;
+    productId: number;
+    productName: string;
 }

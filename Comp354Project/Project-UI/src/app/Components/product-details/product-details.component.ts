@@ -20,7 +20,6 @@ export class ProductDetailsComponent implements OnInit {
    ans: string;
    cookieValue = 'UNKNOWN';
    userId;
-   product: Product;
   constructor(public productService: ProductService, private route: ActivatedRoute,private cookieService: CookieService, private auth: AuthService) {
   }
 

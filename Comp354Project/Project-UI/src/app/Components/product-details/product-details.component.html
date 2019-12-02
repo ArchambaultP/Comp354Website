@@ -24,9 +24,9 @@
 -->
 
 <!-- if a product has reviews, show reviews, or show no reviews yet!-->
-<app-display-reviews></app-display-reviews>
+<app-display-reviews productId="{{product.id}}"></app-display-reviews>
 
 <br>
 <br>
 <!-- Review area-->
-<app-review></app-review>
+<app-review productId="{{product.id}}" productName="{{product.name}}"></app-review>

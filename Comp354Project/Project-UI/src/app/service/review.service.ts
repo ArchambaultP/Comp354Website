@@ -18,9 +18,10 @@ export class ReviewService {
   }
 
 
-  public findReviewById(ProductId: string): Observable<Review[]>
+  public findReviewById(ProductId: string): Observable<any>
   {
-        return this.http.get<Review[]>(`${this.reviewsUrl}/${ProductId}`);
+
+        return this.http.get(`${this.reviewsUrl}/${ProductId}`);
    }
 
 
@@ -36,4 +37,5 @@ export class ReviewService {
   public save(review: Review) {
      return this.http.post<Review>(this.reviewsUrl, review);
   }
+
 }

@@ -62,7 +62,6 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { UserAccountComponent } from './Components/account/user-account/user-account.component';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxPayPalModule } from 'ngx-paypal';
-import { ReviewComponent } from './Components/review/review.component';
 import { DisplayReviewsComponent } from './Components/display-reviews/display-reviews.component';
 
 @NgModule({

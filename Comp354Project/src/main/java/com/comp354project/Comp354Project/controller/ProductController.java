@@ -1,5 +1,7 @@
 package com.comp354project.Comp354Project.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.comp354project.Comp354Project.Entities.Product;
@@ -13,6 +15,7 @@ import com.comp354project.Comp354Project.repository.CategoryRepository;
 import com.comp354project.Comp354Project.repository.DepartmentRepository;
 import com.comp354project.Comp354Project.repository.AccountRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
@@ -140,9 +143,39 @@ public class ProductController {
 
     @CrossOrigin(origins="http://localhost:4200")
     @PostMapping(path="/reviews/add")
-    public Review createReview(@Valid @RequestBody Review review)
+    public String createReview( @RequestBody String jsonString)
     {
-        System.out.println("Test (CreateReview): AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        return reviewRepository.save(review);
+
+        JsonNode actualObj = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            actualObj = mapper.readTree(jsonString);
+        }catch(Exception e){};
+
+        //Integer productId = actualObj.get("productId").intValue();
+        Integer productId = Integer.parseInt(actualObj.get("productId").toString().replace("\"",""));
+
+        Integer rating = Integer.parseInt(actualObj.get("rating").toString().replace("\"",""));
+        Integer userId = actualObj.get("userId").intValue();
+        String description = actualObj.get("description").toString();
+        String prodName = actualObj.get("productName").toString();
+
+        Product product = productRepository.findByIdOverride(78);
+
+
+        Account acc = accountRepository.findByIdOverride(userId);
+
+        Review review = new Review(product, acc, rating, description);
+
+
+        acc.addReview(review);
+        //accountRepository.save(acc);
+
+        product.addReview(review);
+        //productRepository.save(product);
+
+        reviewRepository.save(review);
+        return "done";
+
     }
 }

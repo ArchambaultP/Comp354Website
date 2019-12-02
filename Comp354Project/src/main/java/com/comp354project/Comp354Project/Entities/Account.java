@@ -89,8 +89,12 @@ public class Account {
     private List<Product> productList = new ArrayList<>();
 
     @OneToMany(
-            mappedBy = "account"
+            mappedBy = "account",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
     )
+    @JsonManagedReference
     private List<Review> reviews = new ArrayList<>();
 
     @JsonManagedReference
@@ -106,6 +110,7 @@ public class Account {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JsonManagedReference
     private List<Address> addresses = new ArrayList<>();
 
     public Account()
@@ -330,4 +335,6 @@ public class Account {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    public void addReview(Review review){this.reviews.add(review);}
 }

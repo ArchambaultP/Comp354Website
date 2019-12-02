@@ -21,13 +21,13 @@
 
                         <mat-card-title>
                             <!-- name of user -->
-                            ${{review.name}}
+                            {{review.name}}
 
                         </mat-card-title>
 
                         <mat-card-subtitle>
 
-                            ${{review.rating}}
+                            {{review.rating}}
                         </mat-card-subtitle>
 
 
@@ -36,12 +36,11 @@
 
                     <!-- Description of review-->
                     <mat-card-content>
-                        ${{review.description}}
+                        {{review.description}}
 
                     </mat-card-content>
 
                 </mat-card>
-                <p *ngIf="!product">No products to display</p>
             </div>
         </div>
     </div>
