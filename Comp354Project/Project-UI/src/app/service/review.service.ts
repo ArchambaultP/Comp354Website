@@ -27,7 +27,8 @@ export class ReviewService {
 
   public createReview(review: Review): Observable<Object>
   {
-        return this.http.post(`${this.reviewsUrl}/add`,review);
+        //return this.http.post(`${this.reviewsUrl}/add`,review);
+        return this.http.post(`${this.reviewsUrl}/add`,review,{headers: new HttpHeaders().set('Content-Type','application/json')});
   }
 
 
