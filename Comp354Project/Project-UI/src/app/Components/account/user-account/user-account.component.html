@@ -6,6 +6,8 @@
         <div> <!-- Update Account -->
             <div *ngIf="!loading">
                 <button class="btn btn-primary" (click)="onUpdateInfo()">Account Information</button>
+                <br><br>
+                <button class="btn btn-primary" [routerLink]="'/product-form'">Add a new product</button>
             </div>
             <div *ngIf="loading">
                 <button class="btn btn-primary mr-1" type="button" disabled>
