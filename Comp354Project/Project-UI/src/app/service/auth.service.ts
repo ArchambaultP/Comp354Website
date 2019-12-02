@@ -213,9 +213,9 @@ export class AuthService {
         return this.authUser.isSuperAdmin;
     }
 
-    currentUserId(){
-        this.authUser = JSON.parse(sessionStorage.getItem('user'));
-        return this.authUser.id;
-    }
+    // currentUserId(){
+    //     this.authUser = JSON.parse(sessionStorage.getItem('user'));
+    //     return this.authUser.id;
+    // }
 
 }

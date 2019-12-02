@@ -12,27 +12,17 @@ export class ProductService {
   private productsUrl: string;
   private categoriesUrl: string;
   private departmentsUrl: string;
-<<<<<<< HEAD
-  selectedCategoryButtonValue = "";
-  maxPriceFilter = 99999999;
-  minPriceFilter = 0;
-=======
   public selectedCategoryButtonValue = "";
   maxPriceFilter = 99999999;
   minPriceFilter = 0;
-  public cart = [];
 
->>>>>>> master
+
   constructor(private http: HttpClient) {
     this.productsUrl = 'http://localhost:8080/products';
     this.departmentsUrl = 'http://localhost:8080/departments';
     this.categoriesUrl = 'http://localhost:8080/categories';
   }
 
-  public addToCart(item){
-    this.cart += item;
-    console.log('product added to service' + this.cart);
-  }
 
 
   // PRODUCTS
