@@ -46,6 +46,9 @@ export class ProductFormComponent implements OnInit {
                                     value.image).subscribe(result => {
                                         this.res = result;
                                     })
+
+
+    if(!alert("Your product has been submitted successfully !")){window.location.reload();}
     console.log(this.res);
     console.log("WOOWW")
 
