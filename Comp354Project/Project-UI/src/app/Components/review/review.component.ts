@@ -11,6 +11,7 @@ import { ActivatedRoute} from '@angular/router';
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
+
 export class ReviewComponent {
   public customerDetails: any = {};
   public checkOutFlag: any = {};
@@ -18,7 +19,8 @@ export class ReviewComponent {
   public invoiceNo: any = Math.floor(Math.random() * 10000);
 
 
-    review: Review = new Review();
+   review: Review = new Review();
+
    constructor(private reviewService: ReviewService,private route: ActivatedRoute)
    {
 
@@ -30,7 +32,6 @@ export class ReviewComponent {
     this.cart.allItems = this.__allprdts;
     this.cart.listCartItems();
     this.checkOutFlag = JSON.parse(this.storage.get('mycart'));
-
   }
 
 
@@ -49,9 +50,5 @@ export class ReviewComponent {
     window.alert("review submitted test");
     this.save();
   }
-
-
-
-
 }
 
