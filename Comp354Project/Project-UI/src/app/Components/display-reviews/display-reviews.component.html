@@ -1,0 +1,49 @@
+<div style="height:auto;width:400px;border-style:solid;border-color:black;">
+
+    <h2>Reviews for this products:</h2>
+
+    <br>
+    <br>
+
+    Average Ratings:
+    <br>
+    Customer Reviews:
+    <br>
+    <br>
+
+    <div class="grid-container">
+        <!-- <div *ngFor="let review of reviews | filter : searchText : inCategory let i=index"> -->
+        <div *ngFor="let review of reviews ; let i=index">
+            <div *ngIf="i<a">
+                <mat-card class="product-card">
+                    <mat-card-header>
+
+
+                        <mat-card-title>
+                            <!-- name of user -->
+                            {{review.name}}
+
+                        </mat-card-title>
+
+                        <mat-card-subtitle>
+
+                            {{review.rating}}
+                        </mat-card-subtitle>
+
+
+
+                    </mat-card-header>
+
+                    <!-- Description of review-->
+                    <mat-card-content>
+                        {{review.description}}
+
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+
+</div>

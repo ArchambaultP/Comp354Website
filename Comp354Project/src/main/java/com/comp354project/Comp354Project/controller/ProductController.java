@@ -1,20 +1,25 @@
 package com.comp354project.Comp354Project.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.comp354project.Comp354Project.Entities.Product;
+import com.comp354project.Comp354Project.Entities.Review;
 import com.comp354project.Comp354Project.Entities.Category;
 import com.comp354project.Comp354Project.Entities.Department;
 import com.comp354project.Comp354Project.Entities.Account;
 import com.comp354project.Comp354Project.repository.ProductRepository;
+import com.comp354project.Comp354Project.repository.ReviewRepository;
 import com.comp354project.Comp354Project.repository.CategoryRepository;
 import com.comp354project.Comp354Project.repository.DepartmentRepository;
 import com.comp354project.Comp354Project.repository.AccountRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 
-import java.lang.*;
 
 @RestController
 public class ProductController {
@@ -30,6 +35,10 @@ public class ProductController {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
+
 
     @CrossOrigin(origins="http://localhost:4200")
     @GetMapping(path="/products")
@@ -119,8 +128,54 @@ public class ProductController {
 
     @CrossOrigin(origins="http://localhost:4200")
     @GetMapping(path="/account/user/{id}/products")
-    public List<Product> getUserProducts(@PathVariable Integer id){
+    public List<Product> getUserProducts(@PathVariable Integer id) {
         return productRepository.findById_account(id);
     }
 
+    @CrossOrigin(origins="http://localhost:4200")
+    @GetMapping(path="/reviews/{id}")
+    public List<Review> getAllReviewsByProduct(@PathVariable Integer id)
+    {
+        Product product=productRepository.findByIdOverride(id);
+        return product.getReviews();
+    }
+
+
+    @CrossOrigin(origins="http://localhost:4200")
+    @PostMapping(path="/reviews/add")
+    public String createReview( @RequestBody String jsonString)
+    {
+
+        JsonNode actualObj = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            actualObj = mapper.readTree(jsonString);
+        }catch(Exception e){};
+
+        //Integer productId = actualObj.get("productId").intValue();
+        Integer productId = Integer.parseInt(actualObj.get("productId").toString().replace("\"",""));
+
+        Integer rating = Integer.parseInt(actualObj.get("rating").toString().replace("\"",""));
+        Integer userId = actualObj.get("userId").intValue();
+        String description = actualObj.get("description").toString();
+        String prodName = actualObj.get("productName").toString();
+
+        Product product = productRepository.findByIdOverride(78);
+
+
+        Account acc = accountRepository.findByIdOverride(userId);
+
+        Review review = new Review(product, acc, rating, description);
+
+
+        acc.addReview(review);
+        //accountRepository.save(acc);
+
+        product.addReview(review);
+        //productRepository.save(product);
+
+        reviewRepository.save(review);
+        return "done";
+
+    }
 }

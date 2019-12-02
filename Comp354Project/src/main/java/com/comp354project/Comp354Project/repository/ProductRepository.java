@@ -13,7 +13,6 @@ import java.util.List;
 
 public interface ProductRepository extends CrudRepository<Product, Integer> {
     public List<Product> findByName(String name);
-
     @Modifying
     @Transactional
     @Query(value="delete from Product c where c.idProduct = ?1")
