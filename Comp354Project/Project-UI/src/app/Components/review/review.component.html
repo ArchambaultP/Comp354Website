@@ -8,7 +8,7 @@
     <h2>Add your review for this item!!</h2>
     <br/>
 
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" >
         <div class="form-group">
             <label>Description</label>
             <input type="text" class="form-control" id="description" required [(ngModel)]="review.description" name="description">

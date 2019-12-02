@@ -4,12 +4,7 @@
     <list default="true" id="b3eacd00-d0c2-4911-8fec-f8060e42f981" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/Components/review/review.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/model/review.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/model/review.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/service/review.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/Project-UI/src/app/service/review.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Comp354Project/src/main/java/com/comp354project/Comp354Project/repository/ReviewRepository.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
