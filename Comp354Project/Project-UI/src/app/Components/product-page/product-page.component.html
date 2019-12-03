@@ -20,13 +20,14 @@
 
 
     </div> -->
+<!-- Category button dropdown -->
 <div class="input-group mb-3">
   <select class="form-control" [(ngModel)]="selectedCategoryButtonValue" (change)="catChange()">
     <option value="">Categories</option>
     <option *ngFor="let name of categoryNames" [value]="name">{{name}}
     </option>
   </select>
-
+  <!-- Sort dropdown -->
   <select class="form-control" [(ngModel)]="selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
     <option value="">Sort</option>
     <option value="1">Sort By Name (A to Z)</option>
@@ -34,58 +35,41 @@
     <option value="3">Sort By Price (Low to High)</option>
     <option value="4">Sort By Price (High to Low)</option>
   </select>
-
+  <!-- price filter -->
   <input type="text" class="form-control" placeholder="$min" [(ngModel)]="minFilter">
   <input type="text" class="form-control" placeholder="$max" [(ngModel)]="maxFilter">
   <button type="button" class="btn btn-primary" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
   <button type="button" class="btn btn-primary" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
 
-
+  <!-- items display -->
 </div>
 <br />
-<div class="grid-container">
-<<<<<<< HEAD
-  <div *ngFor="let product of products | filter : searchText : inCategory let i=index">
-    <div *ngIf="i<a">
-       <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
-      <mat-card class="product-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>
-              {{product.name}}
-          </mat-card-title>
-          <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="{{product.imageURL}}">
-      </mat-card>
-      </a>
-      <p *ngIf="!product">No products to display</p>
+
+<div *ngIf="(products | filter : searchText) as result">
+  <div class="grid-container">
+    <div *ngFor="let product of result let i=index">
+      <div *ngIf="i<a">
+        <mat-card class="product-card">
+          <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+
+              <mat-card-title>
+                {{product.name}}
+              </mat-card-title>
+
+              <mat-card-subtitle><strong>${{product.price}}</strong></mat-card-subtitle>
+            </mat-card-header>
+            <img class="image" mat-card-image src="{{product.imageURL}}">
+          </a>
+        </mat-card>
+      </div>
     </div>
+    <p *ngIf="result.length === 0">The search: {{searchText}} returned no items!</p>
   </div>
-=======
-    <div *ngIf="(products | filter : searchText) as result">
-        <div *ngFor="let product of result let i=index">
-            <div *ngIf="i<a">
-                <mat-card class="product-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-
-                        <mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
-                            {{product.name}}</a>
-                        </mat-card-title>
-
-                        <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{product.imageURL}}" >
-                </mat-card>
-            </div>
-        </div>
-        <p *ngIf="result.length === 0">The search: {{searchText}} returned no items!</p>
-    </div>
-
->>>>>>> origin/product-deletion
 </div>
 <hr>
+<!-- view limiter -->
 <div class="clearfix mb-2">
   <div class="float-left">
     <button class="btn btn-primary" id='button1' (click)="a = a-8">View Less</button>

@@ -7,6 +7,11 @@
   display: grid;
   grid-template-columns: auto auto auto auto;
 }
+.image{
+  height: 200px;
+  object-fit: contain;
+}
+
 /*
 #button1{
 padding:10px;

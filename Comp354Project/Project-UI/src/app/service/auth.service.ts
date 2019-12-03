@@ -213,13 +213,9 @@ export class AuthService {
         return this.authUser.isSuperAdmin;
     }
 
-<<<<<<< HEAD
     // currentUserId(){
     //     this.authUser = JSON.parse(sessionStorage.getItem('user'));
     //     return this.authUser.id;
     // }
 
 }
-=======
-}
->>>>>>> origin/product-deletion

@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { products} from "../../products";
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import {ProductService} from "../../service/product.service";
 import {AuthService} from "../../service/auth.service";
 import { Product } from '../../model/product';
 import { CookieService } from 'ngx-cookie-service';
-import {SearchService} from "../../service/search.service";
 
 @Component({
   selector: 'app-product-details',
@@ -13,13 +12,14 @@ import {SearchService} from "../../service/search.service";
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
+  // products = products;
+  // product;
    product: Product;
    ans: string;
    cookieValue = 'UNKNOWN';
-   userId: string;
-  constructor(private router: Router, public productService: ProductService,
-              private route: ActivatedRoute,private cookieService: CookieService,
-              private auth: AuthService, public searchService: SearchService) {
+   userId;
+   
+  constructor(public productService: ProductService, private route: ActivatedRoute,private cookieService: CookieService, private auth: AuthService) {
   }
 
   //Looks for product in products array that has the productId that was passed to the component through the router
@@ -28,6 +28,12 @@ export class ProductDetailsComponent implements OnInit {
       this.productService.findProductById(params.get('id')).subscribe(p =>{
         this.product = p;
       })
+
+      // test code to make sure it works on the front-end
+      //this.productService.deleteProductById(params.get('id')).subscribe(a => {
+      //  this.ans = a;
+      //})
+
     });
 
     if(this.auth.isUserLoggedIn()){ //if user is logged in
@@ -83,16 +89,4 @@ export class ProductDetailsComponent implements OnInit {
 
    }
 
-    deleteProduct() {
-        //Make sure the user wants to delete the product
-        if (confirm("Are you sure you want to delete this product?") == true) {
-
-            this.productService.deleteProductById(this.product.id).subscribe(a => {
-                this.ans = a;
-            })
-            this.searchService.searchText.next(" ");
-            window.alert(this.product.name + " has been deleted!");
-            this.router.navigate(['/products']);
-        }
-    }
 }
