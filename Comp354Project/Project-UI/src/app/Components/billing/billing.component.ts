@@ -62,7 +62,7 @@ export class BillingFormComponent implements OnInit {
       this.products.forEach(prod => itemTotal += parseFloat(prod.price));
 
       var itemsFromProduct = this.products.map(function(product){
-        return {name: product.name, quantity:1, category: 'DIGITAL_GOODS', unit_amount:{ currency_code:'CAD', value: ''+product.price+''}} //quantity comes from cookie, set 1 default
+        return {name: product.name, quantity:'1', category: 'DIGITAL_GOODS', unit_amount:{ currency_code:'CAD', value: ''+product.price+''}} //quantity comes from cookie, set 1 default
       });
 
       console.log(itemsFromProduct);
@@ -77,11 +77,11 @@ export class BillingFormComponent implements OnInit {
           {
             amount: {
               currency_code: 'CAD',
-              value: ''+itemTotalFormatted+'',
+              value: itemTotalFormatted,
               breakdown: {
                 item_total: {
                   currency_code: 'CAD',
-                  value: ''+itemTotalFormatted+''
+                  value: itemTotalFormatted
                 }
               }
             },
