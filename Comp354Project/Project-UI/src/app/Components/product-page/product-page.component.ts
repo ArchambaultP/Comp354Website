@@ -23,6 +23,8 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   categoryNames = [];
   a=8;
 
+maxFilter = null;
+minFilter = null;
 
   //IMPORTANT
   // By default sort products based on rating
@@ -135,4 +137,31 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       });
     }
   }
+  filterProducts(){
+     if(this.maxFilter == null){
+      this.productService.minPriceFilter = this.minFilter;
+      console.log('passing through only max')
+    }
+
+     else if(this.minFilter == null){
+      this.productService.maxPriceFilter = this.maxFilter;
+      console.log('passing through only min')
+    }
+
+    else if(this.minFilter == null && this.maxFilter == null){
+      this.productService.maxPriceFilter = 999999999;
+      this.productService.minPriceFilter = 0;
+      console.log('passing through nothing')
+    }
+    else{
+      this.productService.maxPriceFilter = this.maxFilter;
+      this.productService.minPriceFilter = this.minFilter;
+    }
+   }
+   resetFilterProducts(){
+     this.productService.maxPriceFilter = 9999999;
+     this.productService.minPriceFilter = 0;
+     this.maxFilter = null;
+     this.minFilter = null;
+   }
 }

@@ -17,24 +17,16 @@
                 <option value="4">Sort By Price (High to Low)</option>
             </select>
         </div>
+        <div class="float-left">
+            <input type="text" placeholder="$min" [(ngModel)] = "minFilter"><br>
+            <input type="text" placeholder="$max" [(ngModel)] = "maxFilter"><br>
+            <button type="button" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
+            <button type="button" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
+        </div>
 
 
     </div>
-    <!--
-    <select class="form-control"  [(ngModel)] = "selectedCategoryButtonValue" (change)="catChange()">
-    <option value="">All</option>
-    <option *ngFor= "let name of categoryNames"
-            [value]="name">{{name}}
-    </option>
-    </select>
 
-    <select class="form-control"  [(ngModel)] = "selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
-        <option value="">Sort</option>
-        <option value="1">Sort By Name (A to Z)</option>
-        <option value="2">Sort By Name (Z to A)</option>
-        <option value="3">Sort By Price (Low to High)</option>
-        <option value="4">Sort By Price (High to Low)</option>
-    </select> -->
 </div>
 <br />
 <div class="grid-container">
