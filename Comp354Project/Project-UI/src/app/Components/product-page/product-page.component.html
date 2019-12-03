@@ -29,8 +29,9 @@
 
 </div>
 <br />
+
 <div class="grid-container">
-<div *ngFor="let product of products | filter : searchText : inCategory let i=index">
+<div *ngFor="let product of shuffleArray(products) | filter : searchText : inCategory let i=index">
     <div *ngIf="i<a">
         <mat-card class="product-card">
             <mat-card-header>
