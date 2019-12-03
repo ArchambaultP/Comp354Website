@@ -3,6 +3,12 @@ package com.comp354project.Comp354Project.controller;
 
 import com.comp354project.Comp354Project.Entities.*;
 import com.comp354project.Comp354Project.repository.*;
+import com.comp354project.Comp354Project.repository.AccountRepository;
+import com.comp354project.Comp354Project.repository.ReviewRepository;
+import com.comp354project.Comp354Project.repository.DemoRepository;
+import com.comp354project.Comp354Project.repository.CategoryRepository;
+import com.comp354project.Comp354Project.repository.DepartmentRepository;
+import com.comp354project.Comp354Project.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +32,9 @@ public class DemoController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -239,6 +248,16 @@ public class DemoController {
 
     @GetMapping(path="/instantiateProduct")
     public @ResponseBody String instantiateProduct(){
+
+        //review -- remove
+        /*
+        Review rev=new Review();
+        rev.setDescription("Very nice product.");
+        rev.setAccount(accountRepository.findByEmail("seller1@outlook.com"));
+        rev.setRating(5);
+        //reviewRepository.save(rev);
+        */
+
 
         if(productRepository.findByName("Microsoft Surface Pro 6").isEmpty()){
             Product prod = new Product();

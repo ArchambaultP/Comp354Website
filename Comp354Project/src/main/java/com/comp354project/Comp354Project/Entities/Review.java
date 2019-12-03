@@ -1,5 +1,7 @@
 package com.comp354project.Comp354Project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -11,24 +13,40 @@ public class Review {
     @GeneratedValue
     private Integer idReview;
 
-    @Null
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "idProduct")
+    @JsonBackReference
     private Product product;
 
-    @Null
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "idAccount")
+    @JsonBackReference
     private Account account;
 
     @NotNull
     private Integer rating;
 
-    @Null
+    @NotNull
     private String description;
 
     @Null
     private String reply;
+
+    public Review()
+    {
+        super();
+    }
+
+    public Review(Product product, Account account, Integer rating, String description)
+    {
+        super();
+        this.product = product;
+        this.account = account;
+        this.rating = rating;
+        this.description = description;
+    }
 
     public Integer getId() {
         return idReview;

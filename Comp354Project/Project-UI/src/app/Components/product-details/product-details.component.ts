@@ -6,6 +6,8 @@ import {AuthService} from "../../service/auth.service";
 import { Product } from '../../model/product';
 import { CookieService } from 'ngx-cookie-service';
 
+
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -18,7 +20,6 @@ export class ProductDetailsComponent implements OnInit {
    ans: string;
    cookieValue = 'UNKNOWN';
    userId;
-   product: Product;
   constructor(public productService: ProductService, private route: ActivatedRoute,private cookieService: CookieService, private auth: AuthService) {
   }
 
