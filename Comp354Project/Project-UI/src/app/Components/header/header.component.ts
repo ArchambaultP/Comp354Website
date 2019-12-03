@@ -22,7 +22,10 @@ export class HeaderComponent implements OnInit{
 
 
   constructor(private router: Router, public searchService: SearchService,private auth: AuthService, private modalService: NgbModal) {
-  this.subscription = this.auth.getMessage().subscribe( message => {
+      this.searchService.searchText.subscribe( value => {
+          this.searchText = value;
+      });
+      this.subscription = this.auth.getMessage().subscribe( message => {
                 if(message){
                     if(message['text'] == 'authenticated'){
                         this.isLoggedIn = true;
@@ -43,8 +46,7 @@ export class HeaderComponent implements OnInit{
   }
 
   setSearchText(){
-    this.searchService.searchText = this.searchText;
-    console.log("Search text in header: " + this.searchText);
+    this.searchService.searchText.next(this.searchText);
   }
 
   logout(){

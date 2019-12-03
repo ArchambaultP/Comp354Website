@@ -53,15 +53,16 @@ import {
     MatSortModule,
     MatTableModule
 } from "@angular/material/";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { OrderListComponent } from './Components/order-list/order-list.component';
-import {OrderService} from "./service/order.service";
+import { OrderService} from "./service/order.service";
 import { SocialMediaButtonsComponent } from './Components/social-media-buttons/social-media-buttons.component';
 import { ButtonsModule, InputsModule } from 'angular-bootstrap-md';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { UserAccountComponent } from './Components/account/user-account/user-account.component';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { DisplayReviewsComponent } from './Components/display-reviews/display-reviews.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     OrderListComponent,
     SocialMediaButtonsComponent,
     UserAccountComponent,
+    ReviewComponent,
+    DisplayReviewsComponent,
   ],
   imports: [
         BrowserModule,

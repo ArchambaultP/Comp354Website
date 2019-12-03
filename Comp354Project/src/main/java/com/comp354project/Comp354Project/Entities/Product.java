@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="Product")
@@ -53,10 +54,13 @@ public class Product {
     private String imageURL;
 
     @OneToMany(
-            mappedBy = "product"
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
     )
     @JsonManagedReference
-    private List<Review> reviews;
+    private List<Review> reviews = new ArrayList<Review>();
 
     public Integer getUserId() {
         return this.userId;
@@ -141,4 +145,10 @@ public class Product {
     public String getImageURL() { return imageURL;}
 
     public void setImageURL(String imageURL) {this.imageURL = imageURL;}
+
+    // getters and setters for review
+    public List<Review> getReviews( ){  return reviews;}
+
+    public  void setReviews(List<Review> reviews){this.reviews=reviews;}
+    public void addReview(Review review){this.reviews.add(review);}
 }

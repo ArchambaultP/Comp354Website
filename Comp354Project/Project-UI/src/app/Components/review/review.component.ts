@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CartService } from '../../service/cart.service';
-import { StorageService } from '../../service/storage.service';
+import { Review } from '../../model/review';
+import { ReviewService} from "../../service/review.service";
+import { ActivatedRoute} from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-review',
@@ -8,43 +10,48 @@ import { StorageService } from '../../service/storage.service';
   styleUrls: ['./review.component.css']
 })
 
-
 export class ReviewComponent {
   public customerDetails: any = {};
   public checkOutFlag: any = {};
   public invoiceDate: any = new Date();
   public invoiceNo: any = Math.floor(Math.random() * 10000);
 
-  @Input("allProductList") __allprdts: any = {};
 
-  constructor(
-      public cart: CartService,
-      public storage: StorageService
-  ) {
+   @Input() productId;
+   review: Review = new Review();
+   currentUser;
+   @Input() productName;
 
-  }
+   constructor(private reviewService: ReviewService,private route: ActivatedRoute, private auth: AuthService)
+   {
+
+   }
+
 
   ngOnInit() {
-    this.customerDetails = this.cart.loadCheckoutInfo('customerInfo');
-    this.cart.allItems = this.__allprdts;
-    this.cart.listCartItems();
-    this.checkOutFlag = JSON.parse(this.storage.get('mycart'));
-
+    if(this.auth.isUserLoggedIn())
+    {
+       this.currentUser = this.auth.currentUserId();
+    }
   }
 
-  clearCart() {
-    let temp = {};
-    localStorage.setItem(this.storage.storageName, JSON.stringify(temp));
 
-    //this.checkOutFlag = Object.keys(this.storage.get()).length;
-    //console.log(this.checkOutFlag)
-    document.location.href = '/products';
+  newReview(): void {
+    this.review = new Review();
   }
 
-  print() {
-    let temp = {};
-    localStorage.setItem(this.storage.storageName, JSON.stringify(temp));
-    window.focus();
-    window.print();
+  save() {
+    this.reviewService.createReview(this.review)
+        .subscribe(data => console.log(data), error => console.log(error));
+    this.review = new Review();
+  }
+
+  onSubmit() {
+    this.review.userId = this.currentUser;
+    this.review.productId = this.productId;
+    this.review.productName = this.productName;
+    window.alert("review submitted test");
+    this.save();
   }
 }
+
