@@ -23,9 +23,14 @@
                         <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
                         <mat-cell *matCellDef="let product">{{product.id}}</mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+
+                        <mat-cell *matCellDef="let product"><button (click)="deleteProduct(product.id)">Delete</button></mat-cell>
+                    </ng-container>
                     <ng-container matColumnDef="imageURL">
                         <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
-                        <mat-cell *matCellDef="let product"><img class="img-fluid img-thumbnail" [src]="product.imageURL"/></mat-cell>
+                        <mat-cell *matCellDef="let product"> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]" ><img class="img-fluid img-thumbnail" [src]="product.imageURL"/></a></mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="brand">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Brand</mat-header-cell>
