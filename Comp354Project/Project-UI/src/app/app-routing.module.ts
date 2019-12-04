@@ -23,6 +23,7 @@ import { EmailVerification } from './Components/account/email-verification/email
 import { PasswordUpdate } from './Components/account/password-update/password-update.component';
 import { UserAccountComponent } from './Components/account/user-account/user-account.component';
 import {OrderListComponent} from "./Components/order-list/order-list.component";
+import { OrderCompleteComponent } from './Components/order-complete/order-complete.component';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'order/account-orders/:id', component: OrderListComponent},
   { path: 'order/orders/:id', component: OrderListComponent},
   { path: 'order/product/:id', component: OrderListComponent},
+  { path: 'orderComplete', component: OrderCompleteComponent},
 ];
 
 @NgModule({

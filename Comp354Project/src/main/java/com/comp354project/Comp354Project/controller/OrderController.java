@@ -62,7 +62,7 @@ public class OrderController {
     }
 
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public String AddOrder(@RequestBody  List<Integer> prodIds){
+    public JSONObject AddOrder(@RequestBody  List<Integer> prodIds){
         JSONObject response = new JSONObject();
 
         Payment payment = new Payment();
@@ -80,8 +80,8 @@ public class OrderController {
             orderItemRepository.save(ordItem);
         }
 
-        response.put("message", "Order created successfully");
+        response.put("order", order);
 
-        return "";
+        return response;
     }
 }

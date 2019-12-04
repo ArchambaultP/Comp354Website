@@ -22,10 +22,8 @@ export class OrderService {
 
       register(products): Observable<any>{
           console.log("REQUEST BODY");
-          var prodIds = products.map(x => x.id);
-          console.log(prodIds);
+          var prodIds = products.map(x => x.product.id);
           const body = new HttpParams().set('products', JSON.stringify(products));
-          console.log(body);
           return this.http.post('http://localhost:8080/order/add', prodIds, {headers: new HttpHeaders().set('Content-Type','application/json')});
       }
 }
