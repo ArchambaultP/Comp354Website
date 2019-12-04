@@ -11,6 +11,7 @@
     </mat-card-content>
     <mat-card-actions>
         <button (click)="addToCart()">Add to cart</button>
+        <button *ngIf="(product.userId == userId || userId == 0)" (click)="deleteProduct()">Delete {{product.name}}</button>
     </mat-card-actions>
 </mat-card>
 <br/>

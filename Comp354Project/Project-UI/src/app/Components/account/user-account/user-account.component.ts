@@ -8,6 +8,7 @@ import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationComponent } from '../../register/registration.component';
 import {MatTableDataSource, MatSort, MatDialog, MatDialogConfig} from '@angular/material';
 import {MatPaginator} from "@angular/material/paginator";
+import {ProductService} from "../../../service/product.service";
 
 @Component({
   selector: 'user-account',
@@ -15,14 +16,15 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class UserAccountComponent implements OnInit{
     loading = false;
+    ans: string;
     accountProductList: MatTableDataSource<any>;
-    displayedColumns: string[] = ['id','imageURL' ,'brand','name','description','price','quantity','permanentPosting'];
+    displayedColumns: string[] = ['id', 'delete', 'imageURL' ,'brand','name','description','price','quantity','permanentPosting'];
 
     @ViewChild(MatSort, {static: false}) sort: MatSort;
     @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
 
-    constructor(private auth: AuthService, private http: HttpClient, private router: Router
-            , private formBuilder: FormBuilder,private modalService: NgbModal){
+    constructor(private auth: AuthService, private http: HttpClient,  public productService: ProductService,
+                private router: Router, private formBuilder: FormBuilder,private modalService: NgbModal){
     }
 
     ngOnInit(){
@@ -53,4 +55,14 @@ export class UserAccountComponent implements OnInit{
             });
     }
 
+    deleteProduct(prodId) {
+        //Make sure the user wants to delete the product
+        if (confirm("Are you sure you want to delete this product?") == true) {
+            this.productService.deleteProductById(prodId).subscribe(a => {
+                this.ans = a;
+            })
+            window.alert("Product deleted!");
+            window.location.reload();
+        }
+    }
 }

@@ -48,7 +48,8 @@ export class ProductFormComponent implements OnInit {
                                     })
 
 
-    //if(!alert("Your product has been submitted successfully !")){window.location.reload();}
+    alert("Your product has been submitted successfully !");
+    window.location.reload();
     console.log(this.res);
     console.log("WOOWW")
 
