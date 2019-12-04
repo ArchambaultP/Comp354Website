@@ -21,6 +21,7 @@ export class ProductDetailsComponent implements OnInit {
    ans: string;
    cookieValue = 'UNKNOWN';
    userId;
+   isLoggedIn = false;
    cartProd: CartProduct;
   constructor(public productService: ProductService, private route: ActivatedRoute,private cookieService: CookieService, private auth: AuthService) {
   }
@@ -41,7 +42,7 @@ export class ProductDetailsComponent implements OnInit {
 
     if(this.auth.isUserLoggedIn()){ //if user is logged in
        this.userId = this.auth.currentUserId();
-
+       this.isLoggedIn = true;
         this.cookieValue = Cookies.get('Cart');
     }
   }

@@ -11,7 +11,7 @@ import { ActivatedRoute} from '@angular/router';
 })
 export class DisplayReviewsComponent implements OnInit {
 
-    a=4;
+    a=10;
     @Input() productId;
 
     reviews: Review[];

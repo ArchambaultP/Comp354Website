@@ -29,4 +29,6 @@
 <br>
 <br>
 <!-- Review area-->
+<div *ngIf="isLoggedIn">
 <app-review productId="{{product.id}}" productName="{{product.name}}"></app-review>
+</div>
