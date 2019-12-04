@@ -15,6 +15,7 @@ export class DisplayReviewsComponent implements OnInit {
     @Input() productId;
 
     reviews: Review[];
+    ratingNum;
 
   constructor(private reviewService: ReviewService,private route: ActivatedRoute)
   {
@@ -26,10 +27,24 @@ export class DisplayReviewsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.reviewService.findReviewById(this.productId).subscribe(p =>{
         this.reviews = p;
+        this.loadReviewInfo(this.reviews);
       })
     });
 
+  }
 
+  loadReviewInfo(reviews){
+
+    if(reviews.length > 0){
+        this.ratingNum =0.0;
+        reviews.forEach(x => this.ratingNum += x.rating);
+                      console.log("before div");
+        this.ratingNum = (this.ratingNum/reviews.length).toFixed(2);
+    }
+    else
+    {
+        this.ratingNum = "No rating yet !";
+    }
   }
 
 }

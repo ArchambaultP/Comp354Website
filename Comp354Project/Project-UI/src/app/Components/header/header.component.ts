@@ -8,6 +8,7 @@ import { LoginComponent } from '../login/login.component';
 import { RegistrationComponent } from '../register/registration.component';
 import { EmailVerification } from '../account/email-verification/email-verification.component';
 import { PasswordUpdate } from '../account/password-update/password-update.component';
+import Cookies from 'js-cookie';
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',

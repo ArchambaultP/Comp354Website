@@ -5,7 +5,8 @@ import {ProductService} from "../../service/product.service";
 import {AuthService} from "../../service/auth.service";
 import { Product } from '../../model/product';
 import { CookieService } from 'ngx-cookie-service';
-
+import {CartProduct} from '../../model/cartProduct';
+import Cookies from 'js-cookie';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class ProductDetailsComponent implements OnInit {
    ans: string;
    cookieValue = 'UNKNOWN';
    userId;
+   cartProd: CartProduct;
   constructor(public productService: ProductService, private route: ActivatedRoute,private cookieService: CookieService, private auth: AuthService) {
   }
 
@@ -39,28 +41,29 @@ export class ProductDetailsComponent implements OnInit {
 
     if(this.auth.isUserLoggedIn()){ //if user is logged in
        this.userId = this.auth.currentUserId();
-       this.cookieService.set('CartUser', this.userId);
 
-        this.cookieValue = this.cookieService.get('Cart');
+        this.cookieValue = Cookies.get('Cart');
     }
   }
 
   addToCart(){
 
-    var cartVal = this.cookieValue = this.cookieService.get('Cart');
+    var cartVal = this.cookieValue = Cookies.get('Cart');
     var cartArray;
-    if(cartVal !== '')
+    console.log(Cookies.get('Cart'));
+    if(cartVal !== undefined)
         cartArray = JSON.parse(cartVal);
 
-    if(cartVal === '') //empty cart
+     console.log(cartVal);
+
+    if(cartVal === undefined) //empty cart
     {
         //have to set cookies for every page we need to access their value
-        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}])); //set the cookie for prod detail page
-        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}]), 100, '/cartpage'); //set the cookies for the cartpage
-        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}]), 100, '/billing'); //set the cookies for the cartpage
-        this.cookieService.set( 'Cart', JSON.stringify([{'id':this.product.id, 'quantity':1}]), 100, '/review'); //set the cookies for the cartpage
-        this.cookieValue = this.cookieService.get('Cart');
-        console.log('product added to cart')
+        this.cartProd = {'product': this.product, 'quantity':'1'};//new CartProduct(this.product,1);
+        Cookies.set('Cart', JSON.stringify([this.cartProd]));
+        this.cookieValue = Cookies.get('Cart');
+        alert('Product added to cart !');
+        console.log('product added to cart');
     }
     else
     {
@@ -68,22 +71,22 @@ export class ProductDetailsComponent implements OnInit {
 
         for(var i =0;i < cartArray.length; i++)
         {
-            if(cartArray[i].id === this.product.id)
+            if(cartArray[i].product.id === this.product.id)
                 insert = false;
         }
 
         if(insert)
         {
-            cartArray.push({'id':this.product.id, 'quantity':1});
-            this.cookieService.set('Cart', JSON.stringify(cartArray));
-            this.cookieService.set('Cart', JSON.stringify(cartArray), 100, '/cartpage');
-            this.cookieService.set('Cart', JSON.stringify(cartArray), 100, '/billing');
-            this.cookieService.set('Cart', JSON.stringify(cartArray), 100, '/review');
-            this.cookieValue = this.cookieService.get('Cart');
+            this.cartProd = {'product': this.product, 'quantity':'1'};
+            cartArray.push(this.cartProd);
+            Cookies.set('Cart', JSON.stringify(cartArray));
+            this.cookieValue = Cookies.get('Cart');
+            alert('Product added to cart !');
             console.log('Product added to cart');
         }
         else
         {
+            alert('This product is already in your cart !');
             console.log('duplicate');
         }
     }
