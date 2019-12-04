@@ -8,6 +8,8 @@ import { Product } from '../../model/product';
 import { OrderService } from '../../service/order.service';
 import { CookieService } from 'ngx-cookie-service';
 import {AuthService} from "../../service/auth.service";
+import { CartProduct } from '../../model/cartProduct';
+import Cookies from 'js-cookie';
 
 @Component({
     selector: 'billing-form',
@@ -25,32 +27,20 @@ export class BillingFormComponent implements OnInit {
     userId;
     cookieValue = 'UNKNOWN';
     products: Product[];
+    cartProducts: CartProduct[];
 
     ngOnInit(): void {
       if(this.auth.isUserLoggedIn()){ //if user is logged in
          this.userId = this.auth.currentUserId();
-         this.cookieService.set('CartUser', this.userId);
 
-          console.log(this.cookieService.get('Cart'));
-          this.cookieValue = this.cookieService.get('Cart');
-          var cartItem;
-          if(this.cookieValue !== ''){
+          this.cookieValue = Cookies.get('Cart');
+          console.log(JSON.parse(this.cookieValue));
+          if(this.cookieValue !== undefined){
+              this.cartProducts = JSON.parse(this.cookieValue);
+              var prods = this.cartProducts.map(x => x.product);
 
-              cartItem = JSON.parse(this.cookieValue);
-              var prodIds = cartItem.map(x => x.id);
-
-              this.productService.findAllProducts().subscribe(data => {
-                  var prods = [];
-                  console.log(data);
-                  for(var i =0;i< data.length; i++) //shitty loop to include what's in our cart to our product data
-                  {
-                      if(data[i].id === prodIds.find(element => element == data[i].id))
-                          prods.push(data[i]);
-                  }
-
-                  this.products = prods;
-                  this.initConfig();
-              });
+              this.products = prods;
+              this.initConfig();
           }
       }
    }
@@ -58,16 +48,15 @@ export class BillingFormComponent implements OnInit {
     private initConfig(): void {
 
       var itemTotal = 0;
-      console.log(this.products);
-      this.products.forEach(prod => itemTotal += parseFloat(prod.price));
+      this.cartProducts.forEach(cp => itemTotal += parseFloat(cp.product.price)*parseFloat(cp.quantity));
 
-      var itemsFromProduct = this.products.map(function(product){
-        return {name: product.name, quantity:'1', category: 'DIGITAL_GOODS', unit_amount:{ currency_code:'CAD', value: ''+product.price+''}} //quantity comes from cookie, set 1 default
+      var itemsFromCartProduct = this.cartProducts.map(function(cp){
+        return {name: cp.product.name, quantity:cp.quantity, category: 'DIGITAL_GOODS', unit_amount:{ currency_code:'CAD', value: ''+cp.product.price+''}} //quantity comes from cookie, set 1 default
       });
 
-      console.log(itemsFromProduct);
-      var itemTotalFormatted = itemTotal.toString();
-
+      console.log(itemsFromCartProduct);
+      var itemTotalFormatted = itemTotal.toFixed(2).toString();
+      console.log(itemTotalFormatted);
       this.payPalConfig = {
       currency: 'CAD',
       clientId: 'AdjTqjryHNG8fTKQ9eBoF6VIR_leNRmCcd2g8WSb5BrUxV3coof_Q9tetUkdrJhfiOhIRteU8p8d-jXa',
@@ -83,9 +72,9 @@ export class BillingFormComponent implements OnInit {
                   currency_code: 'CAD',
                   value: itemTotalFormatted
                 }
-              }
+              },
             },
-            items: itemsFromProduct
+            items: itemsFromCartProduct
           }
         ]
       },
@@ -111,7 +100,7 @@ export class BillingFormComponent implements OnInit {
             (
                 data =>
                 {
-                    console.log('payment success');
+                    document.location.href="/";
 
                 }
             );

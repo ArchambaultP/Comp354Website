@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<p *ngIf="cartProducts === undefined">
+    <strong>Your cart is empty</strong>
+</p>
+
+<div *ngIf="cartProducts !== undefined">
+<div *ngFor="let cp of cartProducts">
+    <div style="border: dotted #000;border-width: 3px 3px 3px 3px;">
+        <p><a href="/products/{{cp.product.id}}">{{cp.product.name}}</a></p>
+        <label for="quant">Quantity</label>
+        <input (change)="updateQuantity(cp,$event.target.value,$event)" type="number" min="1" id="quant" name="quant" style="display:inline" value="{{cp.quantity}}"/>
+        <p>Price: ${{(cp.product.price * cp.quantity).toFixed(2)}}</p>
+        <button (click)="deleteFromCart(cp)">Delete from cart</button>
+    </div>
+    <br>
+</div>
+    <br>
+<div>
+    <p>Subtotal: ${{total}}</p>
+    <p>GST: ${{gst}}</p>
+    <p>QST: ${{qst}}</p>
+    <p>Grand Total: ${{grandtotal}}</p>
+</div>
+<ngx-paypal [config]="payPalConfig"></ngx-paypal>
+</div>

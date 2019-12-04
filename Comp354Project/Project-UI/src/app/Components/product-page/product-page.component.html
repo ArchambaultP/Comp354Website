@@ -17,6 +17,12 @@
                 <option value="4">Sort By Price (High to Low)</option>
             </select>
         </div>
+        <div class="float-left">
+            <input type="text" placeholder="$min" [(ngModel)] = "minFilter"><br>
+            <input type="text" placeholder="$max" [(ngModel)] = "maxFilter"><br>
+            <button type="button" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
+            <button type="button" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
+        </div>
 
 
     </div> -->
@@ -45,10 +51,10 @@
 </div>
 <br />
 
-<div *ngIf="(products | filter : searchText) as result">
-  <div class="grid-container">
-    <div *ngFor="let product of result let i=index">
-      <div *ngIf="i<a">
+<div class="grid-container">
+<div *ngFor="let product of shuffleArray(products) | filter : searchText : inCategory let i=index">
+    <div *ngIf="i<a">
+
         <mat-card class="product-card">
           <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
             <mat-card-header>

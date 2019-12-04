@@ -22,7 +22,9 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   selectedCategoryButtonValue: string = "";
   categoryNames = [];
   a=8;
-  // result;
+
+maxFilter = null;
+minFilter = null;
 
   //IMPORTANT
   // By default sort products based on rating
@@ -129,32 +131,54 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       });
     }
   }
+  
   maxFilter = null;
   minFilter = null;
+  filterProducts(){
+     if(this.maxFilter == null){
+      this.productService.minPriceFilter = this.minFilter;
+      console.log('passing through only max')
+    }
 
- filterProducts(){
-   console.log("this is dddd" + this.maxFilter + this.minFilter)
-   if(this.minFilter == null && this.maxFilter == null){
-     console.log('nothing here');
+     else if(this.minFilter == null){
+      this.productService.maxPriceFilter = this.maxFilter;
+      console.log('passing through only min')
+    }
+
+    else if(this.minFilter == null && this.maxFilter == null){
+      this.productService.maxPriceFilter = 999999999;
+      this.productService.minPriceFilter = 0;
+      console.log('passing through nothing')
+    }
+    else{
+      this.productService.maxPriceFilter = this.maxFilter;
+      this.productService.minPriceFilter = this.minFilter;
+    }
    }
-   else if(this.maxFilter == null)
-    this.productService.minPriceFilter = this.minFilter;
-   else if(this.minFilter == null)
-    this.productService.maxPriceFilter = this.maxFilter;
-   else{
-    this.productService.maxPriceFilter = this.maxFilter;
-    this.productService.minPriceFilter = this.minFilter;
-    console.log('nothing here111');
-  }
+   resetFilterProducts(){
+     this.productService.maxPriceFilter = 9999999;
+     this.productService.minPriceFilter = 0;
+     this.maxFilter = null;
+     this.minFilter = null;
+   }
 
- }
- resetFilterProducts(){
-   this.productService.maxPriceFilter = 9999999;
-   this.productService.minPriceFilter = 0;
-   this.maxFilter = null;
-   this.minFilter = null;
- }
+  shuffleArray(array) {
+    var m = array.length, t, i;
+
+    // While there remain elements to shuffle
+    while (m) {
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+  return array;
+}
 filterprice(){
   this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
 }
 }
