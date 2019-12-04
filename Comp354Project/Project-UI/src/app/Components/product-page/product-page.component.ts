@@ -22,7 +22,9 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   selectedCategoryButtonValue: string = "";
   categoryNames = [];
   a=8;
-  // result;
+
+maxFilter = null;
+minFilter = null;
 
   //IMPORTANT
   // By default sort products based on rating
@@ -72,11 +74,9 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   //Gets the search text from the product service
   ngOnInit() {
     this.selectedCategoryButtonValue = this.productService.selectedCategoryButtonValue;
-
-    this.searchService.searchText.subscribe( value => {
-      this.searchText = value;
-    });
-
+    console.log(this.productService.selectedCategoryButtonValue)
+    console.log("this is the selected category" + this.selectedCategoryButtonValue )
+    this.searchText = this.searchService.searchText;
     if (this.selectedCategoryButtonValue == ""){
       console.log('this is a test' + this.selectedCategoryButtonValue)
       this.productService.findAllProducts().subscribe(data => {
@@ -137,4 +137,47 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       });
     }
   }
+  filterProducts(){
+     if(this.maxFilter == null){
+      this.productService.minPriceFilter = this.minFilter;
+      console.log('passing through only max')
+    }
+
+     else if(this.minFilter == null){
+      this.productService.maxPriceFilter = this.maxFilter;
+      console.log('passing through only min')
+    }
+
+    else if(this.minFilter == null && this.maxFilter == null){
+      this.productService.maxPriceFilter = 999999999;
+      this.productService.minPriceFilter = 0;
+      console.log('passing through nothing')
+    }
+    else{
+      this.productService.maxPriceFilter = this.maxFilter;
+      this.productService.minPriceFilter = this.minFilter;
+    }
+   }
+   resetFilterProducts(){
+     this.productService.maxPriceFilter = 9999999;
+     this.productService.minPriceFilter = 0;
+     this.maxFilter = null;
+     this.minFilter = null;
+   }
+
+  shuffleArray(array) {
+    var m = array.length, t, i;
+
+    // While there remain elements to shuffle
+    while (m) {
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+return array;
+}
 }
