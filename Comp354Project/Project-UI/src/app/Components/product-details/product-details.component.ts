@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import {CartProduct} from '../../model/cartProduct';
 import Cookies from 'js-cookie';
 
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -21,7 +22,6 @@ export class ProductDetailsComponent implements OnInit {
    cookieValue = 'UNKNOWN';
    userId;
    cartProd: CartProduct;
-
   constructor(public productService: ProductService, private route: ActivatedRoute,private cookieService: CookieService, private auth: AuthService) {
   }
 
