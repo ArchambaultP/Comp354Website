@@ -160,7 +160,7 @@ public class ProductController {
         String description = actualObj.get("description").toString();
         String prodName = actualObj.get("productName").toString();
 
-        Product product = productRepository.findByIdOverride(78);
+        Product product = productRepository.findByIdOverride(productId);
 
 
         Account acc = accountRepository.findByIdOverride(userId);
