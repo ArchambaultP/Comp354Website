@@ -18,10 +18,10 @@
             </select>
         </div>
         <div class="float-left">
-            <input type="text" placeholder="$min" [(ngModel)] = "minFilter"><br>
-            <input type="text" placeholder="$max" [(ngModel)] = "maxFilter"><br>
-            <button type="button" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
-            <button type="button" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
+            <input type="text" class="form-control" placeholder="$min" [(ngModel)] = "minFilter">
+            <input type="text" class="form-control" placeholder="$max" [(ngModel)] = "maxFilter">
+            <button type="button" class="btn btn-primary" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
+            <button type="button" class="btn btn-primary" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
         </div>
 
 
