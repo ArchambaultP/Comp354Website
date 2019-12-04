@@ -1,4 +1,4 @@
-<!-- <div id="wrapper">
+<div id="wrapper">
     <div class="clearfix">
         <div class="float-left">
             <select class="form-control"  [(ngModel)] = "selectedCategoryButtonValue" (change)="catChange()">
@@ -25,62 +25,36 @@
         </div>
 
 
-    </div> -->
-<!-- Category button dropdown -->
-<div class="input-group mb-3">
-  <select class="form-control" [(ngModel)]="selectedCategoryButtonValue" (change)="catChange()">
-    <option value="">Categories</option>
-    <option *ngFor="let name of categoryNames" [value]="name">{{name}}
-    </option>
-  </select>
-  <!-- Sort dropdown -->
-  <select class="form-control" [(ngModel)]="selectedDropDownButtonValue" (change)="onDropDownButtonSelectionChange()">
-    <option value="">Sort</option>
-    <option value="1">Sort By Name (A to Z)</option>
-    <option value="2">Sort By Name (Z to A)</option>
-    <option value="3">Sort By Price (Low to High)</option>
-    <option value="4">Sort By Price (High to Low)</option>
-  </select>
-  <!-- price filter -->
-  <input type="text" class="form-control" placeholder="$min" [(ngModel)]="minFilter">
-  <input type="text" class="form-control" placeholder="$max" [(ngModel)]="maxFilter">
-  <button type="button" class="btn btn-primary" (click)="filterProducts()" [routerLink]="'/'">Submit</button>
-  <button type="button" class="btn btn-primary" (click)="resetFilterProducts()" [routerLink]="'/'">Reset</button>
+    </div>
 
-  <!-- items display -->
 </div>
 <br />
 
 <div class="grid-container">
 <div *ngFor="let product of shuffleArray(products) | filter : searchText : inCategory let i=index">
     <div *ngIf="i<a">
-
         <mat-card class="product-card">
-          <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
             <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
+                <div mat-card-avatar class="example-header-image"></div>
 
-              <mat-card-title>
-                {{product.name}}
-              </mat-card-title>
+                <mat-card-title> <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+                    {{product.name}}</a>
+                </mat-card-title>
 
-              <mat-card-subtitle><strong>${{product.price}}</strong></mat-card-subtitle>
+                <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
             </mat-card-header>
-            <img class="image" mat-card-image src="{{product.imageURL}}">
-          </a>
+            <img mat-card-image src="{{product.imageURL}}" >
         </mat-card>
-      </div>
+      <p *ngIf="!product">No products to display</p>
     </div>
-    <p *ngIf="result.length === 0">The search: {{searchText}} returned no items!</p>
-  </div>
+</div>
 </div>
 <hr>
-<!-- view limiter -->
 <div class="clearfix mb-2">
-  <div class="float-left">
-    <button class="btn btn-primary" id='button1' (click)="a = a-8">View Less</button>
-  </div>
-  <div class="float-right">
-    <button class="btn btn-primary" id='button2' (click)="a = a+8">View More</button>
-  </div>
+    <div class="float-left">
+        <button class="btn btn-primary" id='button1' (click)="a = a-8">View Less</button>
+    </div>
+    <div class="float-right">
+        <button class="btn btn-primary" id='button2' (click)="a = a+8">View More</button>
+    </div>
 </div>

@@ -74,20 +74,21 @@ minFilter = null;
   //Gets the search text from the product service
   ngOnInit() {
     this.selectedCategoryButtonValue = this.productService.selectedCategoryButtonValue;
-
-    this.searchService.searchText.subscribe( value => {
-      this.searchText = value;
-    });
-
+    console.log(this.productService.selectedCategoryButtonValue)
+    console.log("this is the selected category" + this.selectedCategoryButtonValue )
+    this.searchText = this.searchService.searchText;
     if (this.selectedCategoryButtonValue == ""){
-    this.productService.findAllProducts().subscribe(data => {
-     this.products = data;
-     this.filterprice();
+      console.log('this is a test' + this.selectedCategoryButtonValue)
+      this.productService.findAllProducts().subscribe(data => {
+      this.products = data;
+      this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+      // this.filteredProducts = [...this.Stores[0].Products.filter(product => product.Price
+ // >= value.lower && product.Price <= value.upper )]
+
     });
     }
     else{
       this.catChange();
-      this.filterprice();
     }
   }
   ngOnDestroy(){
@@ -102,7 +103,8 @@ minFilter = null;
     if(this.selectedCategoryButtonValue == ""){
       this.productService.findAllProducts().subscribe(data => {
         this.products = data;
-        this.filterprice();
+        this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
       });
     }
     else{
@@ -110,16 +112,19 @@ minFilter = null;
       {
         this.category = data;
         this.products = this.category[0].products;
-        this.filterprice();
+        this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
       });
     }
   }
   catChange2(){
     this.productService.selectedCategoryButtonValue = this.selectedCategoryButtonValue;
+
     if(this.productService.selectedCategoryButtonValue == ""){
       this.productService.findAllProducts().subscribe(data => {
         this.products = data;
-        this.filterprice();
+        this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
       });
     }
     else{
@@ -127,13 +132,11 @@ minFilter = null;
       {
         this.category = data;
         this.products = this.category[0].products;
-        this.filterprice();
+        this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
+
       });
     }
   }
-  
-  maxFilter = null;
-  minFilter = null;
   filterProducts(){
      if(this.maxFilter == null){
       this.productService.minPriceFilter = this.minFilter;
@@ -175,10 +178,6 @@ minFilter = null;
       array[m] = array[i];
       array[i] = t;
     }
-  return array;
-}
-filterprice(){
-  this.products = this.products.filter(products => products.price <= String(this.productService.maxPriceFilter) && products.price >= String(this.productService.minPriceFilter))
-
+return array;
 }
 }
