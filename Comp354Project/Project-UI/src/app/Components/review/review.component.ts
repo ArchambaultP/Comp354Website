@@ -50,7 +50,7 @@ export class ReviewComponent {
     this.review.userId = this.currentUser;
     this.review.productId = this.productId;
     this.review.productName = this.productName;
-    window.alert("review submitted test");
+    window.alert("review submitted");
     this.save();
   }
 }
